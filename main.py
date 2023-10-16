@@ -1,6 +1,7 @@
 import pygame, sys
 import Button as B
 import FontConfig as FC
+import Text as T
 
 WHITE: tuple[int] = (255, 255, 255)
 RED: tuple[int]  = (255, 0, 0)
@@ -22,31 +23,39 @@ def main():
     pygame.display.set_caption("Regex Game")
     screen: pygame.surface.Surface = pygame.display.set_mode((640, 480))
     screen.fill(WHITE)
+    pygame.display.update()
     
-    basicFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", WHITE, BLACK, 10)
+    basicFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (RED, BLUE, WHITE), 30)
     
-    font = pygame.font.Font(basicFontConfig.name, basicFontConfig.size)
+    # font = pygame.font.Font(basicFontConfig.name, basicFontConfig.size)
     # rect = pygame.Rect(100, 100, 100, 25)
-    buttonSurface = pygame.Surface((200, 200))
-    text = font.render("buttonText", True, basicFontConfig.textColor, basicFontConfig.buttonColor)
-    textRect = text.get_rect()
-    textRect.center = (100, 100)
-    buttonSurface.blit(text, textRect)
-    pygame.display.update(textRect)
+    # buttonSurface = pygame.Surface((200, 200))
+    # text = font.render("buttonText", True, basicFontConfig.textColor, basicFontConfig.buttonColor)
+    # textRect = text.get_rect()
+    # textRect.center = (100, 100)
+    # buttonSurface.blit(text, textRect)
+    # pygame.display.update(textRect)
     
-    # b: B.Button = B.Button(30, 30, basicFontConfig)
-    # b.draw(screen)
+    b: B.Button = B.Button(200, 200, basicFontConfig)
+    b.draw(screen)
 
     # b1: B.Button = B.Button(0, 0, basicFontConfig, buttonText="some realllllly long button")
     # b1.draw(screen)
     
-    # pygame.display.update()
+    t: T.Text = T.Text(100, 100, "Hello World", basicFontConfig)
+    t.draw(screen)
+    
+    pygame.draw.circle(screen, RED, PLAYER_POSITION, 10)
+
+    
+    # pygame.display.update(pygame.draw.circle(screen, RED, PLAYER_POSITION, 10))
     
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+        b.process(screen)
     
         
     

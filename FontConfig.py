@@ -3,12 +3,12 @@ import pygame
 class FontConfig:
     name: str
     textColor: tuple[int]
-    buttonColor: tuple[int]
+    backgroundColors: tuple[int] # should be length three because that is all the states in the ButtonState enum
     size: int
-    def __init__(self, name: str, textColor: tuple[int], buttonColor: tuple[int], size: int) -> None:
+    def __init__(self, name: str, textColor: tuple[int], backgroundColors: tuple[tuple[int]], size: int) -> None:
         self.name = name
         self.textColor = textColor
-        self.buttonColor = buttonColor
+        self.backgroundColors = backgroundColors
         self.size = size
         
     def makeFontObject(self) -> pygame.font.Font:
