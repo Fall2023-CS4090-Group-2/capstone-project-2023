@@ -51,13 +51,17 @@ class Button():
         self.buttonSurfaceDictionary[ButtonState.normal.value] = self.fontObject.render(self.buttonText, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[ButtonState.normal.value])
         self.buttonSurfaceDictionary[ButtonState.press.value]  = self.fontObject.render(self.buttonText, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[ButtonState.press.value])
         self.buttonSurfaceDictionary[ButtonState.hover.value]  = self.fontObject.render(self.buttonText, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[ButtonState.hover.value])
+        
 
     def draw(self, screen) -> None:
         updatedRect = screen.blit(self.buttonSurfaceDictionary[self.state.value], (self.x, self.y))
         pygame.display.update(updatedRect)
     
     def process(self, screen) -> None:
-        isMouseOnButton: bool = self.buttonSurfaceDictionary[self.state.value].get_rect().collidepoint(pygame.mouse.get_pos())
+        rect: pygame.Rect = self.buttonSurfaceDictionary[self.state.value].get_rect()
+        rect.left = self.x
+        rect.top = self.y
+        isMouseOnButton: bool = rect.collidepoint(pygame.mouse.get_pos())
         if isMouseOnButton and self.state is ButtonState.normal:
             self.state = ButtonState.hover
             self.draw(screen)
