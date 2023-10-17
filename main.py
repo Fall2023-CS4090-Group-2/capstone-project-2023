@@ -2,6 +2,7 @@ import pygame, sys
 import Button as B
 import FontConfig as FC
 import Text as T
+import Scene as S
 
 WHITE: tuple[int] = (255, 255, 255)
 RED: tuple[int]  = (255, 0, 0)
@@ -15,8 +16,16 @@ RIGHT_KEY: int = pygame.K_d
 
 PLAYER_POSITION: list[int] = [100, 100] 
 
-def hello():
+CURRENT_SCENE: S.Scene
+
+def hello() -> None:
     print("hello")
+    
+def changeScene(scene: list[object]) -> None:
+    CURRENT_SCENE = scene[0]
+    print(CURRENT_SCENE.buttons)
+    CURRENT_SCENE.draw(scene[1])
+    pygame.display.update()
 
 def main():
     pygame.init()
@@ -26,25 +35,29 @@ def main():
     pygame.display.update()
     
     basicFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (RED, BLUE, WHITE), 30)
+    basicTextFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (WHITE, BLUE, WHITE), 30)
     
-    b: B.Button = B.Button(200, 200, basicFontConfig)
-    b.draw(screen)
+    sceneTwoText: T.Text = T.Text(100, 100, "This is scene two", basicTextFontConfig)
+    sceneTwo: S.Scene = S.Scene([], [sceneTwoText])
+    
+    b: B.Button = B.Button(100, 100, basicFontConfig, onClickFunction=hello)
+    b1: B.Button = B.Button(200, 200, basicFontConfig, buttonText="some realllllly long button")
+    
+    t: T.Text = T.Text(100, 0, "Hello World", basicTextFontConfig)
+    
+    scene: S.Scene = S.Scene([b, b1], [t])
+    scene.draw(screen)
+    
 
-    b1: B.Button = B.Button(0, 0, basicFontConfig, buttonText="some realllllly long button")
-    b1.draw(screen)
-    
-    t: T.Text = T.Text(100, 100, "Hello World", basicFontConfig)
-    t.draw(screen)
-    
-    pygame.draw.circle(screen, RED, PLAYER_POSITION, 10)
-
+    CURRENT_SCENE = scene
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-        b.process(screen)
-        b1.process(screen)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                CURRENT_SCENE.processMouseClick()        
+        CURRENT_SCENE.processMouseMovement(screen)
 
 if __name__ == "__main__":
     main()
