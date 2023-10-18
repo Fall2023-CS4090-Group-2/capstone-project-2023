@@ -1,4 +1,5 @@
 import pygame
+import GameObject as GO
 import FontConfig as FC
 
 from enum import Enum
@@ -13,7 +14,7 @@ BLUE: tuple[int] = (0, 0, 255)
 RED: tuple[int] = (255, 0, 0)
 GREEN: tuple[int] = (0, 255, 0)
 
-class Button():
+class Button(GO.GameObject):
     x: int
     y: int 
     fontConfig: FC.FontConfig

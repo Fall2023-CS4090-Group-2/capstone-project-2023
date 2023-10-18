@@ -1,8 +1,9 @@
 import FontConfig as FC
-import Button as B
+import GameObject as GO
+import GameObjects.Button as B
 import pygame 
 
-class Text:
+class Text(GO.GameObject):
     x: int
     y: int
     message: str

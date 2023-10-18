@@ -1,8 +1,10 @@
 import pygame, sys
-import Button as B
+import GameObjects.Button as B
 import FontConfig as FC
-import Text as T
+import GameObjects.Text as T
+import GameObject as GO
 import Scene as S
+import GameObjects.InputField as IF
 
 WHITE: tuple[int] = (255, 255, 255)
 RED: tuple[int]  = (255, 0, 0)
@@ -37,15 +39,18 @@ def main():
     basicFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (RED, BLUE, WHITE), 30)
     basicTextFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (WHITE, BLUE, WHITE), 30)
     
-    sceneTwoText: T.Text = T.Text(100, 100, "This is scene two", basicTextFontConfig)
-    sceneTwo: S.Scene = S.Scene([], [sceneTwoText])
+    # sceneTwoText: T.Text = T.Text(100, 100, "This is scene two", basicTextFontConfig)
+    # sceneTwo: S.Scene = S.Scene([], [sceneTwoText])
     
     b: B.Button = B.Button(100, 100, basicFontConfig, onClickFunction=hello)
     b1: B.Button = B.Button(200, 200, basicFontConfig, buttonText="some realllllly long button")
     
     t: T.Text = T.Text(100, 0, "Hello World", basicTextFontConfig)
+
+    i: IF.InputField = IF.InputField(300, 300, basicFontConfig, "Hello World")
     
-    scene: S.Scene = S.Scene([b, b1], [t])
+    gameObjects: GO.GameObject = [t, b, b1, i]
+    scene: S.Scene = S.Scene(gameObjects)
     scene.draw(screen)
     
 
