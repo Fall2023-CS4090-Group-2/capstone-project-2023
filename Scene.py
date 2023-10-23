@@ -11,14 +11,22 @@ class Scene():
     def __init__(self, gameObjects: GO.GameObject) -> None:
         self.gameObjects = gameObjects
         
-    def draw(self, screen: pygame.Surface) -> None:
+    def draw(self) -> None:
         for gameObject in self.gameObjects:
-            gameObject.draw(screen)
+            gameObject.draw()
     
-    def processMouseMovement(self, screen: pygame.Surface) -> None:
+    def processMouseMovement(self) -> None:
+        self.selectedGameObject = None
         for gameObject in self.gameObjects:
-            if gameObject.processMouseMovement(screen):
+            if gameObject.processMouseMovement():
                 self.selectedGameObject = gameObject
             
     def processMouseClick(self) -> None:
-        self.selectedGameObject.processMouseClick()
+        print("processing mouse click")
+        print(self.selectedGameObject)
+        if self.selectedGameObject != None:
+            self.selectedGameObject.processMouseClick()
+            
+    def processAnyKeyPress(self, keyCode: int) -> bool:
+        if self.selectedGameObject != None:
+            self.selectedGameObject.processAnyKeyPress(keyCode)

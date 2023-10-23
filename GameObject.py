@@ -1,15 +1,20 @@
 import pygame
+from enum import Enum
+
 
 class GameObject(object):
 
-    def draw(self, screen) -> None:
+    def draw(self) -> None:
         pass
     
-    def processMouseMovement(self, screen: pygame.Surface) -> bool:
+    def processMouseMovement(self) -> bool:
         pass
     
-    def processMouseClick(self, screen: pygame.Surface) -> None:
+    def processMouseClick(self) -> None:
         pass
     
-    def processAnyKeyPress(self, screen: pygame.Surface) -> bool:
+    def processAnyKeyPress(self, keyCode: int) -> bool:
+        pass
+
+    def changeState(self, newState: Enum) -> None:
         pass

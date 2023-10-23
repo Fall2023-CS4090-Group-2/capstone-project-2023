@@ -5,6 +5,7 @@ import GameObjects.Text as T
 import GameObject as GO
 import Scene as S
 import GameObjects.InputField as IF
+import Global
 
 WHITE: tuple[int] = (255, 255, 255)
 RED: tuple[int]  = (255, 0, 0)
@@ -20,6 +21,7 @@ PLAYER_POSITION: list[int] = [100, 100]
 
 CURRENT_SCENE: S.Scene
 
+
 def hello() -> None:
     print("hello")
     
@@ -32,8 +34,8 @@ def changeScene(scene: list[object]) -> None:
 def main():
     pygame.init()
     pygame.display.set_caption("Regex Game")
-    screen: pygame.surface.Surface = pygame.display.set_mode((640, 480))
-    screen.fill(WHITE)
+    Global.GAME_SCREEN = pygame.display.set_mode((640, 480))
+    Global.GAME_SCREEN.fill(WHITE)
     pygame.display.update()
     
     basicFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (RED, BLUE, WHITE), 30)
@@ -51,7 +53,7 @@ def main():
     
     gameObjects: GO.GameObject = [t, b, b1, i]
     scene: S.Scene = S.Scene(gameObjects)
-    scene.draw(screen)
+    scene.draw()
     
 
     CURRENT_SCENE = scene
@@ -61,8 +63,11 @@ def main():
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                CURRENT_SCENE.processMouseClick()        
-        CURRENT_SCENE.processMouseMovement(screen)
+                CURRENT_SCENE.processMouseClick()
+            elif event.type == pygame.KEYDOWN:
+                print(pygame.key.name(event.key))
+                CURRENT_SCENE.processAnyKeyPress(event.key)
+        CURRENT_SCENE.processMouseMovement()
 
 if __name__ == "__main__":
     main()
