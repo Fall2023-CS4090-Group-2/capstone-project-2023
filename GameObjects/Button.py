@@ -68,5 +68,8 @@ class Button(GO.GameObject):
         return isMouseOnButton
     
     def processMouseClick(self) -> None:
-        self.onClickFunction()
+        if self.parameters is None:
+            self.onClickFunction()
+        else:
+            self.onClickFunction(self.parameters)
 

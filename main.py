@@ -25,13 +25,15 @@ CURRENT_SCENE: S.Scene
 def hello() -> None:
     print("hello")
     
-def changeScene(scene: list[object]) -> None:
-    CURRENT_SCENE = scene[0]
-    print(CURRENT_SCENE.buttons)
-    CURRENT_SCENE.draw(scene[1])
+def changeScene(objects: list[object]) -> None:
+    global CURRENT_SCENE 
+    CURRENT_SCENE = objects[0]
+    print(CURRENT_SCENE.gameObjects)
+    CURRENT_SCENE.draw()
     pygame.display.update()
 
 def main():
+    global CURRENT_SCENE
     pygame.init()
     pygame.display.set_caption("Regex Game")
     Global.GAME_SCREEN = pygame.display.set_mode((640, 480))
@@ -41,11 +43,12 @@ def main():
     basicFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (RED, BLUE, WHITE), 30)
     basicTextFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (WHITE, BLUE, WHITE), 30)
     
-    # sceneTwoText: T.Text = T.Text(100, 100, "This is scene two", basicTextFontConfig)
-    # sceneTwo: S.Scene = S.Scene([], [sceneTwoText])
+    sceneTwoText: T.Text = T.Text(100, 100, "This is scene two", basicTextFontConfig)
+    sceneTwoButton: B.Button = B.Button(100, 200, basicFontConfig, buttonText="go back to other scene", onClickFunction=changeScene)
+    sceneTwo: S.Scene = S.Scene([sceneTwoText, sceneTwoButton], backgroundColor=pygame.Color('black'))
     
     b: B.Button = B.Button(100, 100, basicFontConfig, onClickFunction=hello)
-    b1: B.Button = B.Button(200, 200, basicFontConfig, buttonText="some realllllly long button")
+    b1: B.Button = B.Button(200, 200, basicFontConfig, buttonText="some realllllly long button", onClickFunction=changeScene, parameters=[sceneTwo])
     
     t: T.Text = T.Text(100, 0, "Hello World", basicTextFontConfig)
 
@@ -53,16 +56,17 @@ def main():
     
     gameObjects: GO.GameObject = [t, b, b1, i]
     scene: S.Scene = S.Scene(gameObjects)
-    scene.draw()
+    sceneTwoButton.parameters = [scene]
     
-
     CURRENT_SCENE = scene
+    CURRENT_SCENE.draw()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
+                print(CURRENT_SCENE.gameObjects)
                 CURRENT_SCENE.processMouseClick()
             elif event.type == pygame.KEYDOWN:
                 print(pygame.key.name(event.key))
