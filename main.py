@@ -30,8 +30,6 @@ health: int = 100
 
 bullets: List[Bullet] = []
 enemies: List[Enemy] = []
-for _ in range(6):
-    enemies.append(Enemy(random.randint(0, SCREEN_WIDTH - 200), random.randint(0, 20), "enemy.png"))
 
 running = True
 while running:
@@ -39,6 +37,9 @@ while running:
 
     # Draw background (maybe look into using dirty rectangle)
     screen.fill((0, 0, 0))
+    if len(enemies) == 0:
+        for _ in range(6):
+            enemies.append(Enemy(random.randint(0, SCREEN_WIDTH - 200), random.randint(0, 20), "enemy.png"))
 
     # Handle keyboard input
     for event in pygame.event.get():
@@ -78,6 +79,9 @@ while running:
         if enemy.rect.y > player.rect.y:
             enemies.remove(enemy)
             health -= 5
+        if health <= 0:
+            running = False
+
 
     # Update
     update_score(score, screen)
