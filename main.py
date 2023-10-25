@@ -1,64 +1,89 @@
-import pygame, sys
-import Button as B
-import FontConfig as FC
-import Text as T
-import Scene as S
-#import Background
+import pygame
+from typing import List
+import random
+from bullet import Bullet
 
-WHITE: tuple[int] = (255, 255, 255)
-RED: tuple[int]  = (255, 0, 0)
-BLUE: tuple[int]  = (0, 0, 255)
-BLACK: tuple[int]  = (0, 0, 0)
+from enemy import Enemy
+from player import Player
 
-FORWARD_KEY: int = pygame.K_w
-BACKWARD_KEY: int = pygame.K_s
-LEFT_KEY: int = pygame.K_a
-RIGHT_KEY: int = pygame.K_d
+SCREEN_WIDTH: int = 1280
+SCREEN_HEIGHT: int = 720
 
-PLAYER_POSITION: list[int] = [100, 100] 
+# Start pygame
+pygame.init()
 
-CURRENT_SCENE: S.Scene
+font = pygame.font.Font("freesansbold.ttf", 24)
 
-def hello() -> None:
-    print("hello")
-    
-def changeScene(scene: list[object]) -> None:
-    CURRENT_SCENE = scene[0]
-    print(CURRENT_SCENE.buttons)
-    CURRENT_SCENE.draw(scene[1])
+def update_score(score: int, screen):
+    score_str = font.render(f"Score: {str(score)}", True, (255, 255, 255))
+    screen.blit(score_str, (20, 20))
+
+def update_health(health: int, screen):
+    health_str = font.render(f"Health: {str(health)}", True, (255, 255, 255))
+    screen.blit(health_str, (SCREEN_WIDTH - 150, 20))
+
+screen: pygame.surface.Surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+player: Player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 75, "player.png")
+clock = pygame.time.Clock()
+score: int = 0
+health: int = 100
+
+bullets: List[Bullet] = []
+enemies: List[Enemy] = []
+
+running = True
+while running:
+    clock.tick(128)
+
+    # Draw background (maybe look into using dirty rectangle)
+    screen.fill((0, 0, 0))
+    if len(enemies) == 0:
+        for _ in range(6):
+            enemies.append(Enemy(random.randint(0, SCREEN_WIDTH - 200), random.randint(0, 20), "enemy.png"))
+
+    # Handle keyboard input
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        # Player movement input
+        player.handle_input(event)
+
+        # Bullet movement input
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bullets.append(Bullet(player.rect.x - 10, player.rect.y - 10))
+                # TODO: Make it to where you can hold space bar down 
+    player.move()
+
+    # Handle shooting bullets
+    for bullet in bullets:
+        bullet.move()
+        bullet.draw(screen)
+
+    # Handle enemies
+    for enemy in enemies:
+        enemy.move()
+        enemy.draw(screen)
+
+    # Handle bullet hitting enemy
+    for enemy in enemies:
+        for bullet in bullets:
+            if enemy.rect.colliderect(bullet.rect):
+                enemies.remove(enemy)
+                bullets.remove(bullet)
+                score += 1
+
+    # Enemy hitting player
+    for enemy in enemies:
+        if enemy.rect.y > player.rect.y - 100:
+            enemies.remove(enemy)
+            health -= 5
+        if health <= 0:
+            running = False
+
+    # Update
+    update_score(score, screen)
+    update_health(health, screen)
+    player.draw(screen)
     pygame.display.update()
-
-def main():
-    pygame.init()
-    pygame.display.set_caption("Regex Game")
-    screen: pygame.surface.Surface = pygame.display.set_mode((640, 480))
-    screen.fill(WHITE)
-    pygame.display.update()
-    
-    basicFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (RED, BLUE, WHITE), 30)
-    basicTextFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (WHITE, BLUE, WHITE), 30)
-    
-    sceneTwoText: T.Text = T.Text(100, 100, "This is scene two", basicTextFontConfig)
-    sceneTwo: S.Scene = S.Scene([], [sceneTwoText])
-    
-    b: B.Button = B.Button(100, 100, basicFontConfig, onClickFunction=hello)
-    b1: B.Button = B.Button(200, 200, basicFontConfig, buttonText="some realllllly long button")
-    
-    t: T.Text = T.Text(100, 0, "Hello World", basicTextFontConfig)
-    
-    scene: S.Scene = S.Scene([b, b1], [t])
-    scene.draw(screen)
-    
-
-    CURRENT_SCENE = scene
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                CURRENT_SCENE.processMouseClick()        
-        CURRENT_SCENE.processMouseMovement(screen)
-
-if __name__ == "__main__":
-    main()
