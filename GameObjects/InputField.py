@@ -82,6 +82,8 @@ class InputField(GO.GameObject):
     def processAnyKeyPress(self, keyCode: int):
         if keyCode == pygame.K_BACKSPACE:
             self.inputText = self.inputText[:-1]
+        elif keyCode == pygame.K_SPACE:
+            self.inputText += " "
         else:
             self.inputText += pygame.key.name(keyCode)
         self.updateButtonSurfaceDictionary()

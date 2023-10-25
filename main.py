@@ -44,13 +44,13 @@ def main():
     basicTextFontConfig: FC.FontConfig = FC.FontConfig("freesansbold.ttf", BLACK, (WHITE, BLUE, WHITE), 30)
     
     sceneTwoText: T.Text = T.Text(100, 100, "This is scene two", basicTextFontConfig)
-    sceneTwoButton: B.Button = B.Button(100, 200, basicFontConfig, buttonText="go back to other scene", onClickFunction=changeScene)
+    sceneTwoButton: B.Button = B.Button(100, 200, basicFontConfig, buttonText="go back to other scene", onClickFunction=changeScene, width=100, height=100)
     sceneTwo: S.Scene = S.Scene([sceneTwoText, sceneTwoButton], backgroundColor=pygame.Color('black'))
     
     b: B.Button = B.Button(100, 100, basicFontConfig, onClickFunction=hello)
     b1: B.Button = B.Button(200, 200, basicFontConfig, buttonText="some realllllly long button", onClickFunction=changeScene, parameters=[sceneTwo])
     
-    t: T.Text = T.Text(100, 0, "Hello World", basicTextFontConfig)
+    t: T.Text = T.Text(0, 0, "Hello World", basicTextFontConfig)
 
     i: IF.InputField = IF.InputField(300, 300, basicFontConfig, "Hello World")
     
@@ -69,8 +69,12 @@ def main():
                 print(CURRENT_SCENE.gameObjects)
                 CURRENT_SCENE.processMouseClick()
             elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
                 print(pygame.key.name(event.key))
                 CURRENT_SCENE.processAnyKeyPress(event.key)
+                CURRENT_SCENE.draw()
         CURRENT_SCENE.processMouseMovement()
 
 if __name__ == "__main__":
