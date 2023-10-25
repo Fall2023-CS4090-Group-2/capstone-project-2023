@@ -1,7 +1,6 @@
 import pygame
 import FontConfig as FC
 
-from enum import Enum
 
 class ButtonState(Enum):
     normal = 0
