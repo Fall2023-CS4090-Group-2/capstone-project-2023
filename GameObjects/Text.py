@@ -1,8 +1,10 @@
 import FontConfig as FC
-import Button as B
+import GameObject as GO
+import GameObjects.Button as B
+import Global
 import pygame 
 
-class Text:
+class Text(GO.GameObject):
     x: int
     y: int
     message: str
@@ -21,6 +23,6 @@ class Text:
         self.textSurface = self.fontObject.render(self.message, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[B.ButtonState.normal.value])
         
     
-    def draw(self, screen) -> None:
-        updatedRect = screen.blit(self.textSurface, (self.x, self.y))
+    def draw(self) -> None:
+        updatedRect = Global.GAME_SCREEN.blit(self.textSurface, (self.x, self.y))
         pygame.display.update(updatedRect)

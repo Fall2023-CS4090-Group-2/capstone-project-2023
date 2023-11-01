@@ -1,5 +1,7 @@
 import pygame
+import GameObject as GO
 import FontConfig as FC
+import Global
 
 from enum import Enum
 
@@ -13,7 +15,7 @@ BLUE: tuple[int] = (0, 0, 255)
 RED: tuple[int] = (255, 0, 0)
 GREEN: tuple[int] = (0, 255, 0)
 
-class Button():
+class Button(GO.GameObject):
     x: int
     y: int 
     fontConfig: FC.FontConfig
@@ -46,12 +48,12 @@ class Button():
         self.buttonSurfaceDictionary[ButtonState.hover.value]  = self.fontObject.render(self.buttonText, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[ButtonState.hover.value])
         
 
-    def draw(self, screen) -> None:
-        updatedRect = screen.blit(self.buttonSurfaceDictionary[self.state.value], (self.x, self.y))
+    def draw(self) -> None:
+        updatedRect = Global.GAME_SCREEN.blit(self.buttonSurfaceDictionary[self.state.value], (self.x, self.y))
         pygame.display.update(updatedRect)
     
     # returns true if this button is selected
-    def processMouseMovement(self, screen: pygame.Surface) -> bool:
+    def processMouseMovement(self) -> bool:
         rect: pygame.Rect = self.buttonSurfaceDictionary[self.state.value].get_rect()
         rect.left = self.x
         rect.top = self.y
@@ -59,9 +61,15 @@ class Button():
         if isMouseOnButton:
             if self.state is ButtonState.normal:
                 self.state = ButtonState.hover
-                self.draw(screen)
+                self.draw()
         if not isMouseOnButton and self.state is ButtonState.hover:
             self.state = ButtonState.normal
-            self.draw(screen)
+            self.draw()
         return isMouseOnButton
+    
+    def processMouseClick(self) -> None:
+        if self.parameters is None:
+            self.onClickFunction()
+        else:
+            self.onClickFunction(self.parameters)
 
