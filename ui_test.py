@@ -49,9 +49,10 @@ def main():
     b1: B.Button = B.Button(290, 150, basicFontConfig, buttonText="Play", onClickFunction=changeScene, parameters=[sceneTwo])
     b: B.Button = B.Button(290, 250, basicFontConfig, buttonText="Exit", onClickFunction=pygame.QUIT)
     
-    t: T.Text = T.Text(240, 30, "Miner Quest", basicTextFontConfig)
-    
-    #i: IF.InputField = IF.InputField(300, 300, basicFontConfig, "Hello World")
+    # t: T.Text = T.Text(0, 0, "Hello World", basicTextFontConfig)
+    t: T.Text = T.Text(0, 0, "Hello World we need some more text here so let me add some here", basicTextFontConfig, width=250)
+
+    i: IF.InputField = IF.InputField(300, 300, basicFontConfig, "Hello World")
     
     gameObjects: GO.GameObject = [t, b, b1]
     scene: S.Scene = S.Scene(gameObjects)
