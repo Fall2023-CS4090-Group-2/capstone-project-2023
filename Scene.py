@@ -8,13 +8,13 @@ class Scene():
     gameObjects: GO.GameObject
     selectedGameObject: GO.GameObject # I am making the assumption that the mouse can only be over one button at a time or that the buttons can not overlap
     backgroundColor: pygame.Color
-    
     def __init__(self, gameObjects: GO.GameObject, backgroundColor: pygame.Color = pygame.Color('white')) -> None:
         self.gameObjects = gameObjects
         self.backgroundColor = backgroundColor
-        
+        self.background = pygame.image.load('SFIWU.png')
     def draw(self) -> None:
         Global.GAME_SCREEN.fill(self.backgroundColor)
+        Global.GAME_SCREEN.blit(self.background, (0,0))
         for gameObject in self.gameObjects:
             gameObject.draw()
         pygame.display.update()

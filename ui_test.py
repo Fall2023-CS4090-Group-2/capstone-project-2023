@@ -21,7 +21,6 @@ PLAYER_POSITION: list[int] = [100, 100]
 
 CURRENT_SCENE: S.Scene
 
-
 def hello() -> None:
     print("hello")
     
@@ -35,7 +34,7 @@ def changeScene(objects: list[object]) -> None:
 def main():
     global CURRENT_SCENE
     pygame.init()
-    pygame.display.set_caption("Regex Game")
+    pygame.display.set_caption("Miner Quest")
     Global.GAME_SCREEN = pygame.display.set_mode((640, 480))
     Global.GAME_SCREEN.fill(WHITE)
     pygame.display.update()
@@ -47,14 +46,14 @@ def main():
     sceneTwoButton: B.Button = B.Button(100, 200, basicFontConfig, buttonText="go back to other scene", onClickFunction=changeScene, width=100, height=100)
     sceneTwo: S.Scene = S.Scene([sceneTwoText, sceneTwoButton], backgroundColor=pygame.Color('black'))
     
-    b: B.Button = B.Button(100, 100, basicFontConfig, onClickFunction=hello)
-    b1: B.Button = B.Button(200, 200, basicFontConfig, buttonText="some realllllly long button", onClickFunction=changeScene, parameters=[sceneTwo])
+    b1: B.Button = B.Button(290, 150, basicFontConfig, buttonText="Play", onClickFunction=changeScene, parameters=[sceneTwo])
+    b: B.Button = B.Button(290, 250, basicFontConfig, buttonText="Exit", onClickFunction=pygame.QUIT)
     
-    t: T.Text = T.Text(0, 0, "Hello World", basicTextFontConfig)
-
-    i: IF.InputField = IF.InputField(300, 300, basicFontConfig, "Hello World")
+    t: T.Text = T.Text(240, 30, "Miner Quest", basicTextFontConfig)
     
-    gameObjects: GO.GameObject = [t, b, b1, i]
+    #i: IF.InputField = IF.InputField(300, 300, basicFontConfig, "Hello World")
+    
+    gameObjects: GO.GameObject = [t, b, b1]
     scene: S.Scene = S.Scene(gameObjects)
     sceneTwoButton.parameters = [scene]
     
