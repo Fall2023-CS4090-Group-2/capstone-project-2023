@@ -5,10 +5,10 @@ from typing import List
 from player import Player
 from enemy import Enemy
 from bullet import Bullet
+from question import Question
 
 TICK_RATE = 128
-# TODO: Remove this and get from self.screen
-SCREEN_WIDTH, SCREEN_HEIGHT = 1280, 720
+PADDING = 10
 
 
 class Game:
@@ -16,18 +16,26 @@ class Game:
         self.screen: pygame.surface.Surface = pygame.display.set_mode(
             (screen_width, screen_height)
         )
-        self.player: Player = Player(screen_width / 2, screen_height - 75, "player.png")
+        self.player: Player = Player(PADDING, screen_height / 2, "player.png")
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
+        self.num_bullets: int = 50
+        self.questions: List[Question] = []
+        self.selected_question: Question = Question(
+            "", [], "????????????"
+        )  # TODO: There is definitely a better way of doing this
+        self.answer: str = ""
         self.running: bool = True
         self.clock = pygame.time.Clock()
         self.font = pygame.font.Font("freesansbold.ttf", 24)
         self.score = 0
         self.health = 100
 
+        self.generate_questions()
+
     def handle_inputs(self) -> None:
         """
-        Handles when a user uses the keyboard. WASD and arrow keys are supported
+        Handles when a user uses the keyboard. WASD, HJKL, and arrow keys are supported
         """
         # Handle keyboard input
         for event in pygame.event.get():
@@ -35,26 +43,34 @@ class Game:
                 self.running = False
 
             # Player movement input
-            self.player.handle_input(event)
+            if not self.player.question_mode:
+                self.player.handle_input(event)
+            else:
+                self.select_question(event)
 
             # Bullet movement input
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
+            if event.type == pygame.KEYDOWN and not self.player.question_mode:
+                if event.key == pygame.K_SPACE and self.num_bullets > 0:
                     self.bullets.append(
-                        Bullet(self.player.rect.x - 10, self.player.rect.y - 10)
+                        Bullet(
+                            self.player.rect.x + PADDING,
+                            self.player.rect.y
+                            + PADDING
+                            - self.player.image.get_height() / 2,
+                        )
                     )
-                    # TODO: Make it to where you can hold space bar down
-        self.player.move()
+                    self.num_bullets -= 1
+        self.player.move(self.screen)
 
     def update(self) -> None:
         """
         Update position of all entities
         """
-        # Run no more TICK_RATE frames per second
+        # Run no more than TICK_RATE frames per second
         self.clock.tick(TICK_RATE)
 
         # Add some enemies
-        self.spawn_enemies()
+        # self.spawn_enemies()
 
         # Update enemy positions
         for enemy in self.enemies:
@@ -62,6 +78,10 @@ class Game:
 
         # Update bullet positions
         for bullet in self.bullets:
+            # TODO: Removing bullets when off the board
+            # if bullet.rect.collidepoint(self.screen.get_width(), self.screen.get_height()):
+            #     self.bullets.remove(bullet)
+            # else:
             bullet.move()
 
         self.handle_collisions()
@@ -76,6 +96,10 @@ class Game:
         # Update menu
         self.draw_health()
         self.draw_score()
+        self.draw_answer()
+
+        # Draw question
+        self.draw_questions()
 
         # Draw player
         self.player.draw(self.screen)
@@ -113,7 +137,13 @@ class Game:
         Draws score value
         """
         score_str = self.font.render(f"Score: {str(self.score)}", True, (255, 255, 255))
-        self.screen.blit(score_str, (20, 20))
+        self.screen.blit(
+            score_str,
+            (
+                score_str.get_width() * 1.75 + PADDING,
+                self.font.get_height() - PADDING,
+            ),
+        )
 
     def draw_health(self) -> None:
         """
@@ -122,7 +152,77 @@ class Game:
         health_str = self.font.render(
             f"Health: {str(self.health)}", True, (255, 255, 255)
         )
-        self.screen.blit(health_str, (SCREEN_WIDTH - 150, 20))
+        self.screen.blit(
+            health_str,
+            (
+                PADDING,
+                self.font.get_height() - PADDING,
+            ),
+        )
+
+    def draw_answer(self) -> None:
+        """
+        Draws your current typed out answer
+        """
+        answer_str = self.font.render(f"Answer: {self.answer}", True, (255, 255, 255))
+        self.screen.blit(
+            answer_str,
+            (
+                self.screen.get_width() / 4,
+                self.screen.get_height() - self.font.get_height() - PADDING,
+            ),
+        )
+
+    def draw_questions(self) -> None:
+        """
+        Draws current questions
+        """
+        height = 50
+        # TODO: Align questions to right
+        max_width = 0
+        for idx, question in enumerate(self.questions):
+            if question is self.selected_question:
+                color = (227, 207, 87)  # Yellowish
+            else:
+                color = (255, 255, 255)  # White
+            question_str = self.font.render(
+                f"Question {idx+1}: {question.question}", True, color
+            )
+            max_width = max(max_width, question_str.get_width())
+            self.screen.blit(
+                question_str, (self.screen.get_width() - max_width - PADDING, height)
+            )
+            for option in question.options:
+                height += self.font.get_height()
+                option_str = self.font.render(option, True, color)
+                self.screen.blit(
+                    option_str, (self.screen.get_width() - max_width - PADDING, height)
+                )
+            height += self.font.get_height() * 2
+
+    def select_question(self, event) -> None:
+        """
+        Handles answering and selecting a question
+        """
+        if event.type == pygame.KEYDOWN:
+            if (
+                event.unicode.isdigit()
+                and event.unicode.isdigit()
+                and int(event.unicode) < len(self.questions) + 1
+            ):
+                self.selected_question = self.questions[int(event.unicode) - 1]
+            elif event.key == pygame.K_ESCAPE:
+                self.player.question_mode = False
+            else:
+                if event.key == pygame.K_RETURN:
+                    if self.selected_question.answer == self.answer:
+                        self.questions.remove(self.selected_question)
+                    self.answer = ""
+                    self.num_bullets += 1
+                elif event.key == pygame.K_BACKSPACE:
+                    self.answer = self.answer[:-1]
+                else:
+                    self.answer += event.unicode
 
     def spawn_enemies(self) -> None:
         """
@@ -133,8 +233,21 @@ class Game:
             for _ in range(6):
                 self.enemies.append(
                     Enemy(
-                        random.randint(0, SCREEN_WIDTH - 200),
+                        random.randint(0, self.screen.get_width() - 200),
                         random.randint(0, 20),
                         "enemy.png",
                     )
                 )
+
+    def generate_questions(self) -> None:
+        self.questions.append(Question("The answer is a A", ["A", "B", "C", "D"], "A"))
+        self.questions.append(
+            Question(
+                "The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat"
+            )
+        )
+        self.questions.append(
+            Question(
+                "The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat"
+            )
+        )
