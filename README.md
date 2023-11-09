@@ -16,12 +16,6 @@
 
 `question.py` - Basic data structure for quesitons
 
-# TODO
+## TODO
 
-- [ ] Remove any entities that appear of screen
-    - Bullets
-    - Enemies?
-
-- [ ] CLI arguments for game size and questions
-
-- Bug with duplicate questions and removing when correct
+Current tasks and issues can be found [here](https://github.com/orgs/Fall2023-CS4090-Group-2/projects/1/views/1)
