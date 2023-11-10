@@ -16,6 +16,7 @@ class Game:
         self.screen: pygame.surface.Surface = pygame.display.set_mode(
             (screen_width, screen_height)
         )
+        self.background = pygame.image.load("background.jpg")
         self.player: Player = Player(PADDING, screen_height / 2, "player.png")
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
@@ -92,7 +93,7 @@ class Game:
         """
         # Redraw background
         self.screen.fill((0, 0, 0))
-
+        self.screen.blit(self.background, (0,0))
         # Update menu
         self.draw_health()
         self.draw_score()
