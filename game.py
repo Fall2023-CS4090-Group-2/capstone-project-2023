@@ -5,7 +5,7 @@ from typing import List
 from player import Player
 from enemy import Enemy
 from bullet import Bullet
-from question import Question
+from question import Question, generate_questions
 
 from GameObjects.Button import Button 
 from FontConfig import FontConfig 
@@ -40,10 +40,8 @@ class Game:
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
         self.num_bullets: int = 50
-        self.questions: List[Question] = []
-        self.selected_question: Question = Question(
-            "", [], "????????????"
-        )  # TODO: There is definitely a better way of doing this
+        self.questions: List[Question] = generate_questions()
+        self.selected_question: Question = self.questions[0]
         self.answer: str = ""
         self.running: bool = True
         self.clock = pygame.time.Clock()
@@ -52,7 +50,6 @@ class Game:
         self.health = 100
         self.on_main_menu = True
 
-        self.generate_questions()
         self.make_main_menu()
         
     def make_main_menu(self) -> None:
@@ -75,13 +72,13 @@ class Game:
                 self.running = False
 
             # Player movement input
-            if not self.player.question_mode:
-                self.player.handle_input(event)
+            if not self.player.answer_mode:
+                self.player.handle_input(event, self)
             else:
-                self.select_question(event)
+                self.answer_question(event)
 
             # Bullet movement input
-            if event.type == pygame.KEYDOWN and not self.player.question_mode:
+            if event.type == pygame.KEYDOWN and not self.player.answer_mode:
                 if event.key == pygame.K_SPACE and self.num_bullets > 0:
                     self.bullets.append(
                         Bullet(
@@ -137,12 +134,12 @@ class Game:
             return
         
         # Redraw background
-        self.screen.fill((0, 0, 0))
-        self.screen.blit(self.background, (0,0))
+        self.screen.blit(self.background, (0, 0))
         # Update menu
         self.draw_health()
         self.draw_score()
         self.draw_answer()
+        self.draw_mode()
 
         # Draw question
         self.draw_questions()
@@ -206,6 +203,23 @@ class Game:
             ),
         )
 
+    def draw_mode(self) -> None:
+        """
+        Draws what mode you are currently in
+        """
+        if self.player.answer_mode:
+            mode = "Answer"
+        else:
+            mode = "Normal"
+        mode_str = self.font.render(f"Mode: {mode}", True, (255, 255, 255))
+        self.screen.blit(
+            mode_str,
+            (
+                mode_str.get_width() * 2 + PADDING,
+                self.font.get_height() - PADDING,
+            ),
+        )
+
     def draw_answer(self) -> None:
         """
         Draws your current typed out answer
@@ -246,25 +260,23 @@ class Game:
                 )
             height += self.font.get_height() * 2
 
-    def select_question(self, event) -> None:
+    def answer_question(self, event) -> None:
         """
-        Handles answering and selecting a question
+        Handles answering a question
         """
         if event.type == pygame.KEYDOWN:
-            if (
-                event.unicode.isdigit()
-                and event.unicode.isdigit()
-                and int(event.unicode) < len(self.questions) + 1
-            ):
-                self.selected_question = self.questions[int(event.unicode) - 1]
-            elif event.key == pygame.K_ESCAPE:
-                self.player.question_mode = False
+            if event.key == pygame.K_ESCAPE:
+                # TODO: Add pause screen here
+                pass
             else:
                 if event.key == pygame.K_RETURN:
                     if self.selected_question.answer == self.answer:
                         self.questions.remove(self.selected_question)
+                        if len(self.questions) > 0:
+                            self.selected_question = self.questions[0]
                     self.answer = ""
                     self.num_bullets += 1
+                    self.player.answer_mode = False
                 elif event.key == pygame.K_BACKSPACE:
                     self.answer = self.answer[:-1]
                 else:
@@ -284,16 +296,3 @@ class Game:
                         "enemy.png",
                     )
                 )
-
-    def generate_questions(self) -> None:
-        self.questions.append(Question("The answer is a A", ["A", "B", "C", "D"], "A"))
-        self.questions.append(
-            Question(
-                "The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat"
-            )
-        )
-        self.questions.append(
-            Question(
-                "The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat"
-            )
-        )

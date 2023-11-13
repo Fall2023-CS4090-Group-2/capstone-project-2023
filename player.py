@@ -4,6 +4,7 @@ from entity import Entity
 
 MOVE_DISTANCE = 3
 
+
 class Player(Entity):
     def __init__(self, x, y, image_path) -> None:
         super().__init__(x, y, image_path)
@@ -12,7 +13,7 @@ class Player(Entity):
         self.move_right = False
         self.move_down = False
         self.move_up = False
-        self.question_mode = False
+        self.answer_mode = False
 
     def move(self, screen):
         """
@@ -33,7 +34,7 @@ class Player(Entity):
         if self.move_up and self.rect.y > self.image.get_height() * 0.25:
             self.rect.y -= MOVE_DISTANCE
 
-    def handle_input(self, event) -> None:
+    def handle_input(self, event, game) -> None:
         """
         Handles when a user uses the keyboard in "normal" mode. WASD, HJKL, and arrow keys are supported
         """
@@ -47,13 +48,23 @@ class Player(Entity):
                 self.move_down = True
             if event.key in [pygame.K_UP, pygame.K_w, pygame.K_k]:
                 self.move_up = True
+            # Select question
+            if (
+                event.unicode.isdigit()
+                and event.unicode.isdigit()
+                and int(event.unicode) < len(game.questions) + 1
+            ):
+                game.selected_question = game.questions[int(event.unicode) - 1]
             # Change to question mode
-            if event.key == pygame.K_ESCAPE:
-                self.question_mode = True
+            if event.key == pygame.K_RETURN:
+                self.answer_mode = True
                 self.move_left = False
                 self.move_right = False
                 self.move_down = False
                 self.move_up = False
+            if event.key == pygame.K_ESCAPE:
+                # TODO: Add pause screen here
+                pass
 
         # Stop moving after key release
         if event.type == pygame.KEYUP:
