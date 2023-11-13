@@ -47,8 +47,8 @@ class InputField(GO.GameObject):
         self.buttonSurfaceDictionary[InputFieldState.hover.value]  = self.fontObject.render(self.inputText, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[InputFieldState.hover.value])
         
 
-    def draw(self) -> None:
-        updatedRect = Global.GAME_SCREEN.blit(self.buttonSurfaceDictionary[self.state.value], (self.x, self.y))
+    def draw(self, screen)-> None:
+        updatedRect = screen.blit(self.buttonSurfaceDictionary[self.state.value], (self.x, self.y))
         pygame.display.update(updatedRect)
     
     def changeState(self, newState: Enum) -> None:
@@ -79,7 +79,7 @@ class InputField(GO.GameObject):
             self.changeState(InputFieldState.normal)
             
     
-    def processAnyKeyPress(self, keyCode: int):
+    def processAnyKeyPress(self, screen, keyCode: int):
         if keyCode == pygame.K_BACKSPACE:
             self.inputText = self.inputText[:-1]
         elif keyCode == pygame.K_SPACE:
@@ -87,7 +87,7 @@ class InputField(GO.GameObject):
         else:
             self.inputText += pygame.key.name(keyCode)
         self.updateButtonSurfaceDictionary()
-        self.draw()
+        self.draw(screen)
         
     def updateButtonSurfaceDictionary(self) -> None:
         self.buttonSurfaceDictionary[InputFieldState.normal.value] = self.fontObject.render(self.inputText, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[InputFieldState.normal.value])

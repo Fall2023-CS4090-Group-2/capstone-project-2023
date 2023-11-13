@@ -30,11 +30,11 @@ class Text(GO.GameObject):
         self.height = self.fontObject.size(message)[1]
         self.textSurfaces = self.makeTextSurfaces()
     
-    def draw(self) -> None:
+    def draw(self, screen)-> None:
         updatedRects = []
         count = 0
         for textSurface in self.textSurfaces: 
-            updatedRects.append(Global.GAME_SCREEN.blit(textSurface, (self.x, self.y + (self.height * count))))
+            updatedRects.append(screen.blit(textSurface, (self.x, self.y + (self.height * count))))
             count += 1
         pygame.display.update(updatedRects)
 

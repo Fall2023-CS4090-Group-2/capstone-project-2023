@@ -48,12 +48,12 @@ class Button(GO.GameObject):
         self.buttonSurfaceDictionary[ButtonState.hover.value]  = self.fontObject.render(self.buttonText, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[ButtonState.hover.value])
         
 
-    def draw(self) -> None:
-        updatedRect = Global.GAME_SCREEN.blit(self.buttonSurfaceDictionary[self.state.value], (self.x, self.y))
+    def draw(self, screen) -> None:
+        updatedRect = screen.blit(self.buttonSurfaceDictionary[self.state.value], (self.x, self.y))
         pygame.display.update(updatedRect)
     
     # returns true if this button is selected
-    def processMouseMovement(self) -> bool:
+    def processMouseMovement(self, screen) -> bool:
         rect: pygame.Rect = self.buttonSurfaceDictionary[self.state.value].get_rect()
         rect.left = self.x
         rect.top = self.y
@@ -61,10 +61,10 @@ class Button(GO.GameObject):
         if isMouseOnButton:
             if self.state is ButtonState.normal:
                 self.state = ButtonState.hover
-                self.draw()
+                self.draw(screen)
         if not isMouseOnButton and self.state is ButtonState.hover:
             self.state = ButtonState.normal
-            self.draw()
+            self.draw(screen)
         return isMouseOnButton
     
     def processMouseClick(self) -> None:

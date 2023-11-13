@@ -7,9 +7,28 @@ from enemy import Enemy
 from bullet import Bullet
 from question import Question
 
+from GameObjects.Button import Button 
+from FontConfig import FontConfig 
+from GameObjects.Text import Text 
+from GameObject import GameObject 
+from Scene import Scene 
+from GameObjects.InputField import InputField
+
 TICK_RATE = 128
 PADDING = 10
 
+WHITE: tuple[int] = (255, 255, 255)
+RED: tuple[int]  = (255, 0, 0)
+BLUE: tuple[int]  = (0, 0, 255)
+BLACK: tuple[int]  = (0, 0, 0)
+LIGHT_YELLOW: tuple[int] = (227, 207, 87)
+
+
+def on_play(parameters: list[object]) -> None:
+    parameters[0].on_main_menu = False
+
+def on_exit(parameters: list[object]) -> None:
+    parameters[0].running = False
 
 class Game:
     def __init__(self, screen_width, screen_height) -> None:
@@ -31,8 +50,20 @@ class Game:
         self.font = pygame.font.Font("freesansbold.ttf", 24)
         self.score = 0
         self.health = 100
+        self.on_main_menu = True
 
         self.generate_questions()
+        self.make_main_menu()
+        
+    def make_main_menu(self) -> None:
+        button_config: FontConfig = FontConfig("freesansbold.ttf", BLACK, (WHITE, LIGHT_YELLOW, None), 32)
+        text_config: FontConfig = FontConfig("freesansbold.ttf", LIGHT_YELLOW, (None, None, None), 42)
+        title: Text = Text(250, 25, "Space Invaders", text_config)
+        play: Button = Button(25, 75, fontConfig=button_config, buttonText="Play", onClickFunction=on_play, parameters=[self])
+        exit: Button = Button(25, 125, fontConfig=button_config, buttonText="Exit", onClickFunction=on_exit, parameters=[self])
+        
+        self.scene: Scene = Scene([title, play, exit], BLACK)
+        
 
     def handle_inputs(self) -> None:
         """
@@ -61,6 +92,16 @@ class Game:
                         )
                     )
                     self.num_bullets -= 1
+            if (self.on_main_menu):
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    self.scene.processMouseClick()
+                
+                if event.type == pygame.KEYDOWN:
+                    self.scene.processAnyKeyPress(self.screen, event.key)
+                    self.scene.draw(self.screen)        
+                
+        if (self.on_main_menu):
+            self.scene.processMouseMovement(self.screen)
         self.player.move(self.screen)
 
     def update(self) -> None:
@@ -91,6 +132,10 @@ class Game:
         """
         Draw all entities on the screen
         """
+        if (self.on_main_menu):
+            self.scene.draw(self.screen)
+            return
+        
         # Redraw background
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.background, (0,0))
@@ -183,9 +228,9 @@ class Game:
         max_width = 0
         for idx, question in enumerate(self.questions):
             if question is self.selected_question:
-                color = (227, 207, 87)  # Yellowish
+                color = LIGHT_YELLOW 
             else:
-                color = (255, 255, 255)  # White
+                color = WHITE
             question_str = self.font.render(
                 f"Question {idx+1}: {question.question}", True, color
             )
