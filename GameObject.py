@@ -4,16 +4,16 @@ from enum import Enum
 
 class GameObject(object):
 
-    def draw(self) -> None:
+    def draw(self, screen) -> None:
         pass
     
-    def processMouseMovement(self) -> bool:
+    def processMouseMovement(self, screen) -> bool:
         pass
     
     def processMouseClick(self) -> None:
         pass
     
-    def processAnyKeyPress(self, keyCode: int) -> bool:
+    def processAnyKeyPress(self, screen, keyCode: int) -> bool:
         pass
 
     def changeState(self, newState: Enum) -> None:
