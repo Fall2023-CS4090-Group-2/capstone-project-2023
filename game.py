@@ -88,8 +88,7 @@ class Game:
         Draw all entities on the screen
         """
         # Redraw background
-        self.screen.fill((0, 0, 0))
-        self.screen.blit(self.background, (0,0))
+        self.screen.blit(self.background, (0, 0))
         # Update menu
         self.draw_health()
         self.draw_score()
@@ -174,7 +173,6 @@ class Game:
                 self.font.get_height() - PADDING,
             ),
         )
-
 
     def draw_answer(self) -> None:
         """

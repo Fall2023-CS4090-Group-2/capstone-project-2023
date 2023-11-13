@@ -16,13 +16,9 @@ def generate_questions() -> List[Question]:
     questions = []
     questions.append(Question("The answer is a A", ["A", "B", "C", "D"], "A"))
     questions.append(
-        Question(
-            "The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat"
-        )
+        Question("The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat")
     )
     questions.append(
-        Question(
-            "The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat"
-        )
+        Question("The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat")
     )
     return questions
