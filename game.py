@@ -43,13 +43,13 @@ class Game:
                 self.running = False
 
             # Player movement input
-            if not self.player.question_mode:
-                self.player.handle_input(event)
+            if not self.player.answer_mode:
+                self.player.handle_input(event, self)
             else:
-                self.select_question(event)
+                self.answer_question(event)
 
             # Bullet movement input
-            if event.type == pygame.KEYDOWN and not self.player.question_mode:
+            if event.type == pygame.KEYDOWN and not self.player.answer_mode:
                 if event.key == pygame.K_SPACE and self.num_bullets > 0:
                     self.bullets.append(
                         Bullet(
@@ -97,6 +97,7 @@ class Game:
         self.draw_health()
         self.draw_score()
         self.draw_answer()
+        self.draw_mode()
 
         # Draw question
         self.draw_questions()
@@ -160,6 +161,24 @@ class Game:
             ),
         )
 
+    def draw_mode(self) -> None:
+        """
+        Draws what mode you are currently in
+        """
+        if self.player.answer_mode:
+            mode = "Answer"
+        else:
+            mode = "Normal"
+        mode_str = self.font.render(f"Mode: {mode}", True, (255, 255, 255))
+        self.screen.blit(
+            mode_str,
+            (
+                mode_str.get_width() * 2 + PADDING,
+                self.font.get_height() - PADDING,
+            ),
+        )
+
+
     def draw_answer(self) -> None:
         """
         Draws your current typed out answer
@@ -200,25 +219,21 @@ class Game:
                 )
             height += self.font.get_height() * 2
 
-    def select_question(self, event) -> None:
+    def answer_question(self, event) -> None:
         """
-        Handles answering and selecting a question
+        Handles answering a question
         """
         if event.type == pygame.KEYDOWN:
-            if (
-                event.unicode.isdigit()
-                and event.unicode.isdigit()
-                and int(event.unicode) < len(self.questions) + 1
-            ):
-                self.selected_question = self.questions[int(event.unicode) - 1]
-            elif event.key == pygame.K_ESCAPE:
-                self.player.question_mode = False
+            if event.key == pygame.K_ESCAPE:
+                # TODO: Add pause screen here
+                pass
             else:
                 if event.key == pygame.K_RETURN:
                     if self.selected_question.answer == self.answer:
                         self.questions.remove(self.selected_question)
                     self.answer = ""
                     self.num_bullets += 1
+                    self.player.answer_mode = False
                 elif event.key == pygame.K_BACKSPACE:
                     self.answer = self.answer[:-1]
                 else:
