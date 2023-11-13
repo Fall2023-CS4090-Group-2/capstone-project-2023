@@ -5,7 +5,7 @@ from typing import List
 from player import Player
 from enemy import Enemy
 from bullet import Bullet
-from question import Question
+from question import Question, generate_questions
 
 TICK_RATE = 128
 PADDING = 10
@@ -21,18 +21,14 @@ class Game:
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
         self.num_bullets: int = 50
-        self.questions: List[Question] = []
-        self.selected_question: Question = Question(
-            "", [], "????????????"
-        )  # TODO: There is definitely a better way of doing this
+        self.questions: List[Question] = generate_questions()
+        self.selected_question: Question = self.questions[0]
         self.answer: str = ""
         self.running: bool = True
         self.clock = pygame.time.Clock()
         self.font = pygame.font.Font("freesansbold.ttf", 24)
         self.score = 0
         self.health = 100
-
-        self.generate_questions()
 
     def handle_inputs(self) -> None:
         """
@@ -232,6 +228,8 @@ class Game:
                 if event.key == pygame.K_RETURN:
                     if self.selected_question.answer == self.answer:
                         self.questions.remove(self.selected_question)
+                        if len(self.questions) > 0:
+                            self.selected_question = self.questions[0]
                     self.answer = ""
                     self.num_bullets += 1
                     self.player.answer_mode = False
@@ -254,16 +252,3 @@ class Game:
                         "enemy.png",
                     )
                 )
-
-    def generate_questions(self) -> None:
-        self.questions.append(Question("The answer is a A", ["A", "B", "C", "D"], "A"))
-        self.questions.append(
-            Question(
-                "The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat"
-            )
-        )
-        self.questions.append(
-            Question(
-                "The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat"
-            )
-        )
