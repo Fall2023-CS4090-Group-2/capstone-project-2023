@@ -30,6 +30,13 @@ def on_play(parameters: list[object]) -> None:
 def on_exit(parameters: list[object]) -> None:
     parameters[0].running = False
 
+def on_resume(parameters: list[object]) -> None:
+    parameters[0].is_paused = False
+    
+def on_main_menu(parameters: list[object]) -> None:
+    parameters[0].is_paused = False
+    parameters[0].on_main_menu = True
+    
 class Game:
     def __init__(self, screen_width, screen_height) -> None:
         self.screen: pygame.surface.Surface = pygame.display.set_mode(
@@ -49,18 +56,26 @@ class Game:
         self.score = 0
         self.health = 100
         self.on_main_menu = True
+        self.is_paused = False
 
         self.make_main_menu()
+        self.make_pause_scene()
         
     def make_main_menu(self) -> None:
-        button_config: FontConfig = FontConfig("freesansbold.ttf", BLACK, (WHITE, LIGHT_YELLOW, None), 32)
-        text_config: FontConfig = FontConfig("freesansbold.ttf", LIGHT_YELLOW, (None, None, None), 42)
-        title: Text = Text(250, 25, "Space Invaders", text_config)
-        play: Button = Button(25, 75, fontConfig=button_config, buttonText="Play", onClickFunction=on_play, parameters=[self])
-        exit: Button = Button(25, 125, fontConfig=button_config, buttonText="Exit", onClickFunction=on_exit, parameters=[self])
+        self.button_config: FontConfig = FontConfig("freesansbold.ttf", BLACK, (WHITE, LIGHT_YELLOW, None), 32)
+        self.text_config: FontConfig = FontConfig("freesansbold.ttf", LIGHT_YELLOW, (None, None, None), 42)
+        title: Text = Text(250, 25, "Space Invaders", self.text_config)
+        play: Button = Button(25, 75, fontConfig=self.button_config, buttonText="Play", onClickFunction=on_play, parameters=[self])
+        exit: Button = Button(25, 125, fontConfig=self.button_config, buttonText="Exit", onClickFunction=on_exit, parameters=[self])
         
-        self.scene: Scene = Scene([title, play, exit], BLACK)
+        self.main_menu_scene: Scene = Scene([title, play, exit], BLACK)
+        self.scene: Scene = self.main_menu_scene
         
+    def make_pause_scene(self) -> None:
+        paused: Text = Text(250, 25, "Paused", self.text_config)
+        resume: Button = Button(25, 75, fontConfig=self.button_config, buttonText="Resume", onClickFunction=on_resume, parameters=[self])
+        main_menu: Button = Button(25, 125, fontConfig=self.button_config, buttonText="Exit", onClickFunction=on_main_menu, parameters=[self])
+        self.pause_scene: Scene = Scene([paused, resume, main_menu], BLACK)
 
     def handle_inputs(self) -> None:
         """
@@ -89,7 +104,7 @@ class Game:
                         )
                     )
                     self.num_bullets -= 1
-            if (self.on_main_menu):
+            if (self.on_main_menu or self.is_paused):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.scene.processMouseClick()
                 
@@ -97,7 +112,7 @@ class Game:
                     self.scene.processAnyKeyPress(self.screen, event.key)
                     self.scene.draw(self.screen)        
                 
-        if (self.on_main_menu):
+        if (self.on_main_menu or self.is_paused):
             self.scene.processMouseMovement(self.screen)
         self.player.move(self.screen)
 
@@ -266,8 +281,8 @@ class Game:
         """
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                # TODO: Add pause screen here
-                pass
+                self.scene = self.pause_scene
+                self.is_paused = True
             else:
                 if event.key == pygame.K_RETURN:
                     if self.selected_question.answer == self.answer:
