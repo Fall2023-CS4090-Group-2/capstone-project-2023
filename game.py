@@ -50,7 +50,6 @@ class Game:
         self.health = 100
         self.on_main_menu = True
 
-        self.generate_questions()
         self.make_main_menu()
         
     def make_main_menu(self) -> None:
