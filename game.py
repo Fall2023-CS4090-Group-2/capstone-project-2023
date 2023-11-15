@@ -56,9 +56,9 @@ class Game:
     def make_main_menu(self) -> None:
         button_config: FontConfig = FontConfig("freesansbold.ttf", BLACK, (WHITE, LIGHT_YELLOW, None), 32)
         text_config: FontConfig = FontConfig("freesansbold.ttf", LIGHT_YELLOW, (None, None, None), 42)
-        title: Text = Text(250, 25, "Space Invaders", text_config)
-        play: Button = Button(25, 75, fontConfig=button_config, buttonText="Play", onClickFunction=on_play, parameters=[self])
-        exit: Button = Button(25, 125, fontConfig=button_config, buttonText="Exit", onClickFunction=on_exit, parameters=[self])
+        title: Text = Text(465, 35, "Space Invaders", text_config)
+        play: Button = Button(600, 200, fontConfig=button_config, buttonText="Play", onClickFunction=on_play, parameters=[self])
+        exit: Button = Button(600, 300, fontConfig=button_config, buttonText="Exit", onClickFunction=on_exit, parameters=[self])
         
         self.scene: Scene = Scene([title, play, exit], BLACK)
         
@@ -193,7 +193,10 @@ class Game:
                 self.screen.get_height() / 2,
             ),
         )
-
+        pygame.draw.rect(self.screen, (128, 128, 128, 150), [0, 0, self.screen.get_width(), self.screen.get_height()])
+        pygame.draw.rect(self.screen, 'white', [200, 150, 600, 50], 0, 10)
+        self.screen.blit(self.font.render('Game Paused: Press Escape to Resume', True, 'black'), (220,160))
+    
     def draw_score(self) -> None:
         """
         Draws score value
