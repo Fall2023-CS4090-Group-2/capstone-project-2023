@@ -13,7 +13,8 @@ game = Game(SCREEN_WIDTH, SCREEN_HEIGHT)
 # Game loop
 while game.running:
     game.handle_inputs()
-    game.update()
+    if not game.paused:
+        game.update()
     game.draw()
 
 pygame.quit()

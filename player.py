@@ -40,34 +40,40 @@ class Player(Entity):
         """
         # Basic directional movements (allows for holding)
         if event.type == pygame.KEYDOWN:
-            if event.key in [pygame.K_LEFT, pygame.K_a, pygame.K_h]:
-                self.move_left = True
-            if event.key in [pygame.K_RIGHT, pygame.K_d, pygame.K_l]:
-                self.move_right = True
-            if event.key in [pygame.K_DOWN, pygame.K_s, pygame.K_j]:
-                self.move_down = True
-            if event.key in [pygame.K_UP, pygame.K_w, pygame.K_k]:
-                self.move_up = True
-            # Select question
-            if (
-                event.unicode.isdigit()
-                and event.unicode.isdigit()
-                and int(event.unicode) < len(game.questions) + 1
-            ):
-                game.selected_question = game.questions[int(event.unicode) - 1]
-            # Change to question mode
-            if event.key == pygame.K_RETURN:
-                self.answer_mode = True
+            # Pause screen
+            if event.key == pygame.K_ESCAPE:
+                game.paused = not game.paused
                 self.move_left = False
                 self.move_right = False
                 self.move_down = False
                 self.move_up = False
-            if event.key == pygame.K_ESCAPE:
-                # TODO: Add pause screen here
-                pass
+            # Move if not paused
+            if not game.paused:
+                if event.key in [pygame.K_LEFT, pygame.K_a, pygame.K_h]:
+                    self.move_left = True
+                if event.key in [pygame.K_RIGHT, pygame.K_d, pygame.K_l]:
+                    self.move_right = True
+                if event.key in [pygame.K_DOWN, pygame.K_s, pygame.K_j]:
+                    self.move_down = True
+                if event.key in [pygame.K_UP, pygame.K_w, pygame.K_k]:
+                    self.move_up = True
+                # Select question
+                if (
+                    event.unicode.isdigit()
+                    and event.unicode.isdigit()
+                    and int(event.unicode) < len(game.questions) + 1
+                ):
+                    game.selected_question = game.questions[int(event.unicode) - 1]
+                # Change to answer mode
+                if event.key == pygame.K_RETURN:
+                    self.answer_mode = True
+                    self.move_left = False
+                    self.move_right = False
+                    self.move_down = False
+                    self.move_up = False
 
         # Stop moving after key release
-        if event.type == pygame.KEYUP:
+        elif event.type == pygame.KEYUP:
             if event.key in [pygame.K_LEFT, pygame.K_a, pygame.K_h]:
                 self.move_left = False
             if event.key in [pygame.K_RIGHT, pygame.K_d, pygame.K_l]:

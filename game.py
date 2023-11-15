@@ -44,6 +44,7 @@ class Game:
         self.selected_question: Question = self.questions[0]
         self.answer: str = ""
         self.running: bool = True
+        self.paused: bool = False
         self.clock = pygame.time.Clock()
         self.font = pygame.font.Font("freesansbold.ttf", 24)
         self.score = 0
@@ -132,28 +133,33 @@ class Game:
         if (self.on_main_menu):
             self.scene.draw(self.screen)
             return
-        
-        # Redraw background
-        self.screen.blit(self.background, (0, 0))
-        # Update menu
-        self.draw_health()
-        self.draw_score()
-        self.draw_answer()
-        self.draw_mode()
 
-        # Draw question
-        self.draw_questions()
+        if not self.paused:
+            # Redraw background
+            self.screen.blit(self.background, (0, 0))
 
-        # Draw player
-        self.player.draw(self.screen)
+            # Update menu
+            self.draw_health()
+            self.draw_score()
+            self.draw_answer()
+            self.draw_mode()
 
-        # Draw enemy
-        for enemy in self.enemies:
-            enemy.draw(self.screen)
+            # Draw question
+            self.draw_questions()
 
-        # Draw bullet
-        for bullet in self.bullets:
-            bullet.draw(self.screen)
+            # Draw player
+            self.player.draw(self.screen)
+
+            # Draw enemy
+            for enemy in self.enemies:
+                enemy.draw(self.screen)
+
+            # Draw bullet
+            for bullet in self.bullets:
+                bullet.draw(self.screen)
+        else:
+            # Draw paused menu if paused
+            self.draw_pause_screen()
 
         # Tell pygame update its screens
         pygame.display.update()
@@ -174,6 +180,19 @@ class Game:
                 self.health -= 5
             if self.health <= 0:
                 self.running = False
+
+    def draw_pause_screen(self) -> None:
+        """
+        Draws pause screen
+        """
+        pause_str = self.font.render("PAUSED", True, (255, 255, 255))
+        self.screen.blit(
+            pause_str,
+            (
+                self.screen.get_width() / 2,
+                self.screen.get_height() / 2,
+            ),
+        )
 
     def draw_score(self) -> None:
         """
@@ -265,10 +284,12 @@ class Game:
         Handles answering a question
         """
         if event.type == pygame.KEYDOWN:
+            # Pause screen
             if event.key == pygame.K_ESCAPE:
-                # TODO: Add pause screen here
-                pass
-            else:
+                self.paused = not self.paused
+                return
+            # Don't allow answering if paused
+            if not self.paused:
                 if event.key == pygame.K_RETURN:
                     if self.selected_question.answer == self.answer:
                         self.questions.remove(self.selected_question)
