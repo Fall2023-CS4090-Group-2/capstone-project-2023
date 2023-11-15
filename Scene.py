@@ -13,6 +13,8 @@ class Scene():
         self.gameObjects = gameObjects
         self.backgroundColor = backgroundColor
         self.background = pygame.image.load('background.jpg')
+        self.selectedGameObject = None
+        
     def draw(self, screen) -> None:
         screen.fill(self.backgroundColor)
         screen.blit(self.background, (0,0))

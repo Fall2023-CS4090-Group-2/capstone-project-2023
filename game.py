@@ -36,6 +36,7 @@ def on_resume(parameters: list[object]) -> None:
 def on_main_menu(parameters: list[object]) -> None:
     parameters[0].is_paused = False
     parameters[0].on_main_menu = True
+    parameters[0].scene = parameters[0].main_menu_scene
     
 class Game:
     def __init__(self, screen_width, screen_height) -> None:
@@ -74,7 +75,7 @@ class Game:
     def make_pause_scene(self) -> None:
         paused: Text = Text(250, 25, "Paused", self.text_config)
         resume: Button = Button(25, 75, fontConfig=self.button_config, buttonText="Resume", onClickFunction=on_resume, parameters=[self])
-        main_menu: Button = Button(25, 125, fontConfig=self.button_config, buttonText="Exit", onClickFunction=on_main_menu, parameters=[self])
+        main_menu: Button = Button(25, 125, fontConfig=self.button_config, buttonText="Main Menu", onClickFunction=on_main_menu, parameters=[self])
         self.pause_scene: Scene = Scene([paused, resume, main_menu], BLACK)
 
     def handle_inputs(self) -> None:
@@ -144,7 +145,7 @@ class Game:
         """
         Draw all entities on the screen
         """
-        if (self.on_main_menu):
+        if (self.on_main_menu or self.is_paused):
             self.scene.draw(self.screen)
             return
         
