@@ -139,6 +139,8 @@ class Game:
             # if bullet.rect.collidepoint(self.screen.get_width(), self.screen.get_height()):
             #     self.bullets.remove(bullet)
             # else:
+            if bullet.rect.x == 750: # Should make this more dynamic
+                self.bullets.remove(bullet)
             bullet.move()
 
         self.handle_collisions()
@@ -159,6 +161,7 @@ class Game:
             self.draw_health()
             self.draw_score()
             self.draw_answer()
+            self.draw_bullets()
 
             # Draw question
             self.draw_questions()
@@ -185,13 +188,13 @@ class Game:
         for enemy in self.enemies:
             for bullet in self.bullets:
                 if enemy.rect.colliderect(bullet.rect):
-                    self.enemies.remove(enemy)
+                    self.enemies.remove(enemy) # Can cause a value error
                     self.bullets.remove(bullet)
                     self.score += 1
 
         # Enemy hitting player
         for enemy in self.enemies:
-            if enemy.rect.y > self.player.rect.y - 100:
+            if enemy.rect.x < self.player.rect.x + 25:
                 self.enemies.remove(enemy)
                 self.health -= 5
             if self.health <= 0:
@@ -229,6 +232,19 @@ class Game:
             score_str,
             (
                 score_str.get_width() * 1.75 + PADDING,
+                self.font.get_height() - PADDING,
+            ),
+        )
+
+    def draw_bullets(self) -> None:
+        """
+        Draws bullet value
+        """
+        bullet_str = self.font.render(f"Bullet: {str(self.num_bullets)}", True, (255, 255, 255))
+        self.screen.blit(
+            bullet_str,
+            (
+                bullet_str.get_width() * 3 + PADDING, # Kind of scuffed position but its there
                 self.font.get_height() - PADDING,
             ),
         )
@@ -332,8 +348,8 @@ class Game:
             for _ in range(6):
                 self.enemies.append(
                     Enemy(
-                        random.randint(0, self.screen.get_width() - 200),
-                        random.randint(0, 20),
+                        650, # Should be changed to be dynamic
+                        random.randint(0, self.screen.get_height() - 200),
                         "enemy.png",
                     )
                 )
