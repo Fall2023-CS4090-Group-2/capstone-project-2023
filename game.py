@@ -7,28 +7,28 @@ from enemy import Enemy
 from bullet import Bullet
 from question import Question, generate_questions
 
-from GameObjects.Button import Button 
-from FontConfig import FontConfig 
-from GameObjects.Text import Text 
-from GameObject import GameObject 
-from Scene import Scene 
-from GameObjects.InputField import InputField
+from GameObjects.Button import Button
+from FontConfig import FontConfig
+from GameObjects.Text import Text
+from Scene import Scene
 
 TICK_RATE = 128
 PADDING = 10
 
-WHITE: tuple[int] = (255, 255, 255)
-RED: tuple[int]  = (255, 0, 0)
-BLUE: tuple[int]  = (0, 0, 255)
-BLACK: tuple[int]  = (0, 0, 0)
-LIGHT_YELLOW: tuple[int] = (227, 207, 87)
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+BLACK = (0, 0, 0)
+LIGHT_YELLOW = (227, 207, 87)
 
 
 def on_play(parameters: list[object]) -> None:
     parameters[0].on_main_menu = False
 
+
 def on_exit(parameters: list[object]) -> None:
     parameters[0].running = False
+
 
 class Game:
     def __init__(self, screen_width, screen_height) -> None:
@@ -52,16 +52,33 @@ class Game:
         self.on_main_menu = True
 
         self.make_main_menu()
-        
+
     def make_main_menu(self) -> None:
-        button_config: FontConfig = FontConfig("freesansbold.ttf", BLACK, (WHITE, LIGHT_YELLOW, None), 32)
-        text_config: FontConfig = FontConfig("freesansbold.ttf", LIGHT_YELLOW, (None, None, None), 42)
+        button_config: FontConfig = FontConfig(
+            "freesansbold.ttf", BLACK, (WHITE, LIGHT_YELLOW, None), 32
+        )
+        text_config: FontConfig = FontConfig(
+            "freesansbold.ttf", LIGHT_YELLOW, (None, None, None), 42
+        )
         title: Text = Text(465, 35, "Space Invaders", text_config)
-        play: Button = Button(600, 200, fontConfig=button_config, buttonText="Play", onClickFunction=on_play, parameters=[self])
-        exit: Button = Button(600, 300, fontConfig=button_config, buttonText="Exit", onClickFunction=on_exit, parameters=[self])
-        
+        play: Button = Button(
+            600,
+            200,
+            fontConfig=button_config,
+            buttonText="Play",
+            onClickFunction=on_play,
+            parameters=[self],
+        )
+        exit: Button = Button(
+            600,
+            300,
+            fontConfig=button_config,
+            buttonText="Exit",
+            onClickFunction=on_exit,
+            parameters=[self],
+        )
+
         self.scene: Scene = Scene([title, play, exit], BLACK)
-        
 
     def handle_inputs(self) -> None:
         """
@@ -90,15 +107,15 @@ class Game:
                         )
                     )
                     self.num_bullets -= 1
-            if (self.on_main_menu):
+            if self.on_main_menu:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.scene.processMouseClick()
-                
+
                 if event.type == pygame.KEYDOWN:
                     self.scene.processAnyKeyPress(self.screen, event.key)
-                    self.scene.draw(self.screen)        
-                
-        if (self.on_main_menu):
+                    self.scene.draw(self.screen)
+
+        if self.on_main_menu:
             self.scene.processMouseMovement(self.screen)
         self.player.move(self.screen)
 
@@ -130,7 +147,7 @@ class Game:
         """
         Draw all entities on the screen
         """
-        if (self.on_main_menu):
+        if self.on_main_menu:
             self.scene.draw(self.screen)
             return
 
@@ -142,7 +159,6 @@ class Game:
             self.draw_health()
             self.draw_score()
             self.draw_answer()
-            self.draw_mode()
 
             # Draw question
             self.draw_questions()
@@ -193,10 +209,17 @@ class Game:
                 self.screen.get_height() / 2,
             ),
         )
-        pygame.draw.rect(self.screen, (128, 128, 128, 150), [0, 0, self.screen.get_width(), self.screen.get_height()])
-        pygame.draw.rect(self.screen, 'white', [200, 150, 600, 50], 0, 10)
-        self.screen.blit(self.font.render('Game Paused: Press Escape to Resume', True, 'black'), (220,160))
-    
+        pygame.draw.rect(
+            self.screen,
+            (128, 128, 128, 150),
+            [0, 0, self.screen.get_width(), self.screen.get_height()],
+        )
+        pygame.draw.rect(self.screen, "white", [200, 150, 600, 50], 0, 10)
+        self.screen.blit(
+            self.font.render("Game Paused: Press Escape to Resume", True, "black"),
+            (220, 160),
+        )
+
     def draw_score(self) -> None:
         """
         Draws score value
@@ -225,32 +248,26 @@ class Game:
             ),
         )
 
-    def draw_mode(self) -> None:
-        """
-        Draws what mode you are currently in
-        """
-        if self.player.answer_mode:
-            mode = "Answer"
-        else:
-            mode = "Normal"
-        mode_str = self.font.render(f"Mode: {mode}", True, (255, 255, 255))
-        self.screen.blit(
-            mode_str,
-            (
-                mode_str.get_width() * 2 + PADDING,
-                self.font.get_height() - PADDING,
-            ),
-        )
-
     def draw_answer(self) -> None:
         """
         Draws your current typed out answer
         """
-        answer_str = self.font.render(f"Answer: {self.answer}", True, (255, 255, 255))
+        if self.player.answer_mode:
+            color = LIGHT_YELLOW
+        else:
+            color = WHITE
+        answer_str = self.font.render("Answer: ", True, color)
         self.screen.blit(
             answer_str,
             (
                 self.screen.get_width() / 4,
+                self.screen.get_height() - self.font.get_height() - PADDING,
+            ),
+        )
+        self.screen.blit(
+            self.font.render(self.answer, True, WHITE),
+            (
+                self.screen.get_width() / 4 + answer_str.get_width(),
                 self.screen.get_height() - self.font.get_height() - PADDING,
             ),
         )
@@ -264,7 +281,7 @@ class Game:
         max_width = 0
         for idx, question in enumerate(self.questions):
             if question is self.selected_question:
-                color = LIGHT_YELLOW 
+                color = LIGHT_YELLOW
             else:
                 color = WHITE
             question_str = self.font.render(
