@@ -5,7 +5,7 @@ from typing import List
 from player import Player
 from enemy import Enemy
 from bullet import Bullet
-from question import Question, generate_questions
+from question import Question, load_questions
 
 from GameObjects.Button import Button
 from FontConfig import FontConfig
@@ -40,7 +40,7 @@ class Game:
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
         self.num_bullets: int = 50
-        self.questions: List[Question] = generate_questions()
+        self.questions: List[Question] = load_questions()
         self.selected_question: Question = self.questions[0]
         self.answer: str = ""
         self.running: bool = True
@@ -311,7 +311,7 @@ class Game:
             # Don't allow answering if paused
             if not self.paused:
                 if event.key == pygame.K_RETURN:
-                    if self.selected_question.answer == self.answer:
+                    if self.selected_question.is_correct(self.answer):
                         self.questions.remove(self.selected_question)
                         if len(self.questions) > 0:
                             self.selected_question = self.questions[0]

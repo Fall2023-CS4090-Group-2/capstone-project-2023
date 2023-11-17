@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "options": ["Berlin", "Paris", "Madrid", "Rome"],
+    "answer": "Paris"
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Earth", "Mars", "Jupiter", "Venus"],
+    "answer": "Mars"
+  },
+  {
+    "question": "What is 2 + 2?",
+    "options": [],
+    "answer": "4"
+  },
+  {
+    "question": "What is the best pet? (rabbit)",
+    "options": ["Dog", "Cat", "Rabbit", "Monkey"],
+    "answer": "Rabbit"
+  }
+]
