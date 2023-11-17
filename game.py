@@ -204,23 +204,11 @@ class Game:
         """
         Draws pause screen
         """
-        pause_str = self.font.render("PAUSED", True, (255, 255, 255))
-        self.screen.blit(
-            pause_str,
-            (
-                self.screen.get_width() / 2,
-                self.screen.get_height() / 2,
-            ),
-        )
-        pygame.draw.rect(
-            self.screen,
-            (128, 128, 128, 150),
-            [0, 0, self.screen.get_width(), self.screen.get_height()],
-        )
-        pygame.draw.rect(self.screen, "white", [200, 150, 600, 50], 0, 10)
+        self.screen.blit(self.background, (0, 0))
+        pygame.draw.rect(self.screen, "white", [380, 150, 510, 50], 0, 10)
         self.screen.blit(
             self.font.render("Game Paused: Press Escape to Resume", True, "black"),
-            (220, 160),
+            (400, 160),
         )
 
     def draw_score(self) -> None:
