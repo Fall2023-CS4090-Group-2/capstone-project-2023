@@ -1,4 +1,6 @@
 from typing import List
+import json
+import os
 
 
 class Question:
@@ -11,14 +13,23 @@ class Question:
         return answer == self.answer
 
 
-# TODO: Add more questions and find way to import questions. Maybe import questions in a JSON format?
-def generate_questions() -> List[Question]:
+def load_questions(directory_path="questions") -> List[Question]:
+    """
+    Loads each question json file in a directory into a List
+    """
     questions = []
-    questions.append(Question("The answer is a A", ["A", "B", "C", "D"], "A"))
-    questions.append(
-        Question("The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat")
-    )
-    questions.append(
-        Question("The answer is a Cat", ["Dog", "Cat", "Monkey", "Snailfish"], "Cat")
-    )
+
+    for filename in os.listdir(directory_path):
+        if filename.endswith(".json"):
+            file_path = os.path.join(directory_path, filename)
+
+            with open(file_path, "r") as file:
+                try:
+                    questions_dict = json.load(file)
+                    for q in questions_dict:
+                        questions.append(
+                            Question(q["question"], q["options"], q["answer"])
+                        )
+                except json.JSONDecodeError as e:
+                    print(f"Error loading {filename}: {e}")
     return questions
