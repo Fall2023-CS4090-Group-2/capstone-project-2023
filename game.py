@@ -127,11 +127,11 @@ class Game:
         self.clock.tick(TICK_RATE)
 
         # Add some enemies
-        # self.spawn_enemies()
+        self.spawn_enemies()
 
         # Update enemy positions
         for enemy in self.enemies:
-            enemy.move()
+            enemy.move(self.screen)
 
         # Update bullet positions
         for bullet in self.bullets:
@@ -283,7 +283,7 @@ class Game:
         height = 50
         # TODO: Align questions to right
         max_width = 0
-        for idx, question in enumerate(self.questions):
+        for idx, question in enumerate(self.questions[:4:1]):
             if question is self.selected_question:
                 color = LIGHT_YELLOW
             else:
@@ -336,7 +336,7 @@ class Game:
             for _ in range(6):
                 self.enemies.append(
                     Enemy(
-                        650, # Should be changed to be dynamic
+                        self.screen.get_width() - 100, # Should be changed to be dynamic
                         random.randint(0, self.screen.get_height() - 200),
                         "enemy.png",
                     )
