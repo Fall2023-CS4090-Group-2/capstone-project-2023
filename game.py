@@ -7,6 +7,9 @@ from enemy import Enemy
 from bullet import Bullet
 from question import Question, load_questions
 
+from menu import draw_pause_menu
+
+
 from GameObjects.Button import Button
 from FontConfig import FontConfig
 from GameObjects.Text import Text
@@ -178,7 +181,7 @@ class Game:
                 bullet.draw(self.screen)
         else:
             # Draw paused menu if paused
-            self.draw_pause_screen()
+            draw_pause_menu(self.screen, self.font, self.background)
 
         # Tell pygame update its screens
         pygame.display.update()
