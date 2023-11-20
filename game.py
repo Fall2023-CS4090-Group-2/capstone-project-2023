@@ -7,7 +7,7 @@ from enemy import Enemy
 from bullet import Bullet
 from question import Question, load_questions
 
-from difficulty import Difficulty
+from difficulty import Difficulty, enemy_stats
 from state import State
 
 from menu import draw_main_menu, draw_pause_menu, handle_main_menu, handle_pause_menu
@@ -71,6 +71,9 @@ class Game:
         # Update enemy positions
         for enemy in self.enemies:
             enemy.move(self.screen)
+            # Remove enemy if off screen
+            if not self.screen.get_rect().colliderect(enemy.rect):
+                self.enemies.remove(enemy)
 
         # Update bullet positions
         for bullet in self.bullets:
@@ -154,15 +157,15 @@ class Game:
         for enemy in self.enemies:
             for bullet in self.bullets:
                 if enemy.rect.colliderect(bullet.rect):
-                    self.enemies.remove(enemy)  # Can cause a value error
+                    self.score += enemy.score
+                    self.enemies.remove(enemy)
                     self.bullets.remove(bullet)
-                    self.score += 1
 
         # Enemy hitting player
         for enemy in self.enemies:
             if enemy.rect.colliderect(self.player.rect):
                 self.enemies.remove(enemy)
-                self.health -= 5
+                self.health -= enemy.damage
             if self.health <= 0:
                 self.state = State.EXIT
 
@@ -196,13 +199,16 @@ class Game:
         """
         # TODO: Find a better way of spawn enemies
         if len(self.enemies) == 0:
-            for _ in range(6):
-                spawn_x = self.screen.get_width() + random.randint(50, 200)
+            for _ in range(enemy_stats[self.difficulty]["max_enemies"]):
+                spawn_x = self.screen.get_width() - random.randint(50, 200)
                 spawn_y = random.randint(50, self.screen.get_height() - 150)
 
                 enemy = Enemy(
                     spawn_x,
                     spawn_y,
                     "enemy.png",
+                    enemy_stats[self.difficulty]["speed"],
+                    enemy_stats[self.difficulty]["damage"],
+                    enemy_stats[self.difficulty]["score"],
                 )
                 self.enemies.append(enemy)
