@@ -139,9 +139,9 @@ class Game:
                 bullet.draw(self.screen)
         else:
             # Draw paused menu if paused
-            draw_pause_menu(self.screen, self.font, self.background)
+            draw_pause_menu(self)
 
-        draw_main_menu(self.screen, self.font, self.background)
+        draw_main_menu(self)
         # Tell pygame update its screens
         pygame.display.update()
 
