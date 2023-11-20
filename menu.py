@@ -1,4 +1,5 @@
 import pygame
+from state import State
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -49,3 +50,15 @@ def draw_pause_menu(game) -> None:
         game.font.render("Game Paused: Press Escape to Resume", True, "black"),
         (400, 160),
     )
+
+
+def handle_main_menu(game) -> None:
+    pass
+
+
+def handle_pause_menu(game) -> None:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            game.state = State.EXIT
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            game.state = State.RUNNING

@@ -10,7 +10,7 @@ from question import Question, load_questions
 from difficulty import Difficulty
 from state import State
 
-from menu import draw_main_menu, draw_pause_menu
+from menu import draw_main_menu, draw_pause_menu, handle_main_menu, handle_pause_menu
 from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_questions
 
 TICK_RATE = 128
@@ -28,7 +28,7 @@ class Game:
         self.screen: pygame.surface.Surface = pygame.display.set_mode(
             (screen_width, screen_height)
         )
-        self.font = pygame.font.Font("freesansbold.ttf", 24)
+        self.font = pygame.font.Font("freesansbold.ttf", 16)
         self.background = pygame.image.load("background.jpg")
 
         # Game data
@@ -52,20 +52,53 @@ class Game:
         Handle input for all states
         """
         if self.state == State.RUNNING:
-            self.handle_keyboard_input()
+            self.handle_running_input()
         elif self.state == State.PAUSED:
-            # TODO: Cleanup: Make below it's own function and maybe make keyboard input accept an event parameter and have for loop in "handle_inputs"
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.state = State.EXIT
-                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    self.state = State.RUNNING
+            handle_pause_menu(self)
         elif self.state == State.MAIN_MENU:
-            pass
+            handle_main_menu(self)
 
-    def handle_keyboard_input(self) -> None:
+    def update(self) -> None:
         """
-        Handles when a user uses the keyboard. WASD, HJKL, and arrow keys are supported
+        Update position of all entities
+        """
+        # Run no more than TICK_RATE frames per second
+        self.clock.tick(TICK_RATE)
+
+        # Add some enemies
+        self.spawn_enemies()
+
+        # Update enemy positions
+        for enemy in self.enemies:
+            enemy.move(self.screen)
+
+        # Update bullet positions
+        for bullet in self.bullets:
+            bullet.move()
+            # Remove bullet if off screen
+            if not self.screen.get_rect().colliderect(bullet.rect):
+                self.bullets.remove(bullet)
+
+        self.handle_collisions()
+
+    def draw(self) -> None:
+        """
+        Draw all entities on the screen
+        """
+
+        if self.state == State.RUNNING:
+            self.draw_running()
+        elif self.state == State.PAUSED:
+            draw_pause_menu(self)
+        elif self.state == State.MAIN_MENU:
+            draw_main_menu(self)
+
+        # Tell pygame update its screens
+        pygame.display.update()
+
+    def handle_running_input(self) -> None:
+        """
+        Handles when a user plays the game. WASD, HJKL, and arrow keys are supported
         """
         # Handle keyboard input
         for event in pygame.event.get():
@@ -92,64 +125,29 @@ class Game:
                     self.num_bullets -= 1
         self.player.move(self.screen)
 
-    def update(self) -> None:
-        """
-        Update position of all entities
-        """
-        # Run no more than TICK_RATE frames per second
-        self.clock.tick(TICK_RATE)
+    def draw_running(self) -> None:
+        # Redraw background
+        self.screen.blit(self.background, (0, 0))
 
-        # Add some enemies
-        # self.spawn_enemies()
+        # Update menu
+        draw_health(self)
+        draw_score(self)
+        draw_bullets(self)
+        draw_answer(self)
 
-        # Update enemy positions
+        # Draw question
+        draw_questions(self)
+
+        # Draw player
+        self.player.draw(self.screen)
+
+        # Draw enemy
         for enemy in self.enemies:
-            enemy.move(self.screen)
+            enemy.draw(self.screen)
 
-        # Update bullet positions
+        # Draw bullet
         for bullet in self.bullets:
-            bullet.move()
-            # Remove bullet if off screen
-            if not self.screen.get_rect().colliderect(bullet.rect):
-                self.bullets.remove(bullet)
-
-        self.handle_collisions()
-
-    def draw(self) -> None:
-        """
-        Draw all entities on the screen
-        """
-
-        if self.state != State.PAUSED:
-            # Redraw background
-            self.screen.blit(self.background, (0, 0))
-
-            # Update menu
-            draw_health(self)
-            draw_score(self)
-            draw_bullets(self)
-            draw_answer(self)
-
-            # Draw question
-            draw_questions(self)
-
-            # Draw player
-            self.player.draw(self.screen)
-
-            # Draw enemy
-            for enemy in self.enemies:
-                enemy.draw(self.screen)
-
-            # Draw bullet
-            for bullet in self.bullets:
-                bullet.draw(self.screen)
-        elif self.state == State.PAUSED:
-            draw_pause_menu(self)
-        elif self.state == State.MAIN_MENU:
-            draw_main_menu(self)
-
-        # Tell pygame update its screens
-        pygame.display.update()
+            bullet.draw(self.screen)
 
     def handle_collisions(self) -> None:
         # Handle bullet hitting enemy
@@ -199,11 +197,12 @@ class Game:
         # TODO: Find a better way of spawn enemies
         if len(self.enemies) == 0:
             for _ in range(6):
-                self.enemies.append(
-                    Enemy(
-                        self.screen.get_width()
-                        - 100,  # Should be changed to be dynamic
-                        random.randint(0, self.screen.get_height() - 200),
-                        "enemy.png",
-                    )
+                spawn_x = self.screen.get_width() + random.randint(50, 200)
+                spawn_y = random.randint(50, self.screen.get_height() - 150)
+
+                enemy = Enemy(
+                    spawn_x,
+                    spawn_y,
+                    "enemy.png",
                 )
+                self.enemies.append(enemy)
