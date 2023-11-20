@@ -1,0 +1,227 @@
+[
+  {
+    "question": "What is the capital of Japan?",
+    "options": ["Beijing", "Seoul", "Tokyo", "Bangkok"],
+    "answer": "Tokyo"
+  },
+  {
+    "question": "In which year did World War II end?",
+    "options": ["1942", "1945", "1950", "1939"],
+    "answer": "1945"
+  },
+  {
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["Charles Dickens", "Jane Austen", "William Shakespeare", "Mark Twain"],
+    "answer": "William Shakespeare"
+  },
+  {
+    "question": "What is the largest mammal on Earth?",
+    "options": ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+    "answer": "Blue Whale"
+  },
+  {
+    "question": "What is the square root of 81?",
+    "options": [],
+    "answer": "9"
+  },
+  {
+    "question": "Which country is known as the 'Land of the Rising Sun'?",
+    "options": ["China", "Japan", "South Korea", "Vietnam"],
+    "answer": "Japan"
+  },
+  {
+    "question": "Who painted the Mona Lisa?",
+    "options": ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Michelangelo"],
+    "answer": "Leonardo da Vinci"
+  },
+  {
+    "question": "What is the currency of Australia?",
+    "options": ["Euro", "Dollar", "Pound", "Australian Dollar"],
+    "answer": "Australian Dollar"
+  },
+  {
+    "question": "Which gas is most abundant in the Earth's atmosphere?",
+    "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
+    "answer": "Nitrogen"
+  },
+  {
+    "question": "What is the smallest prime number?",
+    "options": [],
+    "answer": "2"
+  },
+  {
+    "question": "Who wrote 'To Kill a Mockingbird'?",
+    "options": ["J.K. Rowling", "Harper Lee", "George Orwell", "Ernest Hemingway"],
+    "answer": "Harper Lee"
+  },
+  {
+    "question": "What is the capital of Brazil?",
+    "options": ["Buenos Aires", "Rio de Janeiro", "Brasília", "São Paulo"],
+    "answer": "Brasília"
+  },
+  {
+    "question": "In which year did the Titanic sink?",
+    "options": ["1912", "1920", "1905", "1931"],
+    "answer": "1912"
+  },
+  {
+    "question": "Who discovered penicillin?",
+    "options": ["Marie Curie", "Alexander Fleming", "Louis Pasteur", "Antoine Lavoisier"],
+    "answer": "Alexander Fleming"
+  },
+  {
+    "question": "What is the largest ocean on Earth?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Southern Ocean", "Pacific Ocean"],
+    "answer": "Pacific Ocean"
+  },
+  {
+    "question": "Which element has the chemical symbol 'H'?",
+    "options": ["Helium", "Hydrogen", "Hassium", "Hafnium"],
+    "answer": "Hydrogen"
+  },
+  {
+    "question": "Who was the first President of the United States?",
+    "options": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John Adams"],
+    "answer": "George Washington"
+  },
+  {
+    "question": "What is the national flower of Japan?",
+    "options": ["Cherry Blossom", "Rose", "Sunflower", "Tulip"],
+    "answer": "Cherry Blossom"
+  },
+  {
+    "question": "Which planet is known as the 'Morning Star' or 'Evening Star'?",
+    "options": ["Mars", "Venus", "Jupiter", "Saturn"],
+    "answer": "Venus"
+  },
+  {
+    "question": "What is the speed of light?",
+    "options": [],
+    "answer": "299,792 kilometers per second"
+  },
+  {
+    "question": "Who wrote '1984'?",
+    "options": ["George Orwell", "Aldous Huxley", "Ray Bradbury", "Isaac Asimov"],
+    "answer": "George Orwell"
+  },
+  {
+    "question": "What is the largest desert in the world?",
+    "options": ["Gobi Desert", "Sahara Desert", "Antarctica", "Arabian Desert"],
+    "answer": "Antarctica"
+  },
+  {
+    "question": "What is the capital of Canada?",
+    "options": ["Vancouver", "Toronto", "Ottawa", "Montreal"],
+    "answer": "Ottawa"
+  },
+  {
+    "question": "Who developed the theory of relativity?",
+    "options": ["Isaac Newton", "Niels Bohr", "Albert Einstein", "Max Planck"],
+    "answer": "Albert Einstein"
+  },
+  {
+    "question": "Which country is known as the 'Land of the Midnight Sun'?",
+    "options": ["Norway", "Sweden", "Finland", "Denmark"],
+    "answer": "Norway"
+  },
+  {
+    "question": "What is the largest bird in the world?",
+    "options": ["Ostrich", "Penguin", "Albatross", "Emu"],
+    "answer": "Ostrich"
+  },
+  {
+    "question": "In which year did the Berlin Wall fall?",
+    "options": ["1989", "1991", "1985", "1995"],
+    "answer": "1989"
+  },
+  {
+    "question": "Who is the author of 'The Great Gatsby'?",
+    "options": ["F. Scott Fitzgerald", "Ernest Hemingway", "J.D. Salinger", "Jane Austen"],
+    "answer": "F. Scott Fitzgerald"
+  },
+  {
+    "question": "What is the largest planet in our solar system?",
+    "options": ["Earth", "Jupiter", "Saturn", "Mars"],
+    "answer": "Jupiter"
+  },
+  {
+    "question": "Which country is known as the 'Land of the Pyramids'?",
+    "options": ["Greece", "Egypt", "Italy", "Mexico"],
+    "answer": "Egypt"
+  },
+  {
+    "question": "Who painted 'The Starry Night'?",
+    "options": ["Pablo Picasso", "Vincent van Gogh", "Claude Monet", "Leonardo da Vinci"],
+    "answer": "Vincent van Gogh"
+  },
+  {
+    "question": "What is the longest river in the world?",
+    "options": ["Amazon River", "Nile River", "Mississippi River", "Yangtze River"],
+    "answer": "Nile River"
+  },
+  {
+    "question": "In which year did the first manned moon landing occur?",
+    "options": ["1961", "1969", "1975", "1981"],
+    "answer": "1969"
+  },
+  {
+    "question": "Who composed 'Symphony No. 9' (Beethoven's Ninth Symphony)?",
+    "options": ["Wolfgang Amadeus Mozart", "Ludwig van Beethoven", "Johann Sebastian Bach", "Pyotr Ilyich Tchaikovsky"],
+    "answer": "Ludwig van Beethoven"
+  },
+  {
+    "question": "What is the capital of South Africa?",
+    "options": ["Johannesburg", "Pretoria", "Durban", "Cape Town"],
+    "answer": "Pretoria"
+  },
+  {
+    "question": "Which gas is responsible for the Earth's greenhouse effect?",
+    "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Methane"],
+    "answer": "Carbon Dioxide"
+  },
+  {
+    "question": "Who is the author of 'One Hundred Years of Solitude'?",
+    "options": ["Gabriel García Márquez", "Leo Tolstoy", "F. Scott Fitzgerald", "Jane Austen"],
+    "answer": "Gabriel García Márquez"
+  },
+  {
+    "question": "What is the largest tree species on Earth?",
+    "options": ["Oak", "Redwood", "Sequoia", "Pine"],
+    "answer": "Sequoia"
+  },
+  {
+    "question": "Who invented the telephone?",
+    "options": ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Guglielmo Marconi"],
+    "answer": "Alexander Graham Bell"
+  },
+  {
+    "question": "Which continent is known as the 'Land Down Under'?",
+    "options": ["Africa", "Asia", "Australia", "South America"],
+    "answer": "Australia"
+  },
+  {
+    "question": "Who wrote 'The Catcher in the Rye'?",
+    "options": ["J.K. Rowling", "J.D. Salinger", "George Orwell", "Mark Twain"],
+    "answer": "J.D. Salinger"
+  },
+  {
+    "question": "What is the melting point of water?",
+    "options": [],
+    "answer": "0 degrees Celsius (32 degrees Fahrenheit)"
+  },
+  {
+    "question": "Which country is known as the 'Land of the Rising Sun'?",
+    "options": ["China", "Japan", "South Korea", "Vietnam"],
+    "answer": "Japan"
+  },
+  {
+    "question": "Who is known as the 'Father of Computer Science'?",
+    "options": ["Alan Turing", "Bill Gates", "Steve Jobs", "Tim Berners-Lee"],
+    "answer": "Alan Turing"
+  },
+  {
+    "question": "What is the chemical symbol for gold?",
+    "options": [],
+    "answer": "Au"
+  }
+]
