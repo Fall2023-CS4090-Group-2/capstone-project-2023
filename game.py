@@ -108,13 +108,10 @@ class Game:
 
         # Update bullet positions
         for bullet in self.bullets:
-            # TODO: Removing bullets when off the board
-            # if bullet.rect.collidepoint(self.screen.get_width(), self.screen.get_height()):
-            #     self.bullets.remove(bullet)
-            # else:
-            if bullet.rect.x == 750:  # Should make this more dynamic
-                self.bullets.remove(bullet)
             bullet.move()
+            # Remove bullet if off screen
+            if not self.screen.get_rect().colliderect(bullet.rect):
+                self.bullets.remove(bullet)
 
         self.handle_collisions()
 
