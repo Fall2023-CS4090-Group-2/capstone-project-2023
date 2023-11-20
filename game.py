@@ -160,7 +160,7 @@ class Game:
 
         # Enemy hitting player
         for enemy in self.enemies:
-            if enemy.rect.x < self.player.rect.x + 25:
+            if enemy.rect.colliderect(self.player.rect):
                 self.enemies.remove(enemy)
                 self.health -= 5
             if self.health <= 0:

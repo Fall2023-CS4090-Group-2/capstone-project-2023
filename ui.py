@@ -83,9 +83,10 @@ def draw_questions(game) -> None:
     start_y = game.screen.get_height() * 0.04
     vertical_spacing = 20
     options_vertical_spacing = 5
+    num_questions = 3
 
     # Calculate maximum width
-    for question in game.questions[:4]:
+    for question in game.questions[:num_questions]:
         max_width = max(
             max_width,
             game.font.render(f"Question #: {question.question}", True, WHITE).get_width(),
@@ -93,7 +94,7 @@ def draw_questions(game) -> None:
         )
 
     # Draw questions and options with right alignment
-    for idx, question in enumerate(game.questions[:4]):
+    for idx, question in enumerate(game.questions[:num_questions]):
         if question is game.selected_question:
             color = LIGHT_YELLOW
         else:
