@@ -3,7 +3,7 @@ import random
 from typing import List
 
 from player import Player
-from enemy import Enemy
+from enemy import Enemy, spawn_enemies
 from bullet import Bullet
 from question import Question, load_questions
 
@@ -33,14 +33,14 @@ class Game:
 
         # Game data
         self.state: State = State.RUNNING
-        self.difficulty: Difficulty = Difficulty.EASY
+        self.difficulty: Difficulty = Difficulty.HARD
         self.answer: str = ""
         self.clock = pygame.time.Clock()
         self.score = 0
         self.health = 100
 
         # Game entities
-        self.player: Player = Player(PADDING, screen_height / 2, "player.png")
+        self.player: Player = Player(PADDING, screen_height // 2, "player.png")
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
         self.num_bullets: int = 50
@@ -66,7 +66,7 @@ class Game:
         self.clock.tick(TICK_RATE)
 
         # Add some enemies
-        self.spawn_enemies()
+        spawn_enemies(self)
 
         # Update enemy positions
         for enemy in self.enemies:
@@ -99,6 +99,24 @@ class Game:
         # Tell pygame update its screens
         pygame.display.update()
 
+    def reset_game(self) -> None:
+        """
+        Resets game. Useful for changing game states
+        """
+        # Reset game data
+        self.answer = ""
+        self.score = 0
+        self.health = 100
+        self.enemies = []
+        self.bullets = []
+        self.num_bullets = 0
+
+        # Game entities
+        self.player.rect.x, self.player.rect.y = PADDING, self.screen.get_height() // 2
+        self.player.answer_mode = False
+        self.questions = load_questions()
+        self.selected_question = self.questions[0]
+
     def handle_running_input(self) -> None:
         """
         Handles when a user plays the game. WASD, HJKL, and arrow keys are supported
@@ -122,7 +140,7 @@ class Game:
                             self.player.rect.x + PADDING,
                             self.player.rect.y
                             + PADDING
-                            - self.player.image.get_height() / 2,
+                            - self.player.image.get_height() // 2,
                         )
                     )
                     self.num_bullets -= 1
@@ -167,7 +185,8 @@ class Game:
                 self.enemies.remove(enemy)
                 self.health -= enemy.damage
             if self.health <= 0:
-                self.state = State.EXIT
+                self.reset_game()
+                # self.state = State.EXIT
 
     def answer_question(self, event) -> None:
         """
@@ -192,23 +211,3 @@ class Game:
                     self.answer = self.answer[:-1]
                 else:
                     self.answer += event.unicode
-
-    def spawn_enemies(self) -> None:
-        """
-        Spawn enemies
-        """
-        # TODO: Find a better way of spawn enemies
-        if len(self.enemies) == 0:
-            for _ in range(enemy_stats[self.difficulty]["max_enemies"]):
-                spawn_x = self.screen.get_width() - random.randint(50, 200)
-                spawn_y = random.randint(50, self.screen.get_height() - 150)
-
-                enemy = Enemy(
-                    spawn_x,
-                    spawn_y,
-                    "enemy.png",
-                    enemy_stats[self.difficulty]["speed"],
-                    enemy_stats[self.difficulty]["damage"],
-                    enemy_stats[self.difficulty]["score"],
-                )
-                self.enemies.append(enemy)
