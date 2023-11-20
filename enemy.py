@@ -1,6 +1,3 @@
-import pygame
-import random
-
 from entity import Entity
 
 
@@ -11,5 +8,5 @@ class Enemy(Entity):
         self.damage = damage
         self.score = score
 
-    def move(self, screen) -> None:
+    def move(self) -> None:
         self.rect.x -= 1 * self.speed

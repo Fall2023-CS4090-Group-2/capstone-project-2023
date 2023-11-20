@@ -1,4 +1,4 @@
-import pygame
+import pygame  # type: ignore
 from state import State
 
 WHITE = (255, 255, 255)

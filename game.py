@@ -70,7 +70,7 @@ class Game:
 
         # Update enemy positions
         for enemy in self.enemies:
-            enemy.move(self.screen)
+            enemy.move()
             # Remove enemy if off screen
             if not self.screen.get_rect().colliderect(enemy.rect):
                 self.enemies.remove(enemy)

@@ -1,4 +1,4 @@
-import pygame
+import pygame  # type: ignore
 
 from entity import Entity
 from state import State

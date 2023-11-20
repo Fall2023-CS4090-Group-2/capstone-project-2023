@@ -1,4 +1,4 @@
-import pygame
+import pygame  # type: ignore
 from game import Game, State
 
 # Start pygame
