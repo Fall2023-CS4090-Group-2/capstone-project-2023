@@ -1,22 +1,17 @@
 import pygame  # type: ignore
 import random
 from typing import List
-from enum import Enum
 
 from player import Player
 from enemy import Enemy
 from bullet import Bullet
 from question import Question, load_questions
 
+from difficulty import Difficulty
+from state import State
+
 from menu import draw_main_menu, draw_pause_menu
 from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_questions
-
-
-from GameObjects.Button import Button
-from FontConfig import FontConfig
-from GameObjects.Text import Text
-
-# from Scene import Scene
 
 TICK_RATE = 128
 PADDING = 10
@@ -27,41 +22,55 @@ BLACK = (0, 0, 0)
 LIGHT_YELLOW = (227, 207, 87)
 
 
-class State(Enum):
-    MAIN_MENU = 0
-    RUNNING = 1
-    PAUSED = 2
-
 class Game:
     def __init__(self, screen_width, screen_height) -> None:
+        # Game visuals
         self.screen: pygame.surface.Surface = pygame.display.set_mode(
             (screen_width, screen_height)
         )
-        self.state: State = State.RUNNING
+        self.font = pygame.font.Font("freesansbold.ttf", 24)
         self.background = pygame.image.load("background.jpg")
+
+        # Game data
+        self.state: State = State.RUNNING
+        self.difficulty: Difficulty = Difficulty.EASY
+        self.answer: str = ""
+        self.clock = pygame.time.Clock()
+        self.score = 0
+        self.health = 100
+
+        # Game entities
         self.player: Player = Player(PADDING, screen_height / 2, "player.png")
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
         self.num_bullets: int = 50
         self.questions: List[Question] = load_questions()
         self.selected_question: Question = self.questions[0]
-        self.answer: str = ""
-        self.running: bool = True
-        self.paused: bool = False
-        self.clock = pygame.time.Clock()
-        self.font = pygame.font.Font("freesansbold.ttf", 24)
-        self.score = 0
-        self.health = 100
-        self.on_main_menu = True
 
     def handle_inputs(self) -> None:
+        """
+        Handle input for all states
+        """
+        if self.state == State.RUNNING:
+            self.handle_keyboard_input()
+        elif self.state == State.PAUSED:
+            # TODO: Cleanup: Make below it's own function and maybe make keyboard input accept an event parameter and have for loop in "handle_inputs"
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.state = State.EXIT
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    self.state = State.RUNNING
+        elif self.state == State.MAIN_MENU:
+            pass
+
+    def handle_keyboard_input(self) -> None:
         """
         Handles when a user uses the keyboard. WASD, HJKL, and arrow keys are supported
         """
         # Handle keyboard input
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.running = False
+                self.state = State.EXIT
 
             # Player movement input
             if not self.player.answer_mode:
@@ -114,7 +123,7 @@ class Game:
         Draw all entities on the screen
         """
 
-        if not self.paused:
+        if self.state != State.PAUSED:
             # Redraw background
             self.screen.blit(self.background, (0, 0))
 
@@ -137,11 +146,11 @@ class Game:
             # Draw bullet
             for bullet in self.bullets:
                 bullet.draw(self.screen)
-        else:
-            # Draw paused menu if paused
+        elif self.state == State.PAUSED:
             draw_pause_menu(self)
+        elif self.state == State.MAIN_MENU:
+            draw_main_menu(self)
 
-        draw_main_menu(self)
         # Tell pygame update its screens
         pygame.display.update()
 
@@ -160,7 +169,7 @@ class Game:
                 self.enemies.remove(enemy)
                 self.health -= 5
             if self.health <= 0:
-                self.running = False
+                self.state = State.EXIT
 
     def answer_question(self, event) -> None:
         """
@@ -169,10 +178,10 @@ class Game:
         if event.type == pygame.KEYDOWN:
             # Pause screen
             if event.key == pygame.K_ESCAPE:
-                self.paused = not self.paused
+                self.state = State.PAUSED
                 return
             # Don't allow answering if paused
-            if not self.paused:
+            if self.state != State.PAUSED:
                 if event.key == pygame.K_RETURN:
                     if self.selected_question.is_correct(self.answer):
                         self.questions.remove(self.selected_question)

@@ -1,5 +1,5 @@
 import pygame
-from game import Game
+from game import Game, State
 
 # Start pygame
 pygame.init()
@@ -11,9 +11,9 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 1280, 720
 game = Game(SCREEN_WIDTH, SCREEN_HEIGHT)
 
 # Game loop
-while game.running:
+while game.state != State.EXIT:
     game.handle_inputs()
-    if not game.paused:
+    if game.state == State.RUNNING:
         game.update()
     game.draw()
 
