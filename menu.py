@@ -1,43 +1,59 @@
 import pygame  # type: ignore
+from typing import List
+
 from state import State
+from button import Button
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+
+class Menu:
+    def __init__(self, background, buttons) -> None:
+        self.background = background
+        self.buttons: List[Button] = []
 
 def draw_main_menu(game) -> None:
     """
     Draws main menu
     """
-    title_font = pygame.font.Font(None, min(game.screen.get_width() // 10, game.screen.get_height() // 10))
-    title_str = title_font.render("Space Invaders", True, BLACK)
-    title_x, title_y = (game.screen.get_width() - title_str.get_width()) // 2, game.screen.get_height() * 0.25
 
-    button_font = pygame.font.Font(None, min(game.screen.get_width() // 15, game.screen.get_height() // 15))
+    title = Button(
+            "Space Invaders",
+            None,
+            75,
+            game.screen.get_width() // 2,
+            game.screen.get_height() * 0.35,
+            WHITE,
+            (136, 8,8),
+            BLACK
+            )
 
-    play_str = button_font.render("Play", True, BLACK)
-    play_x, play_y = (game.screen.get_width() - play_str.get_width()) // 2, game.screen.get_height() * 0.45
+    play_button = Button(
+            "Play",
+            None,
+            50,
+            game.screen.get_width() // 2,
+            game.screen.get_height() * 0.55,
+            WHITE,
+            (136, 8,8),
+            BLACK
+            )
 
-    # difficult_str = font.render("Change difficulty", True, BLACK)
+    quit_button = Button(
+            "Quit",
+            None,
+            50,
+            game.screen.get_width() // 2,
+            game.screen.get_height() * 0.65,
+            WHITE,
+            (136, 8,8),
+            BLACK
+            )
 
-    quit_str = button_font.render("Quit", True, BLACK)
-    quit_x, quit_y = (game.screen.get_width() - quit_str.get_width()) // 2, play_y + quit_str.get_height() + 30
-
-    # Draw background
-    game.screen.blit(game.background,(0,0))
-
-    # Draw title
-    pygame.draw.rect(game.screen, WHITE, (title_x, title_y, title_str.get_width(), title_str.get_height()))
-    game.screen.blit(title_str, (title_x, title_y))
-
-    # Draw play option
-    pygame.draw.rect(game.screen, WHITE, (play_x, play_y, play_str.get_width(), play_str.get_height()))
-    game.screen.blit(play_str, (play_x, play_y))
-
-    # TODO: Draw Difficulty selector
-
-    # Draw quit option
-    pygame.draw.rect(game.screen, WHITE, (quit_x, quit_y, quit_str.get_width(), quit_str.get_height()))
-    game.screen.blit(quit_str, (quit_x, quit_y))
+    title.draw(game.screen)
+    play_button.draw(game.screen)
+    quit_button.draw(game.screen)
+    print(title.hovered)
 
 
 def draw_pause_menu(game) -> None:
@@ -52,8 +68,13 @@ def draw_pause_menu(game) -> None:
     )
 
 
+# Make real menu class
 def handle_main_menu(game) -> None:
     pass
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            game.state = State.EXIT
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # Left mouse button
 
 
 def handle_pause_menu(game) -> None:

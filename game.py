@@ -32,7 +32,7 @@ class Game:
         self.background = pygame.image.load("background.jpg")
 
         # Game data
-        self.state: State = State.RUNNING
+        self.state: State = State.MAIN_MENU
         self.difficulty: Difficulty = Difficulty.HARD
         self.answer: str = ""
         self.clock = pygame.time.Clock()
