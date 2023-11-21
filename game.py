@@ -128,7 +128,7 @@ class Game:
         self.clock.tick(TICK_RATE)
 
         # Add some enemies
-        # self.spawn_enemies()
+        self.spawn_enemies()
 
         # Update enemy positions
         for enemy in self.enemies:
@@ -316,7 +316,8 @@ class Game:
                         if len(self.questions) > 0:
                             self.selected_question = self.questions[0]
                     self.answer = ""
-                    self.num_bullets += 1
+                    self.num_bullets += 2
+                    self.score += 2
                     self.player.answer_mode = False
                 elif event.key == pygame.K_BACKSPACE:
                     self.answer = self.answer[:-1]
@@ -332,7 +333,7 @@ class Game:
             for _ in range(6):
                 self.enemies.append(
                     Enemy(
-                        650, # Should be changed to be dynamic
+                        self.screen.get_width(), # Should be changed to be dynamic
                         random.randint(0, self.screen.get_height() - 200),
                         "enemy.png",
                     )
