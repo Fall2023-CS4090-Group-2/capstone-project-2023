@@ -17,6 +17,7 @@ class Text(GO.GameObject):
     textSurfaces: list[pygame.Surface]
     width: int
     height: int
+    numberOfLines: int
     
     def __init__(self, x: int, y: int, message: str, fontConfig: FC.FontConfig, width: int = math.inf) -> None:
         self.x = x
@@ -29,14 +30,16 @@ class Text(GO.GameObject):
         self.fontObject = self.fontConfig.makeFontObject()
         self.height = self.fontObject.size(message)[1]
         self.textSurfaces = self.makeTextSurfaces()
+        self.numberOfLines = len(self.textSurfaces)
     
-    def draw(self, screen)-> None:
+    def draw(self, screen, update: bool = True)-> None:
         updatedRects = []
         count = 0
         for textSurface in self.textSurfaces: 
             updatedRects.append(screen.blit(textSurface, (self.x, self.y + (self.height * count))))
             count += 1
-        pygame.display.update(updatedRects)
+        if update:
+            pygame.display.update(updatedRects)
 
 
     def makeTextSurfaces(self) -> list[pygame.Surface]:

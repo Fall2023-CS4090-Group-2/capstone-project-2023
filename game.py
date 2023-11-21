@@ -11,6 +11,7 @@ from GameObjects.Button import Button
 from FontConfig import FontConfig
 from GameObjects.Text import Text
 from Scene import Scene
+from GameObject import GameObject
 
 TICK_RATE = 128
 PADDING = 10
@@ -280,29 +281,24 @@ class Game:
         """
         Draws current questions
         """
-        height = 50
-        # TODO: Align questions to right
-        max_width = 0
+        game_objects: list[GameObject] = []
+        normal_font_config: FontConfig = FontConfig("freesansbold.ttf", WHITE, (None, None, None), 24)
+        highlight_font_config: FontConfig = FontConfig("freesansbold.ttf", LIGHT_YELLOW, (None, None, None), 24)
+        question_padding: int = 25
+        current_height: int = question_padding 
+ 
         for idx, question in enumerate(self.questions):
+            question_text: Text
+            question_message: str = "Question " + str(idx) + ": " + question.question
             if question is self.selected_question:
-                color = LIGHT_YELLOW
+                question_text: Text = Text(1000, current_height, question_message, highlight_font_config, 250)
             else:
-                color = WHITE
-            question_str = self.font.render(
-                f"Question {idx+1}: {question.question}", True, color
-            )
-            max_width = max(max_width, question_str.get_width())
-            self.screen.blit(
-                question_str, (self.screen.get_width() - max_width - PADDING, height)
-            )
-            for option in question.options:
-                height += self.font.get_height()
-                option_str = self.font.render(option, True, color)
-                self.screen.blit(
-                    option_str, (self.screen.get_width() - max_width - PADDING, height)
-                )
-            height += self.font.get_height() * 2
-
+                question_text: Text = Text(1000, current_height, question_message, normal_font_config, 250)
+            question_text.draw(self.screen, False)
+            current_height += question_text.height * question_text.numberOfLines + question_padding
+            if current_height > self.screen.get_height():
+                break
+           
     def answer_question(self, event) -> None:
         """
         Handles answering a question
