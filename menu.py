@@ -7,6 +7,7 @@ from button import Button
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
+
 class Menu:
     def __init__(self, game, buttons) -> None:
         self.game = game
@@ -34,7 +35,11 @@ class Menu:
                     if button.hovered and button.state in State:
                         game.reset_game()
                         game.state = button.state
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE and game.state in [State.RUNNING, State.PAUSED]:
+            elif (
+                event.type == pygame.KEYDOWN
+                and event.key == pygame.K_ESCAPE
+                and game.state in [State.RUNNING, State.PAUSED]
+            ):
                 game.state = State.RUNNING
 
 
@@ -43,40 +48,39 @@ def create_main_menu(game) -> Menu:
     Create Menu object for the main menu
     """
     title_button = Button(
-            "Space Invaders",
-            None,
-            75,
-            game.screen.get_width() // 2,
-            game.screen.get_height() * 0.35,
-            WHITE,
-            WHITE,
-            BLACK
-            )
+        "Space Invaders",
+        None,
+        75,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.35,
+        WHITE,
+        WHITE,
+        BLACK,
+    )
 
     play_button = Button(
-            "Play",
-            State.RUNNING,
-            50,
-            game.screen.get_width() // 2,
-            game.screen.get_height() * 0.55,
-            WHITE,
-            (136, 8,8),
-            BLACK
-            )
+        "Play",
+        State.RUNNING,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.55,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
 
     quit_button = Button(
-            "Quit",
-            State.EXIT,
-            50,
-            game.screen.get_width() // 2,
-            game.screen.get_height() * 0.65,
-            WHITE,
-            (136, 8,8),
-            BLACK
-            )
+        "Quit",
+        State.EXIT,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.65,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
 
     return Menu(game, [title_button, play_button, quit_button])
-
 
 
 def draw_pause_menu(game) -> None:
