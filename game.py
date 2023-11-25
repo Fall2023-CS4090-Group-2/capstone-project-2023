@@ -1,6 +1,7 @@
 import pygame  # type: ignore
 import random
 from typing import List
+from button import Button
 
 from player import Player
 from enemy import Enemy, spawn_enemies
@@ -10,7 +11,7 @@ from question import Question, load_questions
 from difficulty import Difficulty, enemy_stats
 from state import State
 
-from menu import draw_main_menu, draw_pause_menu, handle_main_menu, handle_pause_menu
+from menu import Menu, create_main_menu, draw_pause_menu, handle_pause_menu
 from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_questions
 
 TICK_RATE = 128
@@ -30,6 +31,9 @@ class Game:
         )
         self.font = pygame.font.Font("freesansbold.ttf", 16)
         self.background = pygame.image.load("background.jpg")
+
+        # Menu's
+        self.main_menu: Menu = create_main_menu(self.screen, self.background)
 
         # Game data
         self.state: State = State.MAIN_MENU
@@ -56,7 +60,7 @@ class Game:
         elif self.state == State.PAUSED:
             handle_pause_menu(self)
         elif self.state == State.MAIN_MENU:
-            handle_main_menu(self)
+            self.main_menu.handle_menu(self)
 
     def update(self) -> None:
         """
@@ -94,7 +98,7 @@ class Game:
         elif self.state == State.PAUSED:
             draw_pause_menu(self)
         elif self.state == State.MAIN_MENU:
-            draw_main_menu(self)
+            self.main_menu.draw()
 
         # Tell pygame update its screens
         pygame.display.update()
@@ -211,3 +215,5 @@ class Game:
                     self.answer = self.answer[:-1]
                 else:
                     self.answer += event.unicode
+    def play_game(self) -> None:
+        self.state = State.RUNNING

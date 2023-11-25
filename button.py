@@ -3,14 +3,14 @@ import pygame  # type: ignore
 
 class Button:
     def __init__(
-        self, text, action, font_size, x, y, color, hover_color, text_color
+        self, text, state, font_size, x, y, color, hover_color, text_color
     ) -> None:
         # Text
         self.text = text
         self.font = pygame.font.Font(None, font_size)
         self.text_str = self.font.render(self.text, True, text_color)
 
-        self.action = action
+        self.state = state
 
         # Position
         self.rect = pygame.Rect((0, 0), (0, 0))
