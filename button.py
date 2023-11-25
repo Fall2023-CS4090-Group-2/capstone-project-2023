@@ -31,10 +31,6 @@ class Button:
         text_rect = self.text_str.get_rect(center=self.rect.center)
         screen.blit(self.text_str, text_rect.topleft)
 
-    def handle_click(self) -> None:
-        if self.hovered:
-            self.action()
-
     def is_hovered(self) -> None:
         mouse_x, mouse_y = pygame.mouse.get_pos()
         self.hovered = self.rect.collidepoint(mouse_x, mouse_y)

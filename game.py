@@ -1,17 +1,15 @@
 import pygame  # type: ignore
-import random
 from typing import List
-from button import Button
 
 from player import Player
 from enemy import Enemy, spawn_enemies
 from bullet import Bullet
 from question import Question, load_questions
 
-from difficulty import Difficulty, enemy_stats
+from difficulty import Difficulty
 from state import State
 
-from menu import Menu, create_main_menu, draw_pause_menu, handle_pause_menu
+from menu import Menu, create_main_menu, draw_pause_menu
 from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_questions
 
 TICK_RATE = 128
@@ -32,9 +30,6 @@ class Game:
         self.font = pygame.font.Font("freesansbold.ttf", 16)
         self.background = pygame.image.load("background.jpg")
 
-        # Menu's
-        self.main_menu: Menu = create_main_menu(self.screen, self.background)
-
         # Game data
         self.state: State = State.MAIN_MENU
         self.difficulty: Difficulty = Difficulty.HARD
@@ -47,9 +42,12 @@ class Game:
         self.player: Player = Player(PADDING, screen_height // 2, "player.png")
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
-        self.num_bullets: int = 50
+        self.num_bullets: int = 0
         self.questions: List[Question] = load_questions()
         self.selected_question: Question = self.questions[0]
+
+        # Menu's
+        self.main_menu: Menu = create_main_menu(self)
 
     def handle_inputs(self) -> None:
         """
@@ -58,7 +56,7 @@ class Game:
         if self.state == State.RUNNING:
             self.handle_running_input()
         elif self.state == State.PAUSED:
-            handle_pause_menu(self)
+            self.main_menu.handle_menu(self)
         elif self.state == State.MAIN_MENU:
             self.main_menu.handle_menu(self)
 
@@ -206,10 +204,10 @@ class Game:
                 if event.key == pygame.K_RETURN:
                     if self.selected_question.is_correct(self.answer):
                         self.questions.remove(self.selected_question)
+                        self.num_bullets += 1
                         if len(self.questions) > 0:
                             self.selected_question = self.questions[0]
                     self.answer = ""
-                    self.num_bullets += 1
                     self.player.answer_mode = False
                 elif event.key == pygame.K_BACKSPACE:
                     self.answer = self.answer[:-1]
