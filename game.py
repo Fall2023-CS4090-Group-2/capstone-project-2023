@@ -32,7 +32,7 @@ class Game:
 
         # Game data
         self.state: State = State.MAIN_MENU
-        self.difficulty: Difficulty = Difficulty.HARD
+        self.difficulty: Difficulty = Difficulty.MEDIUM
         self.answer: str = ""
         self.clock = pygame.time.Clock()
         self.score = 0
@@ -56,9 +56,9 @@ class Game:
         if self.state == State.RUNNING:
             self.handle_running_input()
         elif self.state == State.PAUSED:
-            self.main_menu.handle_menu(self)
+            self.main_menu.handle_menu()
         elif self.state == State.MAIN_MENU:
-            self.main_menu.handle_menu(self)
+            self.main_menu.handle_menu()
 
     def update(self) -> None:
         """

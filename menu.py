@@ -23,28 +23,28 @@ class Menu:
             button.is_hovered()
             button.draw(self.game.screen)
 
-    def handle_menu(self, game) -> None:
+    def handle_menu(self) -> None:
         """
         Handles inputs for menu
         """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                game.state = State.EXIT
+                self.game.state = State.EXIT
             # Left mouse click
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                for button in game.main_menu.buttons:
+                for button in self.game.main_menu.buttons:
                     if button.hovered and button.state != None and button.state in State:
-                        game.reset_game()
-                        game.state = button.state
+                        self.game.reset_game()
+                        self.game.state = button.state
                     elif button.hovered and button.state != None and button.state in Difficulty:
-                        game.difficulty = button.state
+                        self.game.difficulty = button.state
 
             elif (
                 event.type == pygame.KEYDOWN
                 and event.key == pygame.K_ESCAPE
-                and game.state in [State.RUNNING, State.PAUSED]
+                and self.game.state in [State.RUNNING, State.PAUSED]
             ):
-                game.state = State.RUNNING
+                self.game.state = State.RUNNING
 
 
 def create_main_menu(game) -> Menu:
@@ -53,6 +53,7 @@ def create_main_menu(game) -> Menu:
     """
     title_button = Button(
         "Space Invaders",
+        game,
         None,
         75,
         game.screen.get_width() // 2,
@@ -64,10 +65,11 @@ def create_main_menu(game) -> Menu:
 
     play_button = Button(
         "Play",
+        game,
         State.RUNNING,
         50,
         game.screen.get_width() // 2,
-        game.screen.get_height() * 0.45,
+        game.screen.get_height() * 0.55,
         WHITE,
         (136, 8, 8),
         BLACK,
@@ -75,10 +77,11 @@ def create_main_menu(game) -> Menu:
 
     easy_button = Button(
         "Easy",
+        game,
         Difficulty.EASY,
         50,
         game.screen.get_width() // 2 - 150,
-        game.screen.get_height() * 0.55,
+        game.screen.get_height() * 0.65,
         WHITE,
         (136, 8, 8),
         BLACK,
@@ -86,10 +89,11 @@ def create_main_menu(game) -> Menu:
 
     medium_button = Button(
         "Medium",
+        game,
         Difficulty.MEDIUM,
         50,
         game.screen.get_width() // 2,
-        game.screen.get_height() * 0.55,
+        game.screen.get_height() * 0.65,
         WHITE,
         (136, 8, 8),
         BLACK,
@@ -97,10 +101,11 @@ def create_main_menu(game) -> Menu:
 
     hard_button = Button(
         "Hard",
+        game,
         Difficulty.HARD,
         50,
         game.screen.get_width() // 2 + 150,
-        game.screen.get_height() * 0.55,
+        game.screen.get_height() * 0.65,
         WHITE,
         (136, 8, 8),
         BLACK,
@@ -108,10 +113,11 @@ def create_main_menu(game) -> Menu:
 
     quit_button = Button(
         "Quit",
+        game,
         State.EXIT,
         50,
         game.screen.get_width() // 2,
-        game.screen.get_height() * 0.65,
+        game.screen.get_height() * 0.75,
         WHITE,
         (136, 8, 8),
         BLACK,

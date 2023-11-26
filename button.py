@@ -1,15 +1,18 @@
 import pygame  # type: ignore
 
+from difficulty import Difficulty
+
 
 class Button:
     def __init__(
-        self, text, state, font_size, x, y, color, hover_color, text_color
+        self, text, game, state, font_size, x, y, color, hover_color, text_color
     ) -> None:
         # Text
         self.text = text
         self.font = pygame.font.Font(None, font_size)
         self.text_str = self.font.render(self.text, True, text_color)
 
+        self.game = game
         self.state = state
 
         # Position
@@ -23,7 +26,7 @@ class Button:
         self.hover_color = hover_color
 
     def draw(self, screen) -> None:
-        if self.hovered:
+        if self.hovered or self.is_selected_difficulty():
             pygame.draw.rect(screen, self.hover_color, self.rect)
         else:
             pygame.draw.rect(screen, self.color, self.rect)
@@ -32,5 +35,12 @@ class Button:
         screen.blit(self.text_str, text_rect.topleft)
 
     def is_hovered(self) -> None:
-        mouse_x, mouse_y = pygame.mouse.get_pos()
-        self.hovered = self.rect.collidepoint(mouse_x, mouse_y)
+        if self.state != None:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            self.hovered = self.rect.collidepoint(mouse_x, mouse_y)
+
+    def is_selected_difficulty(self) -> bool:
+        if self.state != None:
+            return self.state in Difficulty and self.game.difficulty == self.state
+        else:
+            return False
