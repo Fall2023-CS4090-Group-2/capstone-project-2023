@@ -2,6 +2,7 @@ import pygame  # type: ignore
 from typing import List
 
 from state import State
+from difficulty import Difficulty
 from button import Button
 
 WHITE = (255, 255, 255)
@@ -32,9 +33,12 @@ class Menu:
             # Left mouse click
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 for button in game.main_menu.buttons:
-                    if button.hovered and button.state in State:
+                    if button.hovered and button.state != None and button.state in State:
                         game.reset_game()
                         game.state = button.state
+                    elif button.hovered and button.state != None and button.state in Difficulty:
+                        game.difficulty = button.state
+
             elif (
                 event.type == pygame.KEYDOWN
                 and event.key == pygame.K_ESCAPE
@@ -63,6 +67,39 @@ def create_main_menu(game) -> Menu:
         State.RUNNING,
         50,
         game.screen.get_width() // 2,
+        game.screen.get_height() * 0.45,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
+
+    easy_button = Button(
+        "Easy",
+        Difficulty.EASY,
+        50,
+        game.screen.get_width() // 2 - 150,
+        game.screen.get_height() * 0.55,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
+
+    medium_button = Button(
+        "Medium",
+        Difficulty.MEDIUM,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.55,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
+
+    hard_button = Button(
+        "Hard",
+        Difficulty.HARD,
+        50,
+        game.screen.get_width() // 2 + 150,
         game.screen.get_height() * 0.55,
         WHITE,
         (136, 8, 8),
@@ -80,7 +117,7 @@ def create_main_menu(game) -> Menu:
         BLACK,
     )
 
-    return Menu(game, [title_button, play_button, quit_button])
+    return Menu(game, [title_button, play_button, easy_button, medium_button, hard_button, quit_button])
 
 
 def draw_pause_menu(game) -> None:
