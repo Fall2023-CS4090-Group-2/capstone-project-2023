@@ -130,6 +130,18 @@ def create_main_menu(game) -> Menu:
         BLACK,
     )
 
+    music_button = Button(
+        "Toggle Music",
+        game,
+        State.MAIN_MUSIC,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() // 2.2,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
+
     return Menu(
         game,
         [
@@ -139,6 +151,7 @@ def create_main_menu(game) -> Menu:
             medium_button,
             hard_button,
             quit_button,
+            music_button
         ],
     )
 
@@ -195,4 +208,16 @@ def create_pause_menu(game) -> Menu:
         BLACK,
     )
 
-    return Menu(game, [pause_button, resume_button, main_menu_button, quit_button])
+    music_button = Button(
+        "Toggle Music",
+        game,
+        State.PAUSE_MUSIC,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() // 2.75,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
+
+    return Menu(game, [pause_button, resume_button, main_menu_button, quit_button, music_button])

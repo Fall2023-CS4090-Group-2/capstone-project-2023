@@ -52,6 +52,7 @@ class Game:
         self.selected_question: Question = self.questions[0]
 
         # Sounds
+        self.music_playing = True
         self.bullet_sound = pygame.mixer.Sound(os.path.join('sounds', 'swoosh.wav'))
         self.hit_sound = pygame.mixer.Sound(os.path.join('sounds', 'hit_rock.wav'))
         self.correct_sound = pygame.mixer.Sound(os.path.join('sounds', 'correct.wav'))
@@ -73,6 +74,23 @@ class Game:
             self.pause_menu.handle_menu()
         elif self.state == State.MAIN_MENU:
             self.main_menu.handle_menu()
+        elif self.state == State.MAIN_MUSIC:
+            if self.music_playing == True:
+                pygame.mixer.music.pause()
+                self.music_playing = False
+            else:
+                pygame.mixer.music.unpause()
+                self.music_playing = True
+            self.state = State.MAIN_MENU
+        elif self.state == State.PAUSE_MUSIC:
+            if self.music_playing == True:
+                pygame.mixer.music.pause()
+                self.music_playing = False
+            else:
+                pygame.mixer.music.unpause()
+                self.music_playing = True
+            self.state = State.PAUSED
+
 
     def update(self) -> None:
         """
