@@ -16,6 +16,7 @@ from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_question
 
 TICK_RATE = 128
 PADDING = 10
+ENEMY_SPAWN_TIME = 4000
 
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
@@ -39,6 +40,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.score = 0
         self.health = 100
+        self.enemy_timer = 0
 
         # Game entities
         self.player: Player = Player(PADDING, screen_height // 2, "joeminer.png")
@@ -68,10 +70,12 @@ class Game:
         Update position of all entities
         """
         # Run no more than TICK_RATE frames per second
-        self.clock.tick(TICK_RATE)
+        self.enemy_timer += self.clock.tick(TICK_RATE)
 
         # Add some enemies
-        spawn_enemies(self)
+        if self.enemy_timer > ENEMY_SPAWN_TIME:
+            spawn_enemies(self)
+            self.enemy_timer = 0
 
         # Update enemy positions
         for enemy in self.enemies:
@@ -116,6 +120,7 @@ class Game:
         self.enemies = []
         self.bullets = []
         self.num_bullets = 50
+        self.enemy_timer = 0
 
         # Game entities
         self.player.rect.x, self.player.rect.y = PADDING, self.screen.get_height() // 2

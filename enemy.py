@@ -19,18 +19,16 @@ def spawn_enemies(game) -> None:
     """
     Spawn enemies
     """
-    # TODO: Find a better way of spawn enemies
-    if len(game.enemies) == 0:
-        for _ in range(enemy_stats[game.difficulty]["max_enemies"]):
-            spawn_x = game.screen.get_width() - random.randint(50, 200)
-            spawn_y = random.randint(50, game.screen.get_height() - 150)
+    for _ in range(enemy_stats[game.difficulty]["max_enemies"]):
+        spawn_x = game.screen.get_width() - random.randint(50, 200)
+        spawn_y = random.randint(50, game.screen.get_height() - 150)
 
-            enemy = Enemy(
-                spawn_x,
-                spawn_y,
-                "enemy.png",
-                enemy_stats[game.difficulty]["speed"],
-                enemy_stats[game.difficulty]["damage"],
-                enemy_stats[game.difficulty]["score"],
-            )
-            game.enemies.append(enemy)
+        enemy = Enemy(
+            spawn_x,
+            spawn_y,
+            "enemy.png",
+            enemy_stats[game.difficulty]["speed"],
+            enemy_stats[game.difficulty]["damage"],
+            enemy_stats[game.difficulty]["score"],
+        )
+        game.enemies.append(enemy)
