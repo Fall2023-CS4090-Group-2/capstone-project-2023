@@ -15,6 +15,7 @@ class Player(Entity):
         self.move_down = False
         self.move_up = False
         self.answer_mode = False
+        self.enemies_killed = 0
 
     def move(self, screen):
         """

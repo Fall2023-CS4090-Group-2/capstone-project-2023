@@ -6,7 +6,7 @@ from enemy import Enemy, spawn_enemies
 from bullet import Bullet
 from question import Question, load_questions
 
-from difficulty import Difficulty
+from difficulty import Difficulty, enemy_stats
 from state import State
 
 from menu import Menu, create_main_menu, draw_pause_menu
@@ -111,11 +111,12 @@ class Game:
         self.health = 100
         self.enemies = []
         self.bullets = []
-        self.num_bullets = 0
+        self.num_bullets = 50
 
         # Game entities
         self.player.rect.x, self.player.rect.y = PADDING, self.screen.get_height() // 2
         self.player.answer_mode = False
+        self.player.enemies_killed = 0
         self.questions = load_questions()
         self.selected_question = self.questions[0]
 
@@ -178,6 +179,7 @@ class Game:
             for bullet in self.bullets:
                 if enemy.rect.colliderect(bullet.rect):
                     self.score += enemy.score
+                    self.player.enemies_killed += 1
                     self.enemies.remove(enemy)
                     self.bullets.remove(bullet)
 
@@ -188,7 +190,9 @@ class Game:
                 self.health -= enemy.damage
             if self.health <= 0:
                 self.reset_game()
-                # self.state = State.EXIT
+
+        if self.player.enemies_killed >= enemy_stats[self.difficulty]["stop_condition"]:
+            self.reset_game()
 
     def answer_question(self, event) -> None:
         """
@@ -213,5 +217,6 @@ class Game:
                     self.answer = self.answer[:-1]
                 else:
                     self.answer += event.unicode
+
     def play_game(self) -> None:
         self.state = State.RUNNING
