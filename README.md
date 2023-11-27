@@ -2,14 +2,22 @@
 
 ![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/e34efb7d-b483-46e4-b833-8df645083b47)
 
-## Introduction
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<br/><center></center>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+## ⛏️: Introduction
 
 We developed Miner Quiz as a way for people to not only study content, but have fun doing so.  
 Our project seeks to add a fun and exciting game component to an otherwise ordinary and boring way of studying.  
 Miner Quiz is meant to be universal, meaning that all players are able to customize their gaming experience,  
 topic of study, difficulty, and many more!  
 
-## Getting Started
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<br/><center></center>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+## ⛏️: Getting Started
 
 **To begin your journey with Joe Miner, start a new game ...**  
 
@@ -17,17 +25,21 @@ topic of study, difficulty, and many more!
     
 2. Next, click `Play` and enjoy while you study!  
 
-## How to Play
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<br/><center></center>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-**Objective**  
+## ⛏️: How to Play
 
-Your goal is to survive as long as possible while destroying the approaching enemies by answering questions before you lose all of your health.  
+### Objective <a id="objective"/> 
 
-**Movement**  
+Your goal is to survive as long as possible while destroying the approaching boulders by answering questions before you lose all of your health.  
+
+### Movement <a id="movement"/>   
 
 Use either the `arrow` keys or the `WASD` keys to move Joe Miner around.  
 
-**Answering Questions**  
+### Answering Questions <a id="answeringquestions"/>     
 
 To answer the questions, press `enter` and you will see the `Answer` text at the bottom of the screen turn yellow    
 which indicates that you are now in Answer Mode and can begin typing your answer to any of the questions.    
@@ -35,22 +47,29 @@ When you are finished with your answer, press `enter` again to submit your answe
 
 Note - after answering you will be in Normal Mode and will need to press `enter` again to switch to Answer Mode.   
 
-**Shooting**  
+### Throwing <a id="throwing"/>    
 
-Joe Miner's main weapon is his pickaxe. Fire his pickaxe at the approaching enemies using the `space` bar.  
+Joe Miner's main weapon is his pickaxe. Fire his pickaxe at the approaching boulders using the `space` bar.  
 
-**Pause**  
+### Pause <a id="pause"/>    
 
 Press the `esc` key at any time to pause the game and weigh your options ...  
 
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<br/><center></center>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-## Additional Controls
+## ⛏️: Additional Controls
 
-**Toggle Music**
+### Toggle Music <a id="togglemusic"/>     
 
 Click the `Toggle Music` button to turn music on/off    
 
-## Project Structure
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<br/><center></center>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+## ⛏️: Project Structure
 
 `main.py` - Entrypoint into game. Can change screen resolution here
 
@@ -66,6 +85,16 @@ Click the `Toggle Music` button to turn music on/off
 
 `question.py` - Basic data structure for quesitons
 
-## TODO
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<br/><center></center>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+## ⛏️: TODO
 
 Current tasks and issues can be found [here](https://github.com/orgs/Fall2023-CS4090-Group-2/projects/1/views/1)
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<br/><center></center>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+# ⛏️: Thanks for playing!
