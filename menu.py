@@ -32,11 +32,18 @@ class Menu:
                 self.game.state = State.EXIT
             # Left mouse click
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                for button in self.game.main_menu.buttons:
-                    if button.hovered and button.state != None and button.state in State:
-                        self.game.reset_game()
+                for button in self.buttons:
+                    if (
+                        button.hovered
+                        and button.state != None
+                        and button.state in State
+                    ):
                         self.game.state = button.state
-                    elif button.hovered and button.state != None and button.state in Difficulty:
+                    elif (
+                        button.hovered
+                        and button.state != None
+                        and button.state in Difficulty
+                    ):
                         self.game.difficulty = button.state
 
             elif (
@@ -123,16 +130,69 @@ def create_main_menu(game) -> Menu:
         BLACK,
     )
 
-    return Menu(game, [title_button, play_button, easy_button, medium_button, hard_button, quit_button])
-
-
-def draw_pause_menu(game) -> None:
-    """
-    Draws pause screen
-    """
-    game.screen.blit(game.background, (0, 0))
-    pygame.draw.rect(game.screen, "white", [380, 150, 510, 50], 0, 10)
-    game.screen.blit(
-        game.font.render("Game Paused: Press Escape to Resume", True, "black"),
-        (400, 160),
+    return Menu(
+        game,
+        [
+            title_button,
+            play_button,
+            easy_button,
+            medium_button,
+            hard_button,
+            quit_button,
+        ],
     )
+
+
+def create_pause_menu(game) -> Menu:
+    """
+    Create Menu object for the pause menu
+    """
+    pause_button = Button(
+        "PAUSED: Press escape to resume",
+        game,
+        None,
+        75,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.45,
+        WHITE,
+        WHITE,
+        BLACK,
+    )
+
+    resume_button = Button(
+        "Resume game",
+        game,
+        State.RUNNING,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.55,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
+
+    main_menu_button = Button(
+        "Back to main menu",
+        game,
+        State.MAIN_MENU,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.65,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
+
+    quit_button = Button(
+        "Quit game",
+        game,
+        State.EXIT,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.75,
+        WHITE,
+        (136, 8, 8),
+        BLACK,
+    )
+
+    return Menu(game, [pause_button, resume_button, main_menu_button, quit_button])

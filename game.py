@@ -9,7 +9,7 @@ from question import Question, load_questions
 from difficulty import Difficulty, enemy_stats
 from state import State
 
-from menu import Menu, create_main_menu, draw_pause_menu
+from menu import Menu, create_main_menu, create_pause_menu
 from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_questions
 
 TICK_RATE = 128
@@ -48,6 +48,7 @@ class Game:
 
         # Menu's
         self.main_menu: Menu = create_main_menu(self)
+        self.pause_menu: Menu = create_pause_menu(self)
 
     def handle_inputs(self) -> None:
         """
@@ -56,7 +57,7 @@ class Game:
         if self.state == State.RUNNING:
             self.handle_running_input()
         elif self.state == State.PAUSED:
-            self.main_menu.handle_menu()
+            self.pause_menu.handle_menu()
         elif self.state == State.MAIN_MENU:
             self.main_menu.handle_menu()
 
@@ -94,9 +95,10 @@ class Game:
         if self.state == State.RUNNING:
             self.draw_running()
         elif self.state == State.PAUSED:
-            draw_pause_menu(self)
+            self.pause_menu.draw()
         elif self.state == State.MAIN_MENU:
             self.main_menu.draw()
+            self.reset_game()
 
         # Tell pygame update its screens
         pygame.display.update()
