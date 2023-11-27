@@ -7,7 +7,16 @@ from button import Button
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+GREEN = (18, 71, 52)
+GOLD = (209, 184, 136)
+HIGHLIGHT_GOLD = (219, 194, 146)
 
+PETRA = (172, 161, 153) # this color is darker then pebble
+PEBBLE = (214, 209, 202)
+
+TEXT_COLOR = BLACK
+HIGHLIGHT_COLOR = GREEN
+BACKGROUND_COLOR = GOLD
 
 class Menu:
     def __init__(self, game, buttons) -> None:
@@ -59,15 +68,15 @@ def create_main_menu(game) -> Menu:
     Create Menu object for the main menu
     """
     title_button = Button(
-        "Space Invaders",
+        "Miner Quiz",
         game,
         None,
         75,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.35,
-        WHITE,
-        WHITE,
-        BLACK,
+        BACKGROUND_COLOR,
+        BACKGROUND_COLOR,
+        TEXT_COLOR,
     )
 
     play_button = Button(
@@ -77,9 +86,9 @@ def create_main_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.55,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
     )
 
     easy_button = Button(
@@ -89,9 +98,9 @@ def create_main_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2 - 150,
         game.screen.get_height() * 0.65,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
     )
 
     medium_button = Button(
@@ -101,9 +110,9 @@ def create_main_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.65,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
     )
 
     hard_button = Button(
@@ -113,9 +122,11 @@ def create_main_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2 + 150,
         game.screen.get_height() * 0.65,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
+
     )
 
     quit_button = Button(
@@ -125,9 +136,9 @@ def create_main_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.75,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
     )
 
     return Menu(
@@ -154,9 +165,9 @@ def create_pause_menu(game) -> Menu:
         75,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.45,
-        WHITE,
-        WHITE,
-        BLACK,
+        BACKGROUND_COLOR,
+        BACKGROUND_COLOR,
+        TEXT_COLOR,
     )
 
     resume_button = Button(
@@ -166,9 +177,9 @@ def create_pause_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.55,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
     )
 
     main_menu_button = Button(
@@ -178,9 +189,9 @@ def create_pause_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.65,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
     )
 
     quit_button = Button(
@@ -190,9 +201,9 @@ def create_pause_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.75,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
     )
 
     return Menu(game, [pause_button, resume_button, main_menu_button, quit_button])
