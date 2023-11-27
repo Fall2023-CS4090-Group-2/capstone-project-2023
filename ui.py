@@ -1,3 +1,5 @@
+import pygame
+
 PADDING = 10
 
 WHITE = (255, 255, 255)
@@ -18,14 +20,14 @@ def draw_answer(game) -> None:
         (
             game.screen.get_width() / 4,
             game.screen.get_height() - game.font.get_height() - PADDING,
-        ),
+        ), 
     )
     game.screen.blit(
         game.font.render(game.answer, True, WHITE),
         (
             game.screen.get_width() / 4 + answer_str.get_width(),
             game.screen.get_height() - game.font.get_height() - PADDING,
-        ),
+        ), 
     )
 
 
@@ -39,8 +41,7 @@ def draw_bullets(game) -> None:
     game.screen.blit(
         bullet_str,
         (
-            bullet_str.get_width() * 3
-            + PADDING,  # Kind of scuffed position but its there
+            game.screen.get_width() / 5 + PADDING,  
             game.font.get_height() - PADDING,
         ),
     )
@@ -68,7 +69,7 @@ def draw_score(game) -> None:
     game.screen.blit(
         score_str,
         (
-            score_str.get_width() * 1.75 + PADDING,
+            game.screen.get_width() / 10 + PADDING,
             game.font.get_height() - PADDING,
         ),
     )
