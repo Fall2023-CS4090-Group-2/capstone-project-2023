@@ -24,7 +24,7 @@ Your goal is to survive as long as possible while destroying the approaching ene
 
 **Movement**  
 
-Use either the arrow keys or the WASD keys to move Joe Miner around.  
+Use either the `arrow` keys or the `WASD` keys to move Joe Miner around.  
 
 **Answering Questions**  
 
@@ -41,6 +41,13 @@ Joe Miner's main weapon is his pickaxe. Fire his pickaxe at the approaching enem
 **Pause**  
 
 Press the `esc` key at any time to pause the game and weigh your options ...  
+
+
+## Additional Controls
+
+**Toggle Music**
+
+Click the `Toggle Music` button to turn music on/off    
 
 ## Project Structure
 
