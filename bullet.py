@@ -3,7 +3,7 @@ from entity import Entity
 
 class Bullet(Entity):
     def __init__(self, x, y):
-        super().__init__(x, y, "./bullet.png")
+        super().__init__(x, y, "./pickaxe.png")
 
     def move(self):
         """
