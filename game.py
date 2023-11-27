@@ -57,6 +57,7 @@ class Game:
         self.hit_sound = pygame.mixer.Sound(os.path.join('sounds', 'hit_rock.wav'))
         self.correct_sound = pygame.mixer.Sound(os.path.join('sounds', 'correct.wav'))
         self.incorrect_sound = pygame.mixer.Sound(os.path.join('sounds', 'incorrect.wav'))
+        self.player_hit_sound = pygame.mixer.Sound(os.path.join('sounds', 'player_hit.wav'))
         self.music = pygame.mixer.music.load(os.path.join('sounds', 'sound_track.wav'))
         pygame.mixer.music.play(-1)
 
@@ -223,6 +224,7 @@ class Game:
         # Enemy hitting player
         for enemy in self.enemies:
             if enemy.rect.colliderect(self.player.rect):
+                pygame.mixer.Sound.play(self.player_hit_sound)
                 self.enemies.remove(enemy)
                 self.health -= enemy.damage
             if self.health <= 0:
