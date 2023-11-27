@@ -219,6 +219,3 @@ class Game:
                     self.answer = self.answer[:-1]
                 else:
                     self.answer += event.unicode
-
-    def play_game(self) -> None:
-        self.state = State.RUNNING
