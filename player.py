@@ -1,6 +1,7 @@
-import pygame
+import pygame  # type: ignore
 
 from entity import Entity
+from state import State
 
 MOVE_DISTANCE = 3
 
@@ -14,6 +15,7 @@ class Player(Entity):
         self.move_down = False
         self.move_up = False
         self.answer_mode = False
+        self.enemies_killed = 0
 
     def move(self, screen):
         """
@@ -42,13 +44,13 @@ class Player(Entity):
         if event.type == pygame.KEYDOWN:
             # Pause screen
             if event.key == pygame.K_ESCAPE:
-                game.paused = not game.paused
+                game.state = State.PAUSED
                 self.move_left = False
                 self.move_right = False
                 self.move_down = False
                 self.move_up = False
             # Move if not paused
-            if not game.paused:
+            if game.state == State.RUNNING:
                 if event.key in [pygame.K_LEFT, pygame.K_a, pygame.K_h]:
                     self.move_left = True
                 if event.key in [pygame.K_RIGHT, pygame.K_d, pygame.K_l]:

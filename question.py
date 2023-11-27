@@ -1,6 +1,7 @@
 from typing import List
 import json
 import os
+import random
 
 
 class Question:
@@ -32,4 +33,6 @@ def load_questions(directory_path="questions") -> List[Question]:
                         )
                 except json.JSONDecodeError as e:
                     print(f"Error loading {filename}: {e}")
+        # randomly shuffle the questions
+        random.shuffle(questions)
     return questions
