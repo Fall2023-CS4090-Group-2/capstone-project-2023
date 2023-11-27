@@ -11,7 +11,7 @@
 We developed Miner Quiz as a way for people to not only study content, but have fun doing so.  
 Our project seeks to add a fun and exciting game component to an otherwise ordinary and boring way of studying.  
 Miner Quiz is meant to be universal, meaning that all players are able to customize their gaming experience,  
-topic of study, difficulty, and many more!  
+topic of study, difficulty, and more!  
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
@@ -23,7 +23,7 @@ topic of study, difficulty, and many more!
 
 1. Select your `difficulty` on the main menu screen  
     
-2. Next, click `Play` and enjoy while you study!  
+2. Next, click `Play` and have fun while you study!  
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
@@ -33,7 +33,13 @@ topic of study, difficulty, and many more!
 
 ### Objective <a id="objective"/> 
 
-Your goal is to survive as long as possible while destroying the approaching boulders by answering questions before you lose all of your health.  
+Your goal is to obtain the highest possible score before you lose all of your health.     
+Boulders will move towards you at a speed determined by the difficulty you chose on the main menu screen.    
+Answer the questions on the right of the screen to receive bullets.   
+Move Joe Miner around to avoid the boulders or destroy them with your bullets to increase your score.    
+Your `Health` , `Score` , and `Bullets` are displayed at the top left of your screen.  
+
+![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/fdacc10d-deb3-4485-ac19-26de899af847)
 
 ### Movement <a id="movement"/>   
 
@@ -49,7 +55,7 @@ Note - after answering you will be in Normal Mode and will need to press `enter`
 
 ### Throwing <a id="throwing"/>    
 
-Joe Miner's main weapon is his pickaxe. Fire his pickaxe at the approaching boulders using the `space` bar.  
+Joe Miner's main weapon is his pickaxe. Throw his pickaxe at the approaching boulders using the `space` bar.  
 
 ### Pause <a id="pause"/>    
 
