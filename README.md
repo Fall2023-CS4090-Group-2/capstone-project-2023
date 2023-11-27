@@ -1,5 +1,6 @@
 # Space Invaders
 
+![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/8148b207-7117-4cf0-9df5-0b3ddac13b94)
 ## Introduction
 
 We developed Space Invaders as a way for people to not only study content, but have fun doing so.  
