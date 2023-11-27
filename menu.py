@@ -148,9 +148,9 @@ def create_main_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2,
         game.screen.get_height() // 2.2,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
     )
 
     return Menu(
@@ -214,9 +214,9 @@ def create_pause_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.85,
-        WHITE,
-        (136, 8, 8),
-        BLACK,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
     )
 
     music_button = Button(
