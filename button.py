@@ -5,7 +5,7 @@ from difficulty import Difficulty
 
 class Button:
     def __init__(
-        self, text, game, state, font_size, x, y, color, hover_color, text_color
+        self, text, game, state, font_size, x, y, color, hover_color, text_color, padding=10
     ) -> None:
         # Text
         self.text = text
@@ -17,7 +17,10 @@ class Button:
 
         # Position
         self.rect = pygame.Rect((0, 0), (0, 0))
+        self.padding = padding
         self.rect.width, self.rect.height = self.text_str.get_size()
+        self.rect.width += self.padding
+        self.rect.height += self.padding
         self.rect.center = (x, y)
 
         # Color
@@ -27,9 +30,10 @@ class Button:
 
     def draw(self, screen) -> None:
         if self.hovered or self.is_selected_difficulty():
-            pygame.draw.rect(screen, self.hover_color, self.rect)
+            pygame.draw.rect(screen, self.hover_color, self.rect, border_radius=5)
         else:
-            pygame.draw.rect(screen, self.color, self.rect)
+            if self.color != None:
+                pygame.draw.rect(screen, self.color, self.rect, border_radius=5)
 
         text_rect = self.text_str.get_rect(center=self.rect.center)
         screen.blit(self.text_str, text_rect.topleft)
