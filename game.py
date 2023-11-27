@@ -17,7 +17,7 @@ from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_question
 
 TICK_RATE = 128
 PADDING = 10
-ENEMY_SPAWN_TIME = 4000
+ENEMY_SPAWN_TIME = 3000
 
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
@@ -44,7 +44,7 @@ class Game:
         self.enemy_timer = 0
 
         # Game entities
-        self.player: Player = Player(PADDING, screen_height // 2, "joeminer.png")
+        self.player: Player = Player(screen_width // 2, screen_height // 2, "joeminer.png")
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
         self.num_bullets: int = 0
@@ -150,7 +150,7 @@ class Game:
         self.enemy_timer = 0
 
         # Game entities
-        self.player.rect.x, self.player.rect.y = PADDING, self.screen.get_height() // 2
+        self.player.rect.x, self.player.rect.y = self.screen.get_width() // 2, self.screen.get_height() // 2
         self.player.answer_mode = False
         self.player.enemies_killed = 0
         self.questions = load_questions()

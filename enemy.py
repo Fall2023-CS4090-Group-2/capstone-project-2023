@@ -14,7 +14,7 @@ class Enemy(Entity):
     def move(self) -> None:
         self.rect.x -= 1 * self.speed
 
-
+# TODO: Make enemies come from both directions
 def spawn_enemies(game) -> None:
     """
     Spawn enemies
