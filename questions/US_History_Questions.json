@@ -1,0 +1,402 @@
+[
+  {
+    "question": "Who was the main author of the Declaration of Independence?",
+    "options": ["Thomas Jefferson", "John Adams", "Benjamin Franklin", "George Washington"],
+    "answer": "Thomas Jefferson"
+  },
+  {
+    "question": "Which event marked the beginning of the Great Depression in the 1930s?",
+    "options": ["Stock Market Crash of 1929", "Prohibition", "Dust Bowl", "New Deal"],
+    "answer": "Stock Market Crash of 1929"
+  },
+  {
+    "question": "What was the main goal of the Lewis and Clark Expedition?",
+    "options": ["Establish trade routes", "Find the Northwest Passage", "Explore the Louisiana Purchase", "Reach the Pacific Ocean"],
+    "answer": "Explore the Louisiana Purchase"
+  },
+  {
+    "question": "Which U.S. president was responsible for the New Deal policies during the Great Depression?",
+    "options": ["Franklin D. Roosevelt", "Herbert Hoover", "Woodrow Wilson", "Calvin Coolidge"],
+    "answer": "Franklin D. Roosevelt"
+  },
+  {
+    "question": "What was the purpose of the Underground Railroad in the 19th century?",
+    "options": ["Illegal gambling", "Prohibition movement", "Anti-slavery network", "Transportation system"],
+    "answer": "Anti-slavery network"
+  },
+  {
+    "question": "Who is often called the 'Father of the Constitution'?",
+    "options": ["Alexander Hamilton", "Thomas Jefferson", "James Madison", "John Adams"],
+    "answer": "James Madison"
+  },
+  {
+    "question": "Which battle is considered the turning point of the American Revolution?",
+    "options": ["Battle of Saratoga", "Battle of Yorktown", "Battle of Bunker Hill", "Battle of Lexington and Concord"],
+    "answer": "Battle of Saratoga"
+  },
+  {
+    "question": "What was the purpose of the Manhattan Project during World War II?",
+    "options": ["Civil rights movement", "Space exploration", "Atomic bomb development", "Military intelligence"],
+    "answer": "Atomic bomb development"
+  },
+  {
+    "question": "Which landmark Supreme Court case ruled in favor of school desegregation?",
+    "options": ["Plessy v. Ferguson", "Brown v. Board of Education", "Roe v. Wade", "Gideon v. Wainwright"],
+    "answer": "Brown v. Board of Education"
+  },
+  {
+    "question": "What event marked the end of the American Revolution?",
+    "options": ["Treaty of Paris (1783)", "Battle of Yorktown", "Boston Tea Party", "Declaration of Independence"],
+    "answer": "Treaty of Paris (1783)"
+  },
+  {
+    "question": "Who was the first President of the United States?",
+    "options": ["Thomas Jefferson", "John Adams", "George Washington", "James Madison"],
+    "answer": "George Washington"
+  },
+  {
+    "question": "What document outlined the fundamental principles for the U.S. government?",
+    "options": ["Declaration of Independence", "Bill of Rights", "Emancipation Proclamation", "Constitution"],
+    "answer": "Constitution"
+  },
+  {
+    "question": "Which war was fought between the Northern and Southern states in the 1860s?",
+    "options": ["World War I", "Civil War", "Revolutionary War", "World War II"],
+    "answer": "Civil War"
+  },
+  {
+    "question": "Who is known for leading the Lewis and Clark Expedition?",
+    "options": ["Thomas Jefferson", "Meriwether Lewis", "William Clark", "Sacagawea"],
+    "answer": "Meriwether Lewis"
+  },
+  {
+    "question": "Which amendment abolished slavery in the United States?",
+    "options": ["13th Amendment", "14th Amendment", "15th Amendment", "16th Amendment"],
+    "answer": "13th Amendment"
+  },
+  {
+    "question": "What event led to the United States' entry into World War II?",
+    "options": ["Pearl Harbor", "D-Day", "Atomic Bombing of Hiroshima", "Battle of Midway"],
+    "answer": "Pearl Harbor"
+  },
+  {
+    "question": "Who delivered the famous 'I Have a Dream' speech during the Civil Rights March on Washington in 1963?",
+    "options": ["Malcolm X", "Martin Luther King Jr.", "John F. Kennedy", "Rosa Parks"],
+    "answer": "Martin Luther King Jr."
+  },
+  {
+    "question": "Which U.S. president signed the Emancipation Proclamation?",
+    "options": ["Abraham Lincoln", "Andrew Johnson", "Ulysses S. Grant", "James Buchanan"],
+    "answer": "Abraham Lincoln"
+  },
+  {
+    "question": "What is the significance of the 19th Amendment to the U.S. Constitution?",
+    "options": ["Right to Bear Arms", "Women's Suffrage", "Prohibition", "Voting Age"],
+    "answer": "Women's Suffrage"
+  },
+  {
+    "question": "Which Supreme Court case established the principle of judicial review?",
+    "options": ["Brown v. Board of Education", "Marbury v. Madison", "Dred Scott v. Sandford", "Roe v. Wade"],
+    "answer": "Marbury v. Madison"
+  },
+  {
+    "question": "Who delivered the Gettysburg Address during the Civil War?",
+    "options": ["Ulysses S. Grant", "Robert E. Lee", "Abraham Lincoln", "Jefferson Davis"],
+    "answer": "Abraham Lincoln"
+  },
+  {
+    "question": "Which amendment granted African American men the right to vote?",
+    "options": ["15th Amendment", "19th Amendment", "13th Amendment", "14th Amendment"],
+    "answer": "15th Amendment"
+  },
+  {
+    "question": "What event prompted the United States to enter World War I in 1917?",
+    "options": ["Lusitania sinking", "Zimmerman Telegram", "Pearl Harbor attack", "Assassination of Archduke Franz Ferdinand"],
+    "answer": "Zimmerman Telegram"
+  },
+  {
+    "question": "Who was the primary author of the Federalist Papers?",
+    "options": ["Thomas Jefferson", "Alexander Hamilton", "John Adams", "James Madison"],
+    "answer": "Alexander Hamilton"
+  },
+  {
+    "question": "What was the purpose of the Homestead Act of 1862?",
+    "options": ["Land conservation", "Women's suffrage", "Settling the West", "Abolition of slavery"],
+    "answer": "Settling the West"
+  },
+  {
+    "question": "Which U.S. president is associated with the Louisiana Purchase?",
+    "options": ["Thomas Jefferson", "James Monroe", "John Adams", "Andrew Jackson"],
+    "answer": "Thomas Jefferson"
+  },
+  {
+    "question": "What was the goal of the women's suffrage movement in the early 20th century?",
+    "options": ["Equal pay", "Reproductive rights", "Right to vote", "Education reform"],
+    "answer": "Right to vote"
+  },
+  {
+    "question": "Which event led to the start of the Korean War in 1950?",
+    "options": ["Pearl Harbor attack", "Gulf of Tonkin incident", "Invasion of South Korea", "Berlin Airlift"],
+    "answer": "Invasion of South Korea"
+  },
+  {
+    "question": "Who is known for the invention of the cotton gin in 1793?",
+    "options": ["Eli Whitney", "Thomas Edison", "Alexander Graham Bell", "Samuel Morse"],
+    "answer": "Eli Whitney"
+  },
+  {
+    "question": "What was the purpose of the Marshall Plan after World War II?",
+    "options": ["Rebuild European economies", "Containment of communism", "Humanitarian aid", "Civil rights reform"],
+    "answer": "Rebuild European economies"
+  },
+  {
+    "question": "Who was the commander-in-chief of the Continental Army during the American Revolution?",
+    "options": ["Thomas Jefferson", "John Adams", "George Washington", "Benjamin Franklin"],
+    "answer": "George Washington"
+  },
+  {
+    "question": "Which event led to the United States' acquisition of the Oregon Territory in 1846?",
+    "options": ["Mexican-American War", "Louisiana Purchase", "Gadsden Purchase", "Oregon Trail migration"],
+    "answer": "Oregon Trail migration"
+  },
+  {
+    "question": "Who was the chief justice of the Supreme Court known for establishing judicial review?",
+    "options": ["John Jay", "Roger B. Taney", "John Marshall", "Earl Warren"],
+    "answer": "John Marshall"
+  },
+  {
+    "question": "What was the primary cause of the Dust Bowl in the 1930s?",
+    "options": ["Industrial pollution", "Drought and soil erosion", "Nuclear testing", "Wildfires"],
+    "answer": "Drought and soil erosion"
+  },
+  {
+    "question": "Which U.S. president signed the Civil Rights Act of 1964 into law?",
+    "options": ["Lyndon B. Johnson", "John F. Kennedy", "Dwight D. Eisenhower", "Richard Nixon"],
+    "answer": "Lyndon B. Johnson"
+  },
+  {
+    "question": "What was the significance of the Louisiana Purchase in 1803?",
+    "options": ["Acquisition of Florida", "Doubling the size of the U.S.", "Annexation of Texas", "Opening trade with China"],
+    "answer": "Doubling the size of the U.S."
+  },
+  {
+    "question": "Which battle of the American Revolution was the first major American victory?",
+    "options": ["Battle of Saratoga", "Battle of Yorktown", "Battle of Lexington and Concord", "Battle of Bunker Hill"],
+    "answer": "Battle of Saratoga"
+  },
+  {
+    "question": "What was the goal of the Prohibition movement in the early 20th century?",
+    "options": ["Women's suffrage", "Abolition of slavery", "Temperance", "Prison reform"],
+    "answer": "Temperance"
+  },
+  {
+    "question": "Who was the leader of the American Civil Rights Movement and a key figure in the March on Washington?",
+    "options": ["Malcolm X", "Martin Luther King Jr.", "Rosa Parks", "W.E.B. Du Bois"],
+    "answer": "Martin Luther King Jr."
+  },
+  {
+    "question": "What was the purpose of the Lewis and Clark Expedition in the early 19th century?",
+    "options": ["Trade with Native Americans", "Exploration of the Louisiana Purchase", "Searching for gold", "Establishment of a transcontinental railroad"],
+    "answer": "Exploration of the Louisiana Purchase"
+  },
+  {
+    "question": "Who was the leader of the American colonies during the Revolutionary War?",
+    "options": ["John Adams", "Thomas Jefferson", "George Washington", "Benjamin Franklin"],
+    "answer": "George Washington"
+  },
+  {
+    "question": "What was the main cause of the California Gold Rush in 1849?",
+    "options": ["Discovery of gold in the Sierra Nevada", "Building of the transcontinental railroad", "Mexican-American War", "Discovery of silver in the Rockies"],
+    "answer": "Discovery of gold in the Sierra Nevada"
+  },
+  {
+    "question": "Which event marked the end of the Reconstruction era following the Civil War?",
+    "options": ["Emancipation Proclamation", "Plessy v. Ferguson decision", "Thirteenth Amendment", "Compromise of 1877"],
+    "answer": "Compromise of 1877"
+  },
+  {
+    "question": "Who was the key military leader of the Confederate forces during the Civil War?",
+    "options": ["Robert E. Lee", "Stonewall Jackson", "Jefferson Davis", "Ulysses S. Grant"],
+    "answer": "Robert E. Lee"
+  },
+  {
+    "question": "What was the primary cause of the Salem Witch Trials in 1692?",
+    "options": ["Religious conflicts", "Economic downturn", "Mass hysteria", "Political intrigue"],
+    "answer": "Mass hysteria"
+  },
+  {
+    "question": "Which U.S. president was known for his 'Square Deal' and progressive reforms?",
+    "options": ["Theodore Roosevelt", "Woodrow Wilson", "William Howard Taft", "Calvin Coolidge"],
+    "answer": "Theodore Roosevelt"
+  },
+  {
+    "question": "What was the significance of the Monroe Doctrine in 1823?",
+    "options": ["Manifest Destiny", "Anti-slavery movement", "Anti-imperialism", "Preventing European intervention in the Americas"],
+    "answer": "Preventing European intervention in the Americas"
+  },
+  {
+    "question": "Which U.S. state was the first to secede from the Union before the Civil War?",
+    "options": ["Virginia", "South Carolina", "Georgia", "Mississippi"],
+    "answer": "South Carolina"
+  },
+  {
+    "question": "What event is commonly considered the beginning of the Great Depression in 1929?",
+    "options": ["Stock Market Crash", "Prohibition", "Dust Bowl", "Bank Failures"],
+    "answer": "Stock Market Crash"
+  },
+  {
+    "question": "Who was the primary author of the Bill of Rights?",
+    "options": ["Alexander Hamilton", "James Madison", "Thomas Jefferson", "John Adams"],
+    "answer": "James Madison"
+  },
+  {
+    "question": "Who served as the president of the Confederate States of America during the Civil War?",
+    "options": ["Robert E. Lee", "Jefferson Davis", "Stonewall Jackson", "Ulysses S. Grant"],
+    "answer": "Jefferson Davis"
+  },
+  {
+    "question": "What was the primary goal of the Civil Rights Act of 1964?",
+    "options": ["End segregation in public places", "Establish affirmative action", "Grant voting rights to women", "Abolish slavery"],
+    "answer": "End segregation in public places"
+  },
+  {
+    "question": "Which U.S. president declared the policy of 'Vietnamization' during the Vietnam War?",
+    "options": ["John F. Kennedy", "Lyndon B. Johnson", "Richard Nixon", "Dwight D. Eisenhower"],
+    "answer": "Richard Nixon"
+  },
+  {
+    "question": "What event led to the U.S. entry into World War II?",
+    "options": ["Pearl Harbor attack", "Lend-Lease Act", "German invasion of Poland", "D-Day"],
+    "answer": "Pearl Harbor attack"
+  },
+  {
+    "question": "Who was the leader of the American civil rights organization, the Southern Christian Leadership Conference (SCLC)?",
+    "options": ["Malcolm X", "Ella Baker", "Rosa Parks", "Martin Luther King Jr."],
+    "answer": "Martin Luther King Jr."
+  },
+  {
+    "question": "What was the purpose of the 26th Amendment, ratified in 1971?",
+    "options": ["Establish the right to bear arms", "Lower the voting age to 18", "Prohibit poll taxes", "Outlaw slavery"],
+    "answer": "Lower the voting age to 18"
+  },
+  {
+    "question": "Which U.S. president is known for implementing the New Deal to address the economic challenges of the Great Depression?",
+    "options": ["Herbert Hoover", "Franklin D. Roosevelt", "Calvin Coolidge", "Harry S. Truman"],
+    "answer": "Franklin D. Roosevelt"
+  },
+  {
+    "question": "What was the primary focus of the Seneca Falls Convention in 1848?",
+    "options": ["Labor rights", "Women's suffrage", "Abolition of slavery", "Native American rights"],
+    "answer": "Women's suffrage"
+  },
+  {
+    "question": "Which U.S. president is associated with the policy of 'détente' during the Cold War?",
+    "options": ["Ronald Reagan", "John F. Kennedy", "Richard Nixon", "Dwight D. Eisenhower"],
+    "answer": "Richard Nixon"
+  },
+  {
+    "question": "What was the purpose of the Dawes Act of 1887?",
+    "options": ["Promote Native American assimilation", "Provide reparations for slavery", "Establish civil rights protections", "End child labor"],
+    "answer": "Promote Native American assimilation"
+  },
+  {
+    "question": "Who was the primary author of the Emancipation Proclamation during the Civil War?",
+    "options": ["Ulysses S. Grant", "Andrew Johnson", "Abraham Lincoln", "Robert E. Lee"],
+    "answer": "Abraham Lincoln"
+  },
+  {
+    "question": "What was the purpose of the Sherman Antitrust Act of 1890?",
+    "options": ["Promote fair competition", "Regulate labor unions", "Establish the Federal Reserve", "Expand executive power"],
+    "answer": "Promote fair competition"
+  },
+  {
+    "question": "Which U.S. state was the first to ratify the Constitution?",
+    "options": ["Virginia", "Delaware", "Massachusetts", "New York"],
+    "answer": "Delaware"
+  },
+  {
+    "question": "What event is often considered the beginning of the American Revolutionary War?",
+    "options": ["Boston Tea Party", "Battle of Saratoga", "Lexington and Concord", "Treaty of Paris (1783)"],
+    "answer": "Lexington and Concord"
+  },
+  {
+    "question": "Who was the primary author of the Federalist Papers?",
+    "options": ["Alexander Hamilton", "James Madison", "John Jay", "Thomas Jefferson"],
+    "answer": "James Madison"
+  },
+  {
+    "question": "What was the purpose of the Freedmen's Bureau during the Reconstruction era?",
+    "options": ["Assist newly freed slaves", "Promote westward expansion", "Build infrastructure", "Regulate trade"],
+    "answer": "Assist newly freed slaves"
+  },
+  {
+    "question": "Which U.S. president ordered the dropping of atomic bombs on Hiroshima and Nagasaki during World War II?",
+    "options": ["Harry S. Truman", "Franklin D. Roosevelt", "Dwight D. Eisenhower", "John F. Kennedy"],
+    "answer": "Harry S. Truman"
+  },
+  {
+    "question": "What was the purpose of the Land Ordinance of 1785?",
+    "options": ["Establish a national bank", "Organize western territories", "Abolish slavery", "Create a standing army"],
+    "answer": "Organize western territories"
+  },
+  {
+    "question": "Which U.S. president is associated with the 'Great Society' programs in the 1960s?",
+    "options": ["Lyndon B. Johnson", "John F. Kennedy", "Richard Nixon", "Dwight D. Eisenhower"],
+    "answer": "Lyndon B. Johnson"
+  },
+  {
+    "question": "What was the main objective of the Progressive Era reform known as the Pure Food and Drug Act?",
+    "options": ["Regulate child labor", "Ensure food safety", "Promote women's suffrage", "Regulate the stock market"],
+    "answer": "Ensure food safety"
+  },
+  {
+    "question": "Who was the commander of the U.S. forces during the Korean War?",
+    "options": ["Douglas MacArthur", "Dwight D. Eisenhower", "George Patton", "Omar Bradley"],
+    "answer": "Douglas MacArthur"
+  },
+  {
+    "question": "What was the main purpose of the Homestead Act of 1862?",
+    "options": ["Abolish slavery", "Promote westward expansion", "Establish women's suffrage", "Regulate labor unions"],
+    "answer": "Promote westward expansion"
+  },
+  {
+    "question": "Which event marked the beginning of the Space Race between the United States and the Soviet Union?",
+    "options": ["Apollo 11 Moon landing", "Sputnik 1 launch", "Yuri Gagarin's spaceflight", "Mercury-Redstone 3 mission"],
+    "answer": "Sputnik 1 launch"
+  },
+  {
+    "question": "Who was the first Chief Justice of the United States Supreme Court?",
+    "options": ["John Jay", "John Marshall", "Roger B. Taney", "Earl Warren"],
+    "answer": "John Jay"
+  },
+  {
+    "question": "What was the purpose of the 17th Amendment, ratified in 1913?",
+    "options": ["Establish the income tax", "Prohibition of alcohol", "Direct election of senators", "Women's suffrage"],
+    "answer": "Direct election of senators"
+  },
+  {
+    "question": "Which U.S. president implemented the New Deal policies during the Great Depression?",
+    "options": ["Herbert Hoover", "Franklin D. Roosevelt", "Calvin Coolidge", "Harry S. Truman"],
+    "answer": "Franklin D. Roosevelt"
+  },
+  {
+    "question": "What was the main outcome of the Battle of Gettysburg during the Civil War?",
+    "options": ["Confederate victory", "Union victory", "Stalemate", "British intervention"],
+    "answer": "Union victory"
+  },
+  {
+    "question": "Which U.S. president signed the Civil Rights Act of 1964 into law?",
+    "options": ["John F. Kennedy", "Lyndon B. Johnson", "Richard Nixon", "Dwight D. Eisenhower"],
+    "answer": "Lyndon B. Johnson"
+  },
+  {
+    "question": "What event led to the U.S. entry into World War I?",
+    "options": ["Zimmerman Telegram", "Pearl Harbor attack", "Lusitania sinking", "Treaty of Versailles"],
+    "answer": "Zimmerman Telegram"
+  },
+  {
+    "question": "Who was the primary author of the U.S. Constitution?",
+    "options": ["Thomas Jefferson", "John Adams", "James Madison", "Alexander Hamilton"],
+    "answer": "James Madison"
+  }
+]

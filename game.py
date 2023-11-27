@@ -6,11 +6,13 @@ from enemy import Enemy, spawn_enemies
 from bullet import Bullet
 from question import Question, load_questions
 
+
 from difficulty import Difficulty, enemy_stats
 from state import State
 
 from menu import Menu, create_main_menu, create_pause_menu
 from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_questions
+
 
 TICK_RATE = 128
 PADDING = 10
@@ -196,6 +198,7 @@ class Game:
         if self.player.enemies_killed >= enemy_stats[self.difficulty]["stop_condition"]:
             self.reset_game()
 
+
     def answer_question(self, event) -> None:
         """
         Handles answering a question
@@ -219,3 +222,4 @@ class Game:
                     self.answer = self.answer[:-1]
                 else:
                     self.answer += event.unicode
+

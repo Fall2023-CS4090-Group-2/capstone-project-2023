@@ -1,0 +1,367 @@
+[
+  {
+    "question": "What is the capital of Canada?",
+    "options": ["Ottawa", "Toronto", "Vancouver", "Montreal"],
+    "answer": "Ottawa"
+  },
+  {
+    "question": "Identify the capital of South Korea.",
+    "options": ["Seoul", "Tokyo", "Beijing", "Bangkok"],
+    "answer": "Seoul"
+  },
+  {
+    "question": "Which city serves as the capital of Mexico?",
+    "options": ["Mexico City", "Guadalajara", "Monterrey", "Cancun"],
+    "answer": "Mexico City"
+  },
+  {
+    "question": "What is the capital of Nigeria?",
+    "options": ["Lagos", "Abuja", "Kano", "Ibadan"],
+    "answer": "Abuja"
+  },
+  {
+    "question": "Can you name the capital of Argentina?",
+    "options": ["Buenos Aires", "Santiago", "Lima", "Brasilia"],
+    "answer": "Buenos Aires"
+  },
+  {
+    "question": "Identify the capital of Saudi Arabia.",
+    "options": ["Riyadh", "Jeddah", "Mecca", "Medina"],
+    "answer": "Riyadh"
+  },
+  {
+    "question": "What city is the capital of Thailand?",
+    "options": ["Bangkok", "Phuket", "Chiang Mai", "Pattaya"],
+    "answer": "Bangkok"
+  },
+  {
+    "question": "Which country's capital is Oslo?",
+    "options": ["Denmark", "Finland", "Norway", "Sweden"],
+    "answer": "Norway"
+  },
+  {
+    "question": "Tell me the capital of Australia.",
+    "options": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+    "answer": "Canberra"
+  },
+  {
+    "question": "What is the capital of South Africa?",
+    "options": ["Cape Town", "Johannesburg", "Durban", "Pretoria"],
+    "answer": "Pretoria"
+  },
+  {
+    "question": "What is the capital of California?",
+    "options": ["Los Angeles", "San Francisco", "Sacramento", "San Diego"],
+    "answer": "Sacramento"
+  },
+  {
+    "question": "Identify the capital of Texas.",
+    "options": ["Dallas", "Houston", "Austin", "San Antonio"],
+    "answer": "Austin"
+  },
+  {
+    "question": "Which city serves as the capital of Florida?",
+    "options": ["Miami", "Tallahassee", "Orlando", "Jacksonville"],
+    "answer": "Tallahassee"
+  },
+  {
+    "question": "What is the capital of New York?",
+    "options": ["Buffalo", "New York City", "Albany", "Rochester"],
+    "answer": "Albany"
+  },
+  {
+    "question": "Can you name the capital of Illinois?",
+    "options": ["Chicago", "Springfield", "Peoria", "Rockford"],
+    "answer": "Springfield"
+  },
+  {
+    "question": "Identify the capital of Colorado.",
+    "options": ["Denver", "Colorado Springs", "Aurora", "Boulder"],
+    "answer": "Denver"
+  },
+  {
+    "question": "What city is the capital of Pennsylvania?",
+    "options": ["Pittsburgh", "Harrisburg", "Philadelphia", "Allentown"],
+    "answer": "Harrisburg"
+  },
+  {
+    "question": "Which state's capital is Nashville?",
+    "options": ["Texas", "Tennessee", "Georgia", "Kentucky"],
+    "answer": "Tennessee"
+  },
+  {
+    "question": "Tell me the capital of Ohio.",
+    "options": ["Cincinnati", "Columbus", "Cleveland", "Dayton"],
+    "answer": "Columbus"
+  },
+  {
+    "question": "What is the capital of Arizona?",
+    "options": ["Phoenix", "Tucson", "Mesa", "Scottsdale"],
+    "answer": "Phoenix"
+  },
+  {
+    "question": "What is the capital of Georgia?",
+    "options": ["Atlanta", "Savannah", "Augusta", "Athens"],
+    "answer": "Atlanta"
+  },
+  {
+    "question": "Identify the capital of Michigan.",
+    "options": ["Detroit", "Grand Rapids", "Lansing", "Ann Arbor"],
+    "answer": "Lansing"
+  },
+  {
+    "question": "Which city serves as the capital of North Carolina?",
+    "options": ["Charlotte", "Raleigh", "Durham", "Greensboro"],
+    "answer": "Raleigh"
+  },
+  {
+    "question": "What is the capital of Washington?",
+    "options": ["Seattle", "Tacoma", "Olympia", "Spokane"],
+    "answer": "Olympia"
+  },
+  {
+    "question": "Can you name the capital of Massachusetts?",
+    "options": ["Boston", "Cambridge", "Worcester", "Springfield"],
+    "answer": "Boston"
+  },
+  {
+    "question": "Identify the capital of Virginia.",
+    "options": ["Richmond", "Virginia Beach", "Norfolk", "Arlington"],
+    "answer": "Richmond"
+  },
+  {
+    "question": "What city is the capital of Texas?",
+    "options": ["Dallas", "Houston", "Austin", "San Antonio"],
+    "answer": "Austin"
+  },
+  {
+    "question": "Which state's capital is Baton Rouge?",
+    "options": ["Mississippi", "Alabama", "Louisiana", "Arkansas"],
+    "answer": "Louisiana"
+  },
+  {
+    "question": "Tell me the capital of Wisconsin.",
+    "options": ["Milwaukee", "Madison", "Green Bay", "Kenosha"],
+    "answer": "Madison"
+  },
+  {
+    "question": "What is the capital of Minnesota?",
+    "options": ["Minneapolis", "Saint Paul", "Duluth", "Rochester"],
+    "answer": "Saint Paul"
+  },
+  {
+    "question": "What is the capital of Oregon?",
+    "options": ["Portland", "Salem", "Eugene", "Medford"],
+    "answer": "Salem"
+  },
+  {
+    "question": "Identify the capital of New Jersey.",
+    "options": ["Newark", "Jersey City", "Trenton", "Atlantic City"],
+    "answer": "Trenton"
+  },
+  {
+    "question": "Which city serves as the capital of Maryland?",
+    "options": ["Baltimore", "Annapolis", "Rockville", "Silver Spring"],
+    "answer": "Annapolis"
+  },
+  {
+    "question": "What is the capital of Utah?",
+    "options": ["Salt Lake City", "Provo", "Ogden", "St. George"],
+    "answer": "Salt Lake City"
+  },
+  {
+    "question": "Can you name the capital of Missouri?",
+    "options": ["Jefferson City", "Rolla", "Springfield", "Joplin"],
+    "answer": "Jefferson City"
+  },
+  {
+    "question": "Identify the capital of Kentucky.",
+    "options": ["Lexington", "Louisville", "Bowling Green", "Frankfort"],
+    "answer": "Frankfort"
+  },
+  {
+    "question": "What city is the capital of New Mexico?",
+    "options": ["Albuquerque", "Santa Fe", "Las Cruces", "Roswell"],
+    "answer": "Santa Fe"
+  },
+  {
+    "question": "Which state's capital is Carson City?",
+    "options": ["Nevada", "Idaho", "New Mexico", "Arizona"],
+    "answer": "Nevada"
+  },
+  {
+    "question": "Tell me the capital of Iowa.",
+    "options": ["Des Moines", "Cedar Rapids", "Davenport", "Sioux City"],
+    "answer": "Des Moines"
+  },
+  {
+    "question": "What is the capital of Nebraska?",
+    "options": ["Omaha", "Lincoln", "Grand Island", "Bellevue"],
+    "answer": "Lincoln"
+  },
+  {
+    "question": "What is the capital of South Carolina?",
+    "options": ["Columbia", "Charleston", "Greenville", "Myrtle Beach"],
+    "answer": "Columbia"
+  },
+  {
+    "question": "Identify the capital of Maine.",
+    "options": ["Portland", "Augusta", "Bangor", "Lewiston"],
+    "answer": "Augusta"
+  },
+  {
+    "question": "Which city serves as the capital of Oklahoma?",
+    "options": ["Tulsa", "Oklahoma City", "Norman", "Edmond"],
+    "answer": "Oklahoma City"
+  },
+  {
+    "question": "What is the capital of Connecticut?",
+    "options": ["Bridgeport", "Hartford", "New Haven", "Stamford"],
+    "answer": "Hartford"
+  },
+  {
+    "question": "Can you name the capital of Montana?",
+    "options": ["Billings", "Missoula", "Helena", "Bozeman"],
+    "answer": "Helena"
+  },
+  {
+    "question": "Identify the capital of Rhode Island.",
+    "options": ["Providence", "Warwick", "Cranston", "Pawtucket"],
+    "answer": "Providence"
+  },
+  {
+    "question": "What city is the capital of Delaware?",
+    "options": ["Wilmington", "Dover", "Newark", "Rehoboth Beach"],
+    "answer": "Dover"
+  },
+  {
+    "question": "Which state's capital is Phoenix?",
+    "options": ["Nevada", "Arizona", "New Mexico", "Utah"],
+    "answer": "Arizona"
+  },
+  {
+    "question": "Tell me the capital of Mississippi.",
+    "options": ["Jackson", "Gulfport", "Biloxi", "Hattiesburg"],
+    "answer": "Jackson"
+  },
+  {
+    "question": "What is the capital of North Dakota?",
+    "options": ["Fargo", "Bismarck", "Grand Forks", "Minot"],
+    "answer": "Bismarck"
+  },
+  {
+    "question": "What is the capital of Hawaii?",
+    "options": ["Honolulu", "Maui", "Kauai", "Oahu"],
+    "answer": "Honolulu"
+  },
+  {
+    "question": "Identify the capital of Alabama.",
+    "options": ["Birmingham", "Huntsville", "Montgomery", "Mobile"],
+    "answer": "Montgomery"
+  },
+  {
+    "question": "Which city serves as the capital of Vermont?",
+    "options": ["Burlington", "Montpelier", "Rutland", "Brattleboro"],
+    "answer": "Montpelier"
+  },
+  {
+    "question": "What is the capital of Nevada?",
+    "options": ["Las Vegas", "Reno", "Henderson", "Carson City"],
+    "answer": "Carson City"
+  },
+  {
+    "question": "Can you name the capital of South Dakota?",
+    "options": ["Sioux Falls", "Rapid City", "Aberdeen", "Pierre"],
+    "answer": "Pierre"
+  },
+  {
+    "question": "Identify the capital of Wyoming.",
+    "options": ["Cheyenne", "Casper", "Laramie", "Gillette"],
+    "answer": "Cheyenne"
+  },
+  {
+    "question": "What city is the capital of Indiana?",
+    "options": ["Indianapolis", "Fort Wayne", "Evansville", "South Bend"],
+    "answer": "Indianapolis"
+  },
+  {
+    "question": "Which state's capital is Augusta?",
+    "options": ["Maine", "Vermont", "New Hampshire", "Georgia"],
+    "answer": "Maine"
+  },
+  {
+    "question": "Tell me the capital of West Virginia.",
+    "options": ["Charleston", "Huntington", "Morgantown", "Wheeling"],
+    "answer": "Charleston"
+  },
+  {
+    "question": "What is the capital of Kentucky?",
+    "options": ["Lexington", "Louisville", "Bowling Green", "Frankfort"],
+    "answer": "Frankfort"
+  },
+  {
+    "question": "What is the capital of Turkey?",
+    "options": ["Istanbul", "Ankara", "Izmir", "Antalya"],
+    "answer": "Ankara"
+  },
+  {
+    "question": "Which city serves as the capital of Spain?",
+    "options": ["Berlin", "Paris", "Madrid", "Rome"],
+    "answer": "Madrid"
+  },
+  {
+    "question": "What is the capital of India?",
+    "options": ["Mumbai", "Delhi", "Kolkata", "Bangalore"],
+    "answer": "Delhi"
+  },
+  {
+    "question": "Identify the capital of Argentina.",
+    "options": ["Buenos Aires", "Santiago", "Lima", "Brasilia"],
+    "answer": "Buenos Aires"
+  },
+  {
+    "question": "Which country's capital is Cairo?",
+    "options": ["Riyadh", "Cairo", "Amman", "Kuwait City"],
+    "answer": "Cairo"
+  },
+  {
+    "question": "What is the capital of Germany?",
+    "options": ["Berlin", "Hamburg", "Munich", "Cologne"],
+    "answer": "Berlin"
+  },
+  {
+    "question": "Which country's capital is Dublin?",
+    "options": ["Dublin", "Edinburgh", "Cardiff", "Belfast"],
+    "answer": "Ireland"
+  },
+  {
+    "question": "What is the capital of Iran?",
+    "options": ["Tehran", "Isfahan", "Shiraz", "Tabriz"],
+    "answer": "Tehran"
+  },
+  {
+    "question": "What is the capital of Indonesia?",
+    "options": ["Jakarta", "Bandung", "Surabaya", "Medan"],
+    "answer": "Jakarta"
+  },
+  {
+    "question": "Can you name the capital of Greece?",
+    "options": ["Athens", "Thessaloniki", "Heraklion", "Patras"],
+    "answer": "Athens"
+  },
+  {
+    "question": "Identify the capital of Peru.",
+    "options": ["Lima", "Cusco", "Arequipa", "Trujillo"],
+    "answer": "Lima"
+  },
+  {
+    "question": "Tell me the capital of Morocco.",
+    "options": ["Rabat", "Casablanca", "Marrakech", "Fez"],
+    "answer": "Rabat"
+  },
+  {
+    "question": "What is the capital of Vietnam?",
+    "options": ["Hanoi", "Ho Chi Minh City", "Hai Phong", "Da Nang"],
+    "answer": "Hanoi"
+  }
+]
