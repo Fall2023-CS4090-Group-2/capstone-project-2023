@@ -31,7 +31,7 @@ class Button(GO.GameObject):
     buttonSurfaceDictionary: dict[int, pygame.Surface]
     
     
-    def __init__(self, x: int, y: int, fontConfig: FC.FontConfig, buttonText: str = 'Button', onClickFunction = lambda: print("Default Button Function"), parameters: list[object] = None, padding=10):
+    def __init__(self, x: int, y: int, fontConfig: FC.FontConfig, buttonText: str = 'Button', onClickFunction = lambda: print("Default Button Function"), parameters: list[object] = None, padding=5):
         self.x = x
         self.y = y
         self.fontConfig = fontConfig 
@@ -49,11 +49,12 @@ class Button(GO.GameObject):
         self.height = self.fontObject.size(self.buttonText)[1]
     
     def draw(self, screen) -> None:
-        newSurface: pygame.Surface = self.fontObject.render(self.buttonText, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[ButtonState.normal.value])
-        pygame.draw.rect(newSurface, self.fontConfig.backgroundColors[self.state.value], pygame.Rect(0, 0, self.width + self.padding, self.height + self.padding))
-
-        updatedRect = screen.blit(self.buttonSurfaceDictionary[self.state.value], (self.x, self.y))
-        pygame.display.update(newSurface)
+        newSurface:pygame.Surface = pygame.Surface((self.width + (2 * self.padding), self.height + (2 * self.padding)))
+        pygame.draw.rect(newSurface, self.fontConfig.backgroundColors[self.state.value], pygame.Rect(0, 0, self.width + self.padding + self.padding, self.height + self.padding + self.padding))
+        newSurface.blit(self.fontObject.render(self.buttonText, True, self.fontConfig.textColor, self.fontConfig.backgroundColors[self.state.value]), (self.padding, self.padding))
+        
+        updatedRect = screen.blit(newSurface, (self.x, self.y))
+        pygame.display.update(updatedRect)
     
     # returns true if this button is selected
     def processMouseMovement(self, screen) -> bool:
