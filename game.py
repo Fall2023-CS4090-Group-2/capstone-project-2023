@@ -32,7 +32,7 @@ class Game:
             (screen_width, screen_height)
         )
         self.font = pygame.font.Font("freesansbold.ttf", 16)
-        self.background = pygame.image.load("background.jpg")
+        self.background = pygame.image.load("background.png")
 
         # Game data
         self.state: State = State.MAIN_MENU
