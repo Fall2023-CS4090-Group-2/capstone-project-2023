@@ -11,9 +11,9 @@ topic of study, difficulty, and many more!
 
 **To begin your journey through space, create a new game ...**  
 
-    1. Select your `difficulty` on the main menu screen  
+1. Select your `difficulty` on the main menu screen  
     
-    2. Next, click `Play` and enjoy while you study!  
+2. Next, click `Play` and enjoy while you study!  
 
 ## How to Play
 
