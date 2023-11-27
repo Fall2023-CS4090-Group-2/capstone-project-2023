@@ -1,16 +1,17 @@
-# Space Invaders
+# Miner Quiz
 
-![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/8148b207-7117-4cf0-9df5-0b3ddac13b94)
+![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/e34efb7d-b483-46e4-b833-8df645083b47)
+
 ## Introduction
 
-We developed Space Invaders as a way for people to not only study content, but have fun doing so.  
+We developed Miner Quiz as a way for people to not only study content, but have fun doing so.  
 Our project seeks to add a fun and exciting game component to an otherwise ordinary and boring way of studying.  
-Space Invaders is meant to be universal, meaning that all players are able to customize their gaming experience,  
+Miner Quiz is meant to be universal, meaning that all players are able to customize their gaming experience,  
 topic of study, difficulty, and many more!  
 
 ## Getting Started
 
-**To begin your journey through space, create a new game ...**  
+**To begin your journey with Joe Miner, start a new game ...**  
 
 1. Select your `difficulty` on the main menu screen  
     
