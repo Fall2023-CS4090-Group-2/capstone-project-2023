@@ -3,6 +3,7 @@ from game import Game, State
 
 # Start pygame
 pygame.init()
+pygame.mixer.init()
 
 # Game window demensions 
 SCREEN_WIDTH, SCREEN_HEIGHT = 1920, 1080

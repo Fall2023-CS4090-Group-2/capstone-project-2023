@@ -1,4 +1,5 @@
 import pygame  # type: ignore
+import os
 from typing import List
 
 from player import Player
@@ -49,6 +50,14 @@ class Game:
         self.num_bullets: int = 0
         self.questions: List[Question] = load_questions()
         self.selected_question: Question = self.questions[0]
+
+        # Sounds
+        self.bullet_sound = pygame.mixer.Sound(os.path.join('sounds', 'swoosh.wav'))
+        self.hit_sound = pygame.mixer.Sound(os.path.join('sounds', 'hit_rock.wav'))
+        self.correct_sound = pygame.mixer.Sound(os.path.join('sounds', 'correct.wav'))
+        self.incorrect_sound = pygame.mixer.Sound(os.path.join('sounds', 'incorrect.wav'))
+        self.music = pygame.mixer.music.load(os.path.join('sounds', 'sound_track.wav'))
+        pygame.mixer.music.play(-1)
 
         # Menu's
         self.main_menu: Menu = create_main_menu(self)
@@ -147,6 +156,7 @@ class Game:
             # Bullet movement input
             if event.type == pygame.KEYDOWN and not self.player.answer_mode:
                 if event.key == pygame.K_SPACE and self.num_bullets > 0:
+                    pygame.mixer.Sound.play(self.bullet_sound)
                     self.bullets.append(
                         Bullet(
                             self.player.rect.x + PADDING,
@@ -187,6 +197,7 @@ class Game:
         for enemy in self.enemies:
             for bullet in self.bullets:
                 if enemy.rect.colliderect(bullet.rect):
+                    pygame.mixer.Sound.play(self.hit_sound)
                     self.score += enemy.score
                     self.player.enemies_killed += 1
                     self.enemies.remove(enemy)
@@ -217,10 +228,13 @@ class Game:
             if self.state != State.PAUSED:
                 if event.key == pygame.K_RETURN:
                     if self.selected_question.is_correct(self.answer.strip()):
+                        pygame.mixer.Sound.play(self.correct_sound)
                         self.questions.remove(self.selected_question)
                         self.num_bullets += 1
                         if len(self.questions) > 0:
                             self.selected_question = self.questions[0]
+                    else:
+                        pygame.mixer.Sound.play(self.incorrect_sound)
                     self.answer = ""
                     self.player.answer_mode = False
                 elif event.key == pygame.K_BACKSPACE:
