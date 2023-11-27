@@ -206,7 +206,7 @@ class Game:
             # Don't allow answering if paused
             if self.state != State.PAUSED:
                 if event.key == pygame.K_RETURN:
-                    if self.selected_question.is_correct(self.answer):
+                    if self.selected_question.is_correct(self.answer.strip()):
                         self.questions.remove(self.selected_question)
                         self.num_bullets += 1
                         if len(self.questions) > 0:
