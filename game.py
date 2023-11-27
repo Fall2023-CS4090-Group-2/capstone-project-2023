@@ -159,10 +159,9 @@ class Game:
                     pygame.mixer.Sound.play(self.bullet_sound)
                     self.bullets.append(
                         Bullet(
-                            self.player.rect.x + PADDING,
-                            self.player.rect.y
-                            + PADDING
-                            - self.player.image.get_height() // 2,
+                            self.player.rect.x + PADDING * 10,
+                            self.player.rect.y,
+                            self.player.direction,
                         )
                     )
                     self.num_bullets -= 1

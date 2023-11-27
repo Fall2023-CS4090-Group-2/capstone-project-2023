@@ -1,4 +1,5 @@
 import pygame  # type: ignore
+from pygame.math import Vector2
 
 from entity import Entity
 from state import State
@@ -16,6 +17,7 @@ class Player(Entity):
         self.move_up = False
         self.answer_mode = False
         self.enemies_killed = 0
+        self.direction = Vector2(1, 0) # Face right
 
     def move(self, screen):
         """
@@ -28,6 +30,7 @@ class Player(Entity):
             and self.rect.x < screen.get_width() - self.image.get_width() * 1.25
         ):
             self.rect.x += MOVE_DISTANCE
+
         if (
             self.move_down
             and self.rect.y < screen.get_height() - self.image.get_height() * 1.25
@@ -35,6 +38,17 @@ class Player(Entity):
             self.rect.y += MOVE_DISTANCE
         if self.move_up and self.rect.y > self.image.get_height() * 0.25:
             self.rect.y -= MOVE_DISTANCE
+
+        # Calculate the direction based on the keys pressed
+        direction_x = int(self.move_right) - int(self.move_left)
+        direction_y = int(self.move_down) - int(self.move_up)
+
+        # Update the direction vector
+        self.direction = Vector2(direction_x, direction_y)
+
+        # Check if the direction vector has non-zero length before normalizing
+        if self.direction.length() != 0:
+            self.direction.normalize()
 
     def handle_input(self, event, game) -> None:
         """
