@@ -15,18 +15,17 @@ topic of study, difficulty, and many more!
 
 ## How to Play
 
-**Objective**
+**Objective**  
 Your goal is to survive as long as possible while destroying the approaching enemies by answering questions before you lose all of your health.  
-**Movement**
+**Movement**  
 Use either the arrow keys or the WASD keys to move Joe Miner around.  
-**Answering Questions**
-To answer the questions, press `enter` and you will see the `Answer` text at the bottom of the screen turn yellow which indicates that you are   
-now in Answer Mode and can begin typing your answer to any of the questions. When you are finished with your answer, press `enter` again to  
-submit your answer.   
-Note - after answering you will be in Normal Mode and will need to press `enter` again to switch to Answer Mode.  
-**Shooting**
+**Answering Questions**  
+To answer the questions, press `enter` and you will see the `Answer` text at the bottom of the screen turn yellow which indicates that you are     
+now in Answer Mode and can begin typing your answer to any of the questions. When you are finished with your answer, press `enter` again to submit your answer.    
+Note - after answering you will be in Normal Mode and will need to press `enter` again to switch to Answer Mode.   
+**Shooting**  
 Joe Miner's main weapon is his pickaxe. Fire his pickaxe at the approaching enemies using the `space` bar.  
-**Pause**
+**Pause**  
 Press the `esc` key at any time to pause the game and weigh your options ...  
 
 ## Project Structure
