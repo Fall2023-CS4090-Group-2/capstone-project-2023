@@ -39,7 +39,7 @@ class Game:
         self.health = 100
 
         # Game entities
-        self.player: Player = Player(PADDING, screen_height // 2, "player.png")
+        self.player: Player = Player(PADDING, screen_height // 2, "joeminer.png")
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
         self.num_bullets: int = 0

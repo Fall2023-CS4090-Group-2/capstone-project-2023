@@ -5,7 +5,7 @@ from game import Game, State
 pygame.init()
 
 # Game window demensions 
-SCREEN_WIDTH, SCREEN_HEIGHT = 1280, 720
+SCREEN_WIDTH, SCREEN_HEIGHT = 1920, 1080
 
 # Create game object
 game = Game(SCREEN_WIDTH, SCREEN_HEIGHT)
