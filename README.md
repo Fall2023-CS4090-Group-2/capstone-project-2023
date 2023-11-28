@@ -34,9 +34,9 @@ Mining Answers with Joe is meant to be universal, meaning that all players are a
 
 Your goal is to obtain the highest possible score before you lose all of your health.     
 Boulders will move towards you at a speed determined by the difficulty you chose on the main menu screen.    
-Answer the question on the right of the screen to receive bullets.   
-Move Joe Miner around to avoid the boulders or destroy them with your bullets to increase your score.    
-Your `Health` , `Score` , and `Bullets` are displayed at the top left of your screen.  
+Answer the question on the right of the screen to receive pickaxes.   
+Move Joe Miner around to avoid the boulders or destroy them with your pickaxes to increase your score.    
+Your `Health` , `Score` , and `Pickaxes` are displayed at the top left of your screen.  
 
 ![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/fdacc10d-deb3-4485-ac19-26de899af847)
 

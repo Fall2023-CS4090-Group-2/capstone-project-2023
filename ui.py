@@ -91,7 +91,7 @@ def draw_bullets(game) -> None:
     Draws bullet value
     """
     bullet_str = game.font.render(
-        f"Bullet: {str(game.num_bullets)}", True, (255, 255, 255)
+        f"Pickaxes: {str(game.num_bullets)}", True, (255, 255, 255)
     )
     game.screen.blit(
         bullet_str,
