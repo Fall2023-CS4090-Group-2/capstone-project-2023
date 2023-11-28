@@ -126,7 +126,7 @@ def draw_questions(game) -> None:
     """
     Draws current question
     """
-    start_y = game.font.get_height() - PADDING
+    start_y = PADDING
     options_vertical_spacing = 5
     question_str = game.font.render(f"Question: {game.selected_question.question}", True, TEXT_COLOR)
     max_width = question_str.get_width()
@@ -138,11 +138,17 @@ def draw_questions(game) -> None:
             *[game.font.render(option, True, TEXT_COLOR).get_width() for option in game.selected_question.options]
         )
 
+    # Calculate the height needed for the rectangle background
+    total_height = (len(game.selected_question.options) + 1) * (game.font.get_height() + options_vertical_spacing)
+
+    # Draw brown rectangle background
+    pygame.draw.rect(game.screen, BACKGROUND_COLOR, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y, max_width + 2 * PADDING, total_height))
+
     # Draw question
-    game.screen.blit(question_str, (game.screen.get_width() - max_width - PADDING, start_y))
+    game.screen.blit(question_str, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y))
 
     # Draw options
     for idx, option in enumerate(game.selected_question.options):
         start_y += game.font.get_height() + options_vertical_spacing
         option_str = game.font.render(f"{idx+1}. {option}", True, TEXT_COLOR)
-        game.screen.blit(option_str, (game.screen.get_width() - max_width - PADDING, start_y))
+        game.screen.blit(option_str, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y))
