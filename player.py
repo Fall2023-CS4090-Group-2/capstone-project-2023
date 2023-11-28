@@ -3,6 +3,7 @@ from pygame.math import Vector2
 import random
 
 from entity import Entity
+from ui import PADDING
 from state import State
 
 MOVE_DISTANCE = 3
@@ -24,11 +25,11 @@ class Player(Entity):
         """
         Move Player with respect to a screen
         """
-        if self.move_left and self.rect.x > self.image.get_width() * 0.25:
+        if self.move_left and self.rect.x > PADDING:
             self.rect.x -= MOVE_DISTANCE
         if (
             self.move_right
-            and self.rect.x < screen.get_width() - self.image.get_width() * 1.25
+            and self.rect.x < screen.get_width() - self.image.get_width()
         ):
             self.rect.x += MOVE_DISTANCE
 
