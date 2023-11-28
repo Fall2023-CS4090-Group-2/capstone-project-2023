@@ -79,6 +79,7 @@ class Game:
         self.main_menu: Menu = create_main_menu(self)
         self.pause_menu: Menu = create_pause_menu(self)
         self.game_over_menu: Menu = create_game_over_menu(self)
+        spawn_enemies(self)
 
     def handle_inputs(self) -> None:
         """
