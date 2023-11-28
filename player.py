@@ -77,11 +77,23 @@ class Player(Entity):
                 if (
                     event.unicode.isdigit()
                     and event.unicode.isdigit()
-                    and int(event.unicode) < len(game.questions) + 1
+                    and int(event.unicode) < len(game.selected_question.options) + 1
+                    and int(event.unicode) != 0
                 ):
-                    game.selected_question = game.questions[int(event.unicode) - 1]
+                    if game.selected_question.is_correct(game.selected_question.options[int(event.unicode) - 1]):
+                        pygame.mixer.Sound.play(game.correct_sound)
+                        game.questions.remove(game.selected_question)
+                        game.num_bullets += 1
+                        if len(game.questions) > 0:
+                            game.selected_question = game.questions[0]
+                    else:
+                        pygame.mixer.Sound.play(game.incorrect_sound)
+
                 # Change to answer mode
-                if event.key == pygame.K_RETURN:
+                if (
+                    event.key == pygame.K_RETURN
+                    and len(game.selected_question.options) == 0
+                ):
                     self.answer_mode = True
                     self.move_left = False
                     self.move_right = False

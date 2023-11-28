@@ -6,6 +6,8 @@ import random
 
 class Question:
     def __init__(self, question: str, options: List[str], answer: str):
+        if len(options) > 10:
+            raise ValueError("Invalid number of question options. Expected < 10")
         self.question = question
         self.options = options
         self.answer = answer

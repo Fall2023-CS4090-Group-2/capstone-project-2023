@@ -30,6 +30,10 @@ def draw_answer(game) -> None:
     """
     Draws your current typed out answer
     """
+    # Don't draw if multiple choice
+    if len(game.selected_question.options) > 0:
+        return
+
     if game.player.answer_mode:
         background_color = HIGHLIGHT_COLOR
     else:
@@ -120,39 +124,25 @@ def draw_score(game) -> None:
 
 def draw_questions(game) -> None:
     """
-    Draws current questions
+    Draws current question
     """
-    # TODO: Probably make this wrap too
-    max_width = 0
-    start_y = game.screen.get_height() * 0.04
-    vertical_spacing = 20
+    start_y = game.font.get_height() - PADDING
     options_vertical_spacing = 5
-    num_questions = 3
+    question_str = game.font.render(f"Question: {game.selected_question.question}", True, TEXT_COLOR)
+    max_width = question_str.get_width()
 
-    # Calculate maximum width
-    for question in game.questions[:num_questions]:
+    # Calculate maximum width if options are present
+    if len(game.selected_question.options) > 0:
         max_width = max(
             max_width,
-            game.font.render(f"Question #: {question.question}", True, WHITE).get_width(),
-            *[game.font.render(option, True, WHITE).get_width() for option in question.options]
+            *[game.font.render(option, True, TEXT_COLOR).get_width() for option in game.selected_question.options]
         )
 
-    # Draw questions and options with right alignment
-    for idx, question in enumerate(game.questions[:num_questions]):
-        if question is game.selected_question:
-            color = LIGHT_YELLOW
-        else:
-            color = WHITE
+    # Draw question
+    game.screen.blit(question_str, (game.screen.get_width() - max_width - PADDING, start_y))
 
-        # Draw question
-        question_str = game.font.render(f"Question {idx+1}: {question.question}", True, color)
-        game.screen.blit(question_str, (game.screen.get_width() - max_width - PADDING, start_y))
-
-        # Draw options
-        for option in question.options:
-            start_y += game.font.get_height() + options_vertical_spacing
-            option_str = game.font.render(option, True, color)
-            game.screen.blit(option_str, (game.screen.get_width() - max_width - PADDING, start_y))
-
-        # Adjust y for the next set of question and options
-        start_y += game.font.get_height() + vertical_spacing
+    # Draw options
+    for idx, option in enumerate(game.selected_question.options):
+        start_y += game.font.get_height() + options_vertical_spacing
+        option_str = game.font.render(f"{idx+1}. {option}", True, TEXT_COLOR)
+        game.screen.blit(option_str, (game.screen.get_width() - max_width - PADDING, start_y))
