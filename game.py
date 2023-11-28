@@ -1,4 +1,5 @@
 import pygame  # type: ignore
+from pygame.math import Vector2
 import os
 from typing import List
 
@@ -162,6 +163,12 @@ class Game:
         self.player.enemies_killed = 0
         self.questions = load_questions()
         self.selected_question = self.questions[0]
+        self.player.move_left = False
+        self.player.move_right = False
+        self.player.move_down = False
+        self.player.move_up = False
+        self.player.answer_mode = False
+        self.player.direction = Vector2(1, 0) # Face right
 
     def handle_running_input(self) -> None:
         """
