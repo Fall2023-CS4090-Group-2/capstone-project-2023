@@ -119,10 +119,10 @@ def create_main_menu(game) -> Menu:
         TEXT_COLOR,
     )
 
-    quit_button = Button(
-        "Quit",
+    music_button = Button(
+        "Toggle Music",
         game,
-        State.EXIT,
+        State.MAIN_MUSIC,
         50,
         game.screen.get_width() // 2,
         game.screen.get_height() * 0.75,
@@ -131,13 +131,13 @@ def create_main_menu(game) -> Menu:
         TEXT_COLOR,
     )
 
-    music_button = Button(
-        "Toggle Music",
+    quit_button = Button(
+        "Quit",
         game,
-        State.MAIN_MUSIC,
+        State.EXIT,
         50,
         game.screen.get_width() // 2,
-        game.screen.get_height() // 2.2,
+        game.screen.get_height() * 0.85,
         BACKGROUND_COLOR,
         HIGHLIGHT_COLOR,
         TEXT_COLOR,
