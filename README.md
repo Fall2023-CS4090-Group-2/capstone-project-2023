@@ -35,7 +35,7 @@ topic of study, difficulty, and more!
 
 Your goal is to obtain the highest possible score before you lose all of your health.     
 Boulders will move towards you at a speed determined by the difficulty you chose on the main menu screen.    
-Answer the questions on the right of the screen to receive bullets.   
+Answer the question on the right of the screen to receive bullets.   
 Move Joe Miner around to avoid the boulders or destroy them with your bullets to increase your score.    
 Your `Health` , `Score` , and `Bullets` are displayed at the top left of your screen.  
 
@@ -47,11 +47,12 @@ Use either the `arrow` keys or the `WASD` keys to move Joe Miner around.
 
 ### Answering Questions <a id="answeringquestions"/>     
 
-To answer the questions, press `enter` and you will see the `Answer` box at the bottom of the screen turn green    
-which indicates that you are now in Answer Mode and can begin typing your answer to any of the questions.    
-When you are finished with your answer, press `enter` again to submit your answer.      
+| Type              | Text-box?             | How-to    |
+| :---------------- | :-------------------- | :-------- |
+| Free Response     | Yes                   | Press `enter` and you will see the `Answer` box at the bottom of the screen turn green which indicates that you are now in Answer Mode and can begin typing your answer to the question. When you are finished with your answer, press `enter` again to submit your answer. | 
+| Multiple Choice   | No                    | Select the correct answer using keys `1 2 3 4` |
 
-Note - after answering you will be in Normal Mode and will need to press `enter` again to switch to Answer Mode.   
+_\*Note: After answering you will be in Normal Mode and will need to press `enter` again to switch to Answer Mode._    
 
 | Normal Mode                  | Answer Mode                                  |
 | :--------------------------: | :------------------------------------------: |
@@ -74,6 +75,10 @@ Press the `esc` key at any time to pause the game and weigh your options ...
 ### Toggle Music <a id="togglemusic"/>     
 
 Click the `Toggle Music` button to turn music on/off    
+
+### Skip Question <a id="skipquestion"/>   
+
+Press the `r` key to skip to the next question
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
