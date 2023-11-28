@@ -1,5 +1,5 @@
 import pygame  # type: ignore
-from pygame.math import Vector2
+from pygame.math import Vector2  # type: ignore
 import random
 import os
 from typing import List
@@ -20,17 +20,18 @@ from menu import (
     create_game_over_menu,
     update_game_over_menu,
 )
-from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_questions
+from ui import (
+    PADDING,
+    draw_answer,
+    draw_bullets,
+    draw_health,
+    draw_score,
+    draw_questions,
+)
 
 
 TICK_RATE = 128
-PADDING = 10
 ENEMY_SPAWN_TIME = 3000
-
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
-BLACK = (0, 0, 0)
-LIGHT_YELLOW = (227, 207, 87)
 
 
 class Game:
@@ -40,7 +41,7 @@ class Game:
             (screen_width, screen_height)
         )
         self.font = pygame.font.Font("freesansbold.ttf", 16)
-        self.background = pygame.image.load("background.png")
+        self.background = pygame.image.load("img/background.png")
 
         # Game data
         self.state: State = State.MAIN_MENU
@@ -53,7 +54,7 @@ class Game:
 
         # Game entities
         self.player: Player = Player(
-            screen_width // 2, screen_height // 2, "joeminer.png"
+            screen_width // 2, screen_height // 2, "img/joeminer.png"
         )
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
@@ -216,6 +217,9 @@ class Game:
         self.player.move(self.screen)
 
     def draw_running(self) -> None:
+        """
+        Drawing behavior for the when game is running
+        """
         # Redraw background
         self.screen.blit(self.background, (0, 0))
 
@@ -240,6 +244,9 @@ class Game:
             bullet.draw(self.screen)
 
     def handle_collisions(self) -> None:
+        """
+        Handle entity collisions
+        """
         # Handle bullet hitting enemy
         for enemy in self.enemies:
             for bullet in self.bullets:

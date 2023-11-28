@@ -1,10 +1,18 @@
-import pygame
-from menu import HIGHLIGHT_COLOR, BACKGROUND_COLOR, TEXT_COLOR
+import pygame  # type: ignore
 
 PADDING = 10
-
 WHITE = (255, 255, 255)
-LIGHT_YELLOW = (227, 207, 87)
+BLACK = (0, 0, 0)
+GREEN = (18, 71, 52)
+GOLD = (209, 184, 136)
+HIGHLIGHT_GOLD = (219, 194, 146)
+
+PETRA = (172, 161, 153)  # this color is darker then pebble
+PEBBLE = (214, 209, 202)
+
+TEXT_COLOR = BLACK
+HIGHLIGHT_COLOR = GREEN
+BACKGROUND_COLOR = GOLD
 
 
 def render_text(font, text, max_width):
@@ -88,7 +96,7 @@ def draw_bullets(game) -> None:
     game.screen.blit(
         bullet_str,
         (
-            game.screen.get_width() / 5 + PADDING,  
+            game.screen.get_width() / 5 + PADDING,
             game.font.get_height() - PADDING,
         ),
     )
@@ -128,27 +136,47 @@ def draw_questions(game) -> None:
     """
     start_y = PADDING
     options_vertical_spacing = 5
-    question_str = game.font.render(f"Question: {game.selected_question.question}", True, TEXT_COLOR)
+    question_str = game.font.render(
+        f"Question: {game.selected_question.question}", True, TEXT_COLOR
+    )
     max_width = question_str.get_width()
 
     # Calculate maximum width if options are present
     if len(game.selected_question.options) > 0:
         max_width = max(
             max_width,
-            *[game.font.render(option, True, TEXT_COLOR).get_width() for option in game.selected_question.options]
+            *[
+                game.font.render(option, True, TEXT_COLOR).get_width()
+                for option in game.selected_question.options
+            ],
         )
 
     # Calculate the height needed for the rectangle background
-    total_height = (len(game.selected_question.options) + 1) * (game.font.get_height() + options_vertical_spacing)
+    total_height = (len(game.selected_question.options) + 1) * (
+        game.font.get_height() + options_vertical_spacing
+    )
 
     # Draw brown rectangle background
-    pygame.draw.rect(game.screen, BACKGROUND_COLOR, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y, max_width + 2 * PADDING, total_height))
+    pygame.draw.rect(
+        game.screen,
+        BACKGROUND_COLOR,
+        (
+            game.screen.get_width() * 0.75 - max_width - PADDING,
+            start_y,
+            max_width + 2 * PADDING,
+            total_height,
+        ),
+    )
 
     # Draw question
-    game.screen.blit(question_str, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y))
+    game.screen.blit(
+        question_str, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y)
+    )
 
     # Draw options
     for idx, option in enumerate(game.selected_question.options):
         start_y += game.font.get_height() + options_vertical_spacing
         option_str = game.font.render(f"{idx+1}. {option}", True, TEXT_COLOR)
-        game.screen.blit(option_str, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y))
+        game.screen.blit(
+            option_str, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y)
+        )

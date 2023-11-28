@@ -4,19 +4,8 @@ from typing import List
 from state import State
 from difficulty import Difficulty
 from button import Button
+from ui import HIGHLIGHT_COLOR, BACKGROUND_COLOR, TEXT_COLOR
 
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-GREEN = (18, 71, 52)
-GOLD = (209, 184, 136)
-HIGHLIGHT_GOLD = (219, 194, 146)
-
-PETRA = (172, 161, 153) # this color is darker then pebble
-PEBBLE = (214, 209, 202)
-
-TEXT_COLOR = BLACK
-HIGHLIGHT_COLOR = GREEN
-BACKGROUND_COLOR = GOLD
 
 class Menu:
     def __init__(self, game, buttons) -> None:
@@ -125,11 +114,9 @@ def create_main_menu(game) -> Menu:
         50,
         game.screen.get_width() // 2 + 150,
         game.screen.get_height() * 0.65,
-        
         BACKGROUND_COLOR,
         HIGHLIGHT_COLOR,
         TEXT_COLOR,
-
     )
 
     quit_button = Button(
@@ -165,7 +152,7 @@ def create_main_menu(game) -> Menu:
             medium_button,
             hard_button,
             quit_button,
-            music_button
+            music_button,
         ],
     )
 
@@ -234,7 +221,10 @@ def create_pause_menu(game) -> Menu:
         TEXT_COLOR,
     )
 
-    return Menu(game, [pause_button, resume_button, main_menu_button, quit_button, music_button])
+    return Menu(
+        game, [pause_button, resume_button, main_menu_button, quit_button, music_button]
+    )
+
 
 def create_game_over_menu(game) -> Menu:
     """
@@ -277,6 +267,7 @@ def create_game_over_menu(game) -> Menu:
     )
 
     return Menu(game, [result_button, main_menu_button, quit_button])
+
 
 def update_game_over_menu(game) -> None:
     """

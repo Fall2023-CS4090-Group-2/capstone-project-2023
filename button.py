@@ -1,11 +1,22 @@
 import pygame  # type: ignore
 
 from difficulty import Difficulty
+from ui import PADDING
 
 
 class Button:
     def __init__(
-        self, text, game, state, font_size, x, y, color, hover_color, text_color, padding=10
+        self,
+        text,
+        game,
+        state,
+        font_size,
+        x,
+        y,
+        color,
+        hover_color,
+        text_color,
+        padding=PADDING,
     ) -> None:
         # Text
         self.text = text

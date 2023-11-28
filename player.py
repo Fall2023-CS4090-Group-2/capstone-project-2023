@@ -1,5 +1,5 @@
 import pygame  # type: ignore
-from pygame.math import Vector2
+from pygame.math import Vector2  # type: ignore
 import random
 
 from entity import Entity

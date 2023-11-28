@@ -32,7 +32,7 @@ def spawn_enemies(game) -> None:
         enemy = Enemy(
             spawn_x,
             spawn_y,
-            "boulder.png",
+            "img/boulder.png",
             enemy_stats[game.difficulty]["speed"],
             enemy_stats[game.difficulty]["damage"],
             enemy_stats[game.difficulty]["score"],

@@ -5,7 +5,7 @@ from game import Game, State
 pygame.init()
 pygame.mixer.init()
 
-# Game window demensions 
+# Game window demensions
 SCREEN_WIDTH, SCREEN_HEIGHT = 1920, 1080
 
 # Create game object

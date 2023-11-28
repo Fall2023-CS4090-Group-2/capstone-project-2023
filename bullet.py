@@ -3,7 +3,7 @@ from entity import Entity
 
 class Bullet(Entity):
     def __init__(self, x, y, direction):
-        super().__init__(x, y, "./pickaxe.png")
+        super().__init__(x, y, "img/pickaxe.png")
         self.speed = 5
         self.rotation_timer = 0
         self.direction = direction
