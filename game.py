@@ -261,8 +261,11 @@ class Game:
         for enemy in self.enemies:
             if enemy.rect.colliderect(self.player.rect):
                 pygame.mixer.Sound.play(self.player_hit_sound)
-                self.enemies.remove(enemy)
-                self.health -= enemy.damage
+                try:
+                    self.enemies.remove(enemy)
+                    self.health -= enemy.damage
+                except:
+                    pass
             if self.health <= 0:
                 self.reset_game()
                 self.state = State.GAME_OVER
