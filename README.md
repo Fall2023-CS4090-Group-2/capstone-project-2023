@@ -10,8 +10,7 @@
 
 We developed Mining Answers with Joe as a way for people to not only study content, but have fun doing so.  
 Our project seeks to add a fun and exciting game component to an otherwise ordinary and boring way of studying.  
-Mining Answers with Joe is meant to be universal, meaning that all players are able to customize their gaming experience,  
-topic of study, difficulty, and more!  
+Mining Answers with Joe is meant to be universal, meaning that all players are able to customize their gaming experience, topic of study, difficulty, and more!     
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
