@@ -8,3 +8,4 @@ class State(Enum):
     EXIT = 3
     MAIN_MUSIC = 4
     PAUSE_MUSIC = 5
+    GAME_OVER = 6

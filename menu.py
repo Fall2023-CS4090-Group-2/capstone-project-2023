@@ -62,6 +62,9 @@ class Menu:
             ):
                 self.game.state = State.RUNNING
 
+    def update_score(self, game):
+        self.game = game
+
 
 def create_main_menu(game) -> Menu:
     """
@@ -232,3 +235,64 @@ def create_pause_menu(game) -> Menu:
     )
 
     return Menu(game, [pause_button, resume_button, main_menu_button, quit_button, music_button])
+
+def create_game_over_menu(game) -> Menu:
+    """
+    Create Menu object for the losing menu
+    """
+    result_button = Button(
+        "Oh no! You've been crushed to death!",
+        game,
+        State.GAME_OVER,
+        75,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.45,
+        BACKGROUND_COLOR,
+        BACKGROUND_COLOR,
+        TEXT_COLOR,
+    )
+
+    main_menu_button = Button(
+        "Back to main menu",
+        game,
+        State.MAIN_MENU,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.65,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
+    )
+
+    quit_button = Button(
+        "Quit game",
+        game,
+        State.EXIT,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.75,
+        BACKGROUND_COLOR,
+        HIGHLIGHT_COLOR,
+        TEXT_COLOR,
+    )
+
+    return Menu(game, [result_button, main_menu_button, quit_button])
+
+def update_game_over_menu(game) -> None:
+    """
+    Create Menu object for the winning menu
+    """
+
+    result_button = Button(
+        f"Congratulations! You've scored {str(game.score)} points!",
+        game,
+        State.GAME_OVER,
+        75,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.45,
+        BACKGROUND_COLOR,
+        BACKGROUND_COLOR,
+        TEXT_COLOR,
+    )
+
+    game.game_over_menu.buttons[0] = result_button

@@ -11,7 +11,7 @@ from question import Question, load_questions
 from difficulty import Difficulty, enemy_stats
 from state import State
 
-from menu import Menu, create_main_menu, create_pause_menu
+from menu import Menu, create_main_menu, create_pause_menu, create_game_over_menu, update_game_over_menu
 from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_questions
 
 
@@ -64,6 +64,7 @@ class Game:
         # Menu's
         self.main_menu: Menu = create_main_menu(self)
         self.pause_menu: Menu = create_pause_menu(self)
+        self.game_over_menu: Menu = create_game_over_menu(self)
 
     def handle_inputs(self) -> None:
         """
@@ -73,6 +74,8 @@ class Game:
             self.handle_running_input()
         elif self.state == State.PAUSED:
             self.pause_menu.handle_menu()
+        elif self.state == State.GAME_OVER:
+            self.game_over_menu.handle_menu()
         elif self.state == State.MAIN_MENU:
             self.main_menu.handle_menu()
         elif self.state == State.MAIN_MUSIC:
@@ -132,6 +135,9 @@ class Game:
             self.pause_menu.draw()
         elif self.state == State.MAIN_MENU:
             self.main_menu.draw()
+            self.reset_game()
+        elif self.state == State.GAME_OVER:
+            self.game_over_menu.draw()
             self.reset_game()
 
         # Tell pygame update its screens
@@ -229,9 +235,12 @@ class Game:
                 self.health -= enemy.damage
             if self.health <= 0:
                 self.reset_game()
+                self.state = State.GAME_OVER
 
         if self.player.enemies_killed >= enemy_stats[self.difficulty]["stop_condition"]:
+            update_game_over_menu(self)
             self.reset_game()
+            self.state = State.GAME_OVER
 
 
     def answer_question(self, event) -> None:
