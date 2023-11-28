@@ -1,4 +1,4 @@
-# Miner Quiz
+# Mining Answers with Joe
 
 ![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/e34efb7d-b483-46e4-b833-8df645083b47)
 
@@ -8,9 +8,9 @@
 
 ## ⛏️: Introduction
 
-We developed Miner Quiz as a way for people to not only study content, but have fun doing so.  
+We developed Mining Answers with Joe as a way for people to not only study content, but have fun doing so.  
 Our project seeks to add a fun and exciting game component to an otherwise ordinary and boring way of studying.  
-Miner Quiz is meant to be universal, meaning that all players are able to customize their gaming experience,  
+Mining Answers with Joe is meant to be universal, meaning that all players are able to customize their gaming experience,  
 topic of study, difficulty, and more!  
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
