@@ -47,11 +47,15 @@ Use either the `arrow` keys or the `WASD` keys to move Joe Miner around.
 
 ### Answering Questions <a id="answeringquestions"/>     
 
-To answer the questions, press `enter` and you will see the `Answer` text at the bottom of the screen turn yellow    
+To answer the questions, press `enter` and you will see the `Answer` box at the bottom of the screen turn green    
 which indicates that you are now in Answer Mode and can begin typing your answer to any of the questions.    
 When you are finished with your answer, press `enter` again to submit your answer.      
 
 Note - after answering you will be in Normal Mode and will need to press `enter` again to switch to Answer Mode.   
+
+| Normal Mode                  | Answer Mode                                  |
+| :--------------------------: | :------------------------------------------: |
+|![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/daa32fa9-b86b-4aaf-a16f-d689badf681b)|![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/8e0f9809-0909-402e-8718-ef557fe88de0)|
 
 ### Throwing <a id="throwing"/>    
 
