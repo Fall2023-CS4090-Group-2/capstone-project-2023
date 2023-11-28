@@ -130,7 +130,7 @@ def draw_score(game) -> None:
     )
 
 
-def draw_questions(game) -> None:
+def draw_question(game) -> None:
     """
     Draws current question
     """

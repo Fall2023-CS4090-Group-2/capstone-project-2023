@@ -26,7 +26,7 @@ from ui import (
     draw_bullets,
     draw_health,
     draw_score,
-    draw_questions,
+    draw_question,
 )
 
 
@@ -230,7 +230,7 @@ class Game:
         draw_answer(self)
 
         # Draw question
-        draw_questions(self)
+        draw_question(self)
 
         # Draw player
         self.player.draw(self.screen)
