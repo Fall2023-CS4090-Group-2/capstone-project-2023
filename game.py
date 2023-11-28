@@ -1,5 +1,6 @@
 import pygame  # type: ignore
 from pygame.math import Vector2
+import random
 import os
 from typing import List
 
@@ -12,7 +13,13 @@ from question import Question, load_questions
 from difficulty import Difficulty, enemy_stats
 from state import State
 
-from menu import Menu, create_main_menu, create_pause_menu, create_game_over_menu, update_game_over_menu
+from menu import (
+    Menu,
+    create_main_menu,
+    create_pause_menu,
+    create_game_over_menu,
+    update_game_over_menu,
+)
 from ui import draw_answer, draw_bullets, draw_health, draw_score, draw_questions
 
 
@@ -45,7 +52,9 @@ class Game:
         self.enemy_timer = 0
 
         # Game entities
-        self.player: Player = Player(screen_width // 2, screen_height // 2, "joeminer.png")
+        self.player: Player = Player(
+            screen_width // 2, screen_height // 2, "joeminer.png"
+        )
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
         self.num_bullets: int = 0
@@ -54,12 +63,16 @@ class Game:
 
         # Sounds
         self.music_playing = True
-        self.bullet_sound = pygame.mixer.Sound(os.path.join('sounds', 'swoosh.wav'))
-        self.hit_sound = pygame.mixer.Sound(os.path.join('sounds', 'hit_rock.wav'))
-        self.correct_sound = pygame.mixer.Sound(os.path.join('sounds', 'correct.wav'))
-        self.incorrect_sound = pygame.mixer.Sound(os.path.join('sounds', 'incorrect.wav'))
-        self.player_hit_sound = pygame.mixer.Sound(os.path.join('sounds', 'player_hit.wav'))
-        self.music = pygame.mixer.music.load(os.path.join('sounds', 'sound_track.wav'))
+        self.bullet_sound = pygame.mixer.Sound(os.path.join("sounds", "swoosh.wav"))
+        self.hit_sound = pygame.mixer.Sound(os.path.join("sounds", "hit_rock.wav"))
+        self.correct_sound = pygame.mixer.Sound(os.path.join("sounds", "correct.wav"))
+        self.incorrect_sound = pygame.mixer.Sound(
+            os.path.join("sounds", "incorrect.wav")
+        )
+        self.player_hit_sound = pygame.mixer.Sound(
+            os.path.join("sounds", "player_hit.wav")
+        )
+        self.music = pygame.mixer.music.load(os.path.join("sounds", "sound_track.wav"))
         pygame.mixer.music.play(-1)
 
         # Menu's
@@ -95,7 +108,6 @@ class Game:
                 pygame.mixer.music.unpause()
                 self.music_playing = True
             self.state = State.PAUSED
-
 
     def update(self) -> None:
         """
@@ -158,7 +170,10 @@ class Game:
         self.enemy_timer = 0
 
         # Game entities
-        self.player.rect.x, self.player.rect.y = self.screen.get_width() // 2, self.screen.get_height() // 2
+        self.player.rect.x, self.player.rect.y = (
+            self.screen.get_width() // 2,
+            self.screen.get_height() // 2,
+        )
         self.player.answer_mode = False
         self.player.enemies_killed = 0
         self.questions = load_questions()
@@ -168,7 +183,7 @@ class Game:
         self.player.move_down = False
         self.player.move_up = False
         self.player.answer_mode = False
-        self.player.direction = Vector2(1, 0) # Face right
+        self.player.direction = Vector2(1, 0)  # Face right
 
     def handle_running_input(self) -> None:
         """
@@ -249,7 +264,6 @@ class Game:
             self.reset_game()
             self.state = State.GAME_OVER
 
-
     def answer_question(self, event) -> None:
         """
         Handles answering a question
@@ -267,7 +281,7 @@ class Game:
                         self.questions.remove(self.selected_question)
                         self.num_bullets += 1
                         if len(self.questions) > 0:
-                            self.selected_question = self.questions[0]
+                            self.selected_question = random.choice(self.questions)
                     else:
                         pygame.mixer.Sound.play(self.incorrect_sound)
                     self.answer = ""
@@ -276,4 +290,3 @@ class Game:
                     self.answer = self.answer[:-1]
                 else:
                     self.answer += event.unicode
-

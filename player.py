@@ -1,5 +1,6 @@
 import pygame  # type: ignore
 from pygame.math import Vector2
+import random
 
 from entity import Entity
 from state import State
@@ -17,7 +18,7 @@ class Player(Entity):
         self.move_up = False
         self.answer_mode = False
         self.enemies_killed = 0
-        self.direction = Vector2(1, 0) # Face right
+        self.direction = Vector2(1, 0)  # Face right
 
     def move(self, screen):
         """
@@ -80,14 +81,18 @@ class Player(Entity):
                     and int(event.unicode) < len(game.selected_question.options) + 1
                     and int(event.unicode) != 0
                 ):
-                    if game.selected_question.is_correct(game.selected_question.options[int(event.unicode) - 1]):
+                    if game.selected_question.is_correct(
+                        game.selected_question.options[int(event.unicode) - 1]
+                    ):
                         pygame.mixer.Sound.play(game.correct_sound)
                         game.questions.remove(game.selected_question)
                         game.num_bullets += 1
                         if len(game.questions) > 0:
-                            game.selected_question = game.questions[0]
+                            # TODO: Do something here
+                            pass
                     else:
                         pygame.mixer.Sound.play(game.incorrect_sound)
+                    game.selected_question = random.choice(game.questions)
 
                 # Change to answer mode
                 if (
@@ -99,6 +104,8 @@ class Player(Entity):
                     self.move_right = False
                     self.move_down = False
                     self.move_up = False
+                if event.key == pygame.K_r:
+                    game.selected_question = random.choice(game.questions)
 
         # Stop moving after key release
         elif event.type == pygame.KEYUP:
