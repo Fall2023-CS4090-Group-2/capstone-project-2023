@@ -21,7 +21,7 @@ Mining Answers with Joe is meant to be universal, meaning that all players are a
 **To begin your journey with Joe Miner, start a new game ...**  
 
 1. Select your `difficulty` on the main menu screen  
-    
+
 2. Next, click `Play` and have fun while you study!  
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -86,6 +86,16 @@ Press the `r` key to skip to the next question
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 ## ⛏️: Installation Steps
+
+1. Install python (3.11 was used for testing but any version > 3.8 should work)
+
+`sudo apt install python3.11`
+
+2. Install pygame
+
+`sudo apt install python3-pygame`
+
+3. Run game `python3 main.py`
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
