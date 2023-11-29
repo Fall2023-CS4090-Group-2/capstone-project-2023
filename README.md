@@ -87,23 +87,25 @@ Press the `r` key to skip to the next question
 
 ## ⛏️: Installation Steps
 
-1. Install python (3.11 was used for testing but any version > 3.8 should work)
+### 1. Install Python <a id="installpython"/>  (3.11 was used for testing but any version > 3.8 should work)
 
 `sudo apt install python3.11`
 
-2. Install pygame
+### 2. Install Pygame <a id="installpygame"/>
 
 `sudo apt install python3-pygame`
 
-3. Run game `python3 main.py`
+### 3. Run Game <a id="rungame"/>
+
+`python3 main.py`
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-## ⛏️: How-to use your own Questions
+## ⛏️: How-to use your own questions
 
-Add `.json` files to `questions` directory. For more information of the format check [here](questions/README.md)
+Add `.json` files to the `questions` directory. For more information regarding the format check [here](questions/README.md)
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
@@ -111,9 +113,9 @@ Add `.json` files to `questions` directory. For more information of the format c
 
 ## ⛏️: Stretch Goals
 
-1. Competitive Scoring with Database  
+### 1. Competitive Scoring with Database  
 
-2. Question Refinement and Subject Selection
+### 2. Question Refinement and Subject Selection
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
