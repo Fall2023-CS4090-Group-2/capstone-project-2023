@@ -91,8 +91,17 @@ def draw_bullets(game) -> None:
     Draws bullet value
     """
     bullet_str = game.font.render(
-        f"Pickaxes: {str(game.num_bullets)}", True, (255, 255, 255)
+        f"Pickaxes: {str(game.num_bullets)}", True, TEXT_COLOR
     )
+    # Create a rectangle with the same width and height as the text surface
+    background_rect = pygame.Rect(
+        game.screen.get_width() / 5 + PADDING,
+        game.font.get_height() - PADDING,
+        bullet_str.get_rect().width,
+        bullet_str.get_rect().height,
+    )
+    pygame.draw.rect(game.screen, BACKGROUND_COLOR, background_rect)
+
     game.screen.blit(
         bullet_str,
         (
@@ -106,7 +115,19 @@ def draw_health(game) -> None:
     """
     Draws health value
     """
-    health_str = game.font.render(f"Health: {str(game.health)}", True, (255, 255, 255))
+    health_str = game.font.render(f"Health: {str(game.health)}", True, TEXT_COLOR)
+
+    # Create a rectangle with the same width and height as the text surface
+    background_rect = pygame.Rect(
+        PADDING,
+        game.font.get_height() - PADDING,
+        health_str.get_rect().width,
+        health_str.get_rect().height,
+    )
+
+    # Draw the background rectangle on the game screen
+    pygame.draw.rect(game.screen, BACKGROUND_COLOR, background_rect)
+
     game.screen.blit(
         health_str,
         (
@@ -120,7 +141,20 @@ def draw_score(game) -> None:
     """
     Draws score value
     """
-    score_str = game.font.render(f"Score: {str(game.score)}", True, (255, 255, 255))
+    score_str = game.font.render(f"Score: {str(game.score)}", True, TEXT_COLOR)
+
+    # Create a rectangle with the same width and height as the text surface
+    background_rect = pygame.Rect(
+        game.screen.get_width() / 10 + PADDING,
+        game.font.get_height() - PADDING,
+        score_str.get_rect().width,
+        score_str.get_rect().height,
+    )
+
+    # Draw the background rectangle on the game screen
+    pygame.draw.rect(game.screen, BACKGROUND_COLOR, background_rect)
+
+
     game.screen.blit(
         score_str,
         (

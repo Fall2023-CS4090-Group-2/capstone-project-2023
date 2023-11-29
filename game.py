@@ -40,7 +40,7 @@ class Game:
         self.screen: pygame.surface.Surface = pygame.display.set_mode(
             (screen_width, screen_height)
         )
-        self.font = pygame.font.Font("freesansbold.ttf", 16)
+        self.font = pygame.font.Font("freesansbold.ttf", 18)
         self.background = pygame.image.load("img/background.png")
 
         # Game data
