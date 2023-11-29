@@ -1,0 +1,77 @@
+[
+  {
+    "question": "What is 9 - 2?",
+    "options": [],
+    "answer": "7"
+  },
+  {
+    "question": "What is 6 - 1?",
+    "options": [],
+    "answer": "5"
+  },
+  {
+    "question": "What is 25 / 5?",
+    "options": [],
+    "answer": "5"
+  },
+  {
+    "question": "What is the capital of Japan?",
+    "options": ["Beijing", "Seoul", "Tokyo", "Bangkok"],
+    "answer": "Tokyo"
+  },
+  {
+    "question": "Can you name the capital of Missouri?",
+    "options": ["Jefferson City", "Rolla", "Springfield", "Joplin"],
+    "answer": "Jefferson City"
+  },
+  {
+    "question": "What is 8 + 6?",
+    "options": [],
+    "answer": "14"
+  },
+  {
+    "question": "Identify the capital of South Korea.",
+    "options": ["Seoul", "Tokyo", "Beijing", "Bangkok"],
+    "answer": "Seoul"
+  },
+  {
+    "question": "What is 9 - 6?",
+    "options": [],
+    "answer": "3"
+  },
+  {
+    "question": "What is 11 + 9?",
+    "options": [],
+    "answer": "20"
+  },
+  {
+    "question": "What city is the capital of Thailand?",
+    "options": ["Bangkok", "Phuket", "Chiang Mai", "Pattaya"],
+    "answer": "Bangkok"
+  },
+  {
+    "question": "What is 21 / 3?",
+    "options": [],
+    "answer": "7"
+  },
+  {
+    "question": "What is 10 - 3?",
+    "options": [],
+    "answer": "7"
+  },
+  {
+    "question": "What is 27 / 9?",
+    "options": [],
+    "answer": "3"
+  },
+  {
+    "question": "What is 20 - 8?",
+    "options": [],
+    "answer": "12"
+  },
+  {
+    "question": "What is 8 x 7?",
+    "options": [],
+    "answer": "56"
+  }
+]
