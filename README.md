@@ -1,6 +1,6 @@
 # Mining Answers with Joe
 
-![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/fc69d891-8457-424c-a51f-83cd0dfef740)
+![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/5a735b7a-c8e6-4880-9d14-6af49762f45b)
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
