@@ -60,7 +60,7 @@ class Game:
         )
         self.enemies: List[Enemy] = []
         self.bullets: List[Bullet] = []
-        self.num_bullets: int = 0
+        self.num_bullets: int = enemy_stats[self.difficulty]["num_bullets"]
         self.questions: List[Question] = load_questions()
         self.selected_question: Question = self.questions[0]
 
@@ -170,7 +170,7 @@ class Game:
         self.health = 100
         self.enemies = []
         self.bullets = []
-        self.num_bullets = 50
+        self.num_bullets = enemy_stats[self.difficulty]["num_bullets"]
         self.enemy_timer = 0
         self.num_correct = 0
         self.num_incorrect = 0
@@ -275,13 +275,6 @@ class Game:
                 self.reset_game()
                 self.state = State.GAME_OVER
 
-        '''
-        if self.player.enemies_killed >= enemy_stats[self.difficulty]["stop_condition"]:
-            update_game_over_menu(self)
-            self.reset_game()
-            self.state = State.GAME_OVER
-        '''
-
     def answer_question(self, event) -> None:
         """
         Handles answering a question
@@ -297,10 +290,8 @@ class Game:
                     if self.selected_question.is_correct(self.answer.strip()):
                         pygame.mixer.Sound.play(self.correct_sound)
                         self.num_correct += 1
-                        self.questions.remove(self.selected_question)
                         self.num_bullets += 1
-                        if len(self.questions) > 0:
-                            self.selected_question = random.choice(self.questions)
+                        self.selected_question = random.choice(self.questions)
                     else:
                         pygame.mixer.Sound.play(self.incorrect_sound)
                         self.num_incorrect += 1

@@ -87,11 +87,7 @@ class Player(Entity):
                     ):
                         pygame.mixer.Sound.play(game.correct_sound)
                         game.num_correct += 1
-                        game.questions.remove(game.selected_question)
                         game.num_bullets += 1
-                        if len(game.questions) > 0:
-                            # TODO: Do something here
-                            pass
                     else:
                         pygame.mixer.Sound.play(game.incorrect_sound)
                         game.num_incorrect += 1

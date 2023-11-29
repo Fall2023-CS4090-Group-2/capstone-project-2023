@@ -10,23 +10,23 @@ class Difficulty(Enum):
 enemy_stats = {
     Difficulty.EASY: {
         "speed": 1,
-        "max_enemies": 5,
+        "max_enemies": 3,
         "damage": 5,
         "score": 5,
-        "stop_condition": 5,
+        "num_bullets": 0
     },
     Difficulty.MEDIUM: {
         "speed": 2,
-        "max_enemies": 8,
+        "max_enemies": 5,
         "damage": 10,
         "score": 8,
-        "stop_condition": 10,
+        "num_bullets": 3
     },
     Difficulty.HARD: {
         "speed": 3,
-        "max_enemies": 10,
+        "max_enemies": 8,
         "damage": 15,
         "score": 10,
-        "stop_condition": 15,
+        "num_bullets": 5
     },
 }
