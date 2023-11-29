@@ -103,6 +103,8 @@ Press the `r` key to skip to the next question
 
 ## ⛏️: How-to use your own Questions
 
+Add `.json` files to `questions` directory. For more information of the format check [here](questions/README.md)
+
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -110,7 +112,7 @@ Press the `r` key to skip to the next question
 ## ⛏️: Stretch Goals
 
 1. Competitive Scoring with Database  
-    
+
 2. Question Refinement and Subject Selection
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
