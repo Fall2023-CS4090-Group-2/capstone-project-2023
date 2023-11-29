@@ -105,7 +105,7 @@ Add `.json` files to the `questions` directory. For more information regarding t
 
 ### 1. Install Python 3 <a id="installpython"/>  (3.11 was used for testing but any version > 3.8 should work)
 
-`sudo apt install python3.11`
+`sudo apt install python3`
 
 ### 2. Install Pygame <a id="installpygame"/>
 
@@ -113,7 +113,7 @@ Add `.json` files to the `questions` directory. For more information regarding t
 
 ### 3. Run Game <a id="rungame"/>
 
-`python3.11 main.py`
+`python3 main.py`
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
