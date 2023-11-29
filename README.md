@@ -32,11 +32,11 @@ Mining Answers with Joe is meant to be universal, meaning that all players are a
 
 ### Objective <a id="objective"/> 
 
-Your goal is to obtain the highest possible score before you lose all of your health.     
-Boulders will move towards you at a speed determined by the difficulty you chose on the main menu screen.    
-Answer the question on the right of the screen to receive pickaxes.   
-Move Joe Miner around to avoid the boulders or destroy them with your pickaxes to increase your score.    
-Your `Health` , `Score` , and `Pickaxes` are displayed at the top left of your screen.  
+* Your goal is to obtain the highest possible score before you lose all of your health.     
+* Boulders will move towards you at a speed determined by the difficulty you chose on the main menu screen.    
+* Answer the question on the right of the screen to receive pickaxes.   
+* Move Joe Miner around to avoid the boulders or destroy them with your pickaxes to increase your score.    
+* Your `Health` , `Score` , and `Pickaxes` are displayed at the top left of your screen.  
 
 
 ![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/27ed21fd-908f-461e-91e7-56a29afa93f5)
@@ -85,6 +85,14 @@ Press the `r` key to skip to the next question
 <br/><center></center>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
+## ⛏️: How-to use your own questions
+
+Add `.json` files to the `questions` directory. For more information regarding the format check [here](questions/README.md)
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<br/><center></center>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 ## ⛏️: Installation Steps
 
 ### 1. Install Python <a id="installpython"/>  (3.11 was used for testing but any version > 3.8 should work)
@@ -98,14 +106,6 @@ Press the `r` key to skip to the next question
 ### 3. Run Game <a id="rungame"/>
 
 `python3 main.py`
-
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<br/><center></center>
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
-## ⛏️: How-to use your own questions
-
-Add `.json` files to the `questions` directory. For more information regarding the format check [here](questions/README.md)
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
