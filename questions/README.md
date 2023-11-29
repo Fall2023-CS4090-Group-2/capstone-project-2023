@@ -28,4 +28,6 @@ To add new questions to the game add a `.json` file to this directory with the s
 
 ## Remove questions from the game
 
-Just delete questions from the `json` file or completely remove the file if you don't like any of the questions.
+Delete questions from the `json` file or completely remove the `json` file if you don't like any of the questions.
+
+**NOTE:** The game looks for all `.json` extensions. Any other extensions will be ignored.
