@@ -195,7 +195,7 @@ def draw_question(game) -> None:
         game.screen,
         BACKGROUND_COLOR,
         (
-            game.screen.get_width() * 0.75 - max_width - PADDING,
+            game.screen.get_width() * 0.95 - max_width - PADDING,
             start_y,
             max_width + 2 * PADDING,
             total_height,
@@ -204,7 +204,7 @@ def draw_question(game) -> None:
 
     # Draw question
     game.screen.blit(
-        question_str, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y)
+        question_str, (game.screen.get_width() * 0.95 - max_width - PADDING, start_y)
     )
 
     # Draw options
@@ -212,5 +212,5 @@ def draw_question(game) -> None:
         start_y += game.font.get_height() + options_vertical_spacing
         option_str = game.font.render(f"{idx+1}. {option}", True, TEXT_COLOR)
         game.screen.blit(
-            option_str, (game.screen.get_width() * 0.75 - max_width - PADDING, start_y)
+            option_str, (game.screen.get_width() * 0.95 - max_width - PADDING, start_y)
         )
