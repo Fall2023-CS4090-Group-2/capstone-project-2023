@@ -103,7 +103,7 @@ Add `.json` files to the `questions` directory. For more information regarding t
 
 ## ⛏️: Installation Steps (for Ubuntu/Debian based systems)
 
-### 1. Install Python 3 <a id="installpython"/>  (3.11 was used for testing but any version > 3.8 should work)
+### 1. Install Python 3 <a id="installpython"/>  (3.11.6 was used for testing but any version > 3.8 should work)
 
 `sudo apt install python3`
 
