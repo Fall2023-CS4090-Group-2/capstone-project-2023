@@ -15,6 +15,16 @@
     "answer": "5"
   },
   {
+    "question": "What is the largest planet in our solar system?",
+    "options": ["Earth", "Jupiter", "Saturn", "Mars"],
+    "answer": "Jupiter"
+  },
+  {
+    "question": "What is the national flower of Japan?",
+    "options": ["Cherry Blossom", "Rose", "Sunflower", "Tulip"],
+    "answer": "Cherry Blossom"
+  },
+  {
     "question": "What is the capital of Japan?",
     "options": ["Beijing", "Seoul", "Tokyo", "Bangkok"],
     "answer": "Tokyo"
@@ -25,11 +35,6 @@
     "answer": "Jefferson City"
   },
   {
-    "question": "What is 8 + 6?",
-    "options": [],
-    "answer": "14"
-  },
-  {
     "question": "Identify the capital of South Korea.",
     "options": ["Seoul", "Tokyo", "Beijing", "Bangkok"],
     "answer": "Seoul"
@@ -38,6 +43,11 @@
     "question": "What is 9 - 6?",
     "options": [],
     "answer": "3"
+  },
+  {
+    "question": "Which continent is known as the 'Land Down Under'?",
+    "options": ["Africa", "Asia", "Australia", "South America"],
+    "answer": "Australia"
   },
   {
     "question": "What is 11 + 9?",
@@ -60,18 +70,8 @@
     "answer": "7"
   },
   {
-    "question": "What is 27 / 9?",
-    "options": [],
-    "answer": "3"
-  },
-  {
     "question": "What is 20 - 8?",
     "options": [],
     "answer": "12"
-  },
-  {
-    "question": "What is 8 x 7?",
-    "options": [],
-    "answer": "56"
   }
 ]
