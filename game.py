@@ -51,6 +51,8 @@ class Game:
         self.score = 0
         self.health = 100
         self.enemy_timer = 0
+        self.num_correct = 0
+        self.num_incorrect = 0
 
         # Game entities
         self.player: Player = Player(
@@ -170,6 +172,8 @@ class Game:
         self.bullets = []
         self.num_bullets = 50
         self.enemy_timer = 0
+        self.num_correct = 0
+        self.num_incorrect = 0
 
         # Game entities
         self.player.rect.x, self.player.rect.y = (
@@ -267,13 +271,16 @@ class Game:
                 except:
                     pass
             if self.health <= 0:
+                update_game_over_menu(self)
                 self.reset_game()
                 self.state = State.GAME_OVER
 
+        '''
         if self.player.enemies_killed >= enemy_stats[self.difficulty]["stop_condition"]:
             update_game_over_menu(self)
             self.reset_game()
             self.state = State.GAME_OVER
+        '''
 
     def answer_question(self, event) -> None:
         """
@@ -289,12 +296,14 @@ class Game:
                 if event.key == pygame.K_RETURN:
                     if self.selected_question.is_correct(self.answer.strip()):
                         pygame.mixer.Sound.play(self.correct_sound)
+                        self.num_correct += 1
                         self.questions.remove(self.selected_question)
                         self.num_bullets += 1
                         if len(self.questions) > 0:
                             self.selected_question = random.choice(self.questions)
                     else:
                         pygame.mixer.Sound.play(self.incorrect_sound)
+                        self.num_incorrect += 1
                     self.answer = ""
                     self.player.answer_mode = False
                 elif event.key == pygame.K_BACKSPACE:

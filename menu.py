@@ -242,6 +242,30 @@ def create_game_over_menu(game) -> Menu:
         TEXT_COLOR,
     )
 
+    correct_button = Button(
+        f"Questions Correct: {game.num_correct}",
+        game,
+        State.GAME_OVER,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.52,
+        BACKGROUND_COLOR,
+        BACKGROUND_COLOR,
+        TEXT_COLOR,
+    )
+    
+    incorrect_button = Button(
+        f"Questions Incorrect: {game.num_incorrect}",
+        game,
+        State.GAME_OVER,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.57,
+        BACKGROUND_COLOR,
+        BACKGROUND_COLOR,
+        TEXT_COLOR,
+    )
+
     main_menu_button = Button(
         "Back to main menu",
         game,
@@ -266,7 +290,7 @@ def create_game_over_menu(game) -> Menu:
         TEXT_COLOR,
     )
 
-    return Menu(game, [result_button, main_menu_button, quit_button])
+    return Menu(game, [result_button, correct_button, incorrect_button, main_menu_button, quit_button])
 
 
 def update_game_over_menu(game) -> None:
@@ -275,7 +299,7 @@ def update_game_over_menu(game) -> None:
     """
 
     result_button = Button(
-        f"Congratulations! You've scored {str(game.score)} points!",
+        f"You've scored {game.score} points!",
         game,
         State.GAME_OVER,
         75,
@@ -286,4 +310,30 @@ def update_game_over_menu(game) -> None:
         TEXT_COLOR,
     )
 
+    correct_button = Button(
+        f"Questions Correct: {game.num_correct}",
+        game,
+        State.GAME_OVER,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.52,
+        BACKGROUND_COLOR,
+        BACKGROUND_COLOR,
+        TEXT_COLOR,
+    )
+
+    incorrect_button = Button(
+        f"Questions Incorrect: {game.num_incorrect}",
+        game,
+        State.GAME_OVER,
+        50,
+        game.screen.get_width() // 2,
+        game.screen.get_height() * 0.57,
+        BACKGROUND_COLOR,
+        BACKGROUND_COLOR,
+        TEXT_COLOR,
+    )
+
     game.game_over_menu.buttons[0] = result_button
+    game.game_over_menu.buttons[1] = correct_button
+    game.game_over_menu.buttons[2] = incorrect_button

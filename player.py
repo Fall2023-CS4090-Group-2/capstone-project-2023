@@ -86,6 +86,7 @@ class Player(Entity):
                         game.selected_question.options[int(event.unicode) - 1]
                     ):
                         pygame.mixer.Sound.play(game.correct_sound)
+                        game.num_correct += 1
                         game.questions.remove(game.selected_question)
                         game.num_bullets += 1
                         if len(game.questions) > 0:
@@ -93,6 +94,7 @@ class Player(Entity):
                             pass
                     else:
                         pygame.mixer.Sound.play(game.incorrect_sound)
+                        game.num_incorrect += 1
                     game.selected_question = random.choice(game.questions)
 
                 # Change to answer mode
