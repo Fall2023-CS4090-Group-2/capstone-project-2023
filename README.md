@@ -39,7 +39,7 @@ Move Joe Miner around to avoid the boulders or destroy them with your pickaxes t
 Your `Health` , `Score` , and `Pickaxes` are displayed at the top left of your screen.  
 
 
-![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/b7b8b692-d6b8-4276-919b-dc94568cc7b1)
+![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/27ed21fd-908f-461e-91e7-56a29afa93f5)
 
 
 ### Movement <a id="movement"/>   
