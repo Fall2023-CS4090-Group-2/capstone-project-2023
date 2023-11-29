@@ -85,29 +85,23 @@ Press the `r` key to skip to the next question
 <br/><center></center>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-## ⛏️: Project Structure
-
-`main.py` - Entrypoint into game. Can change screen resolution here
-
-`game.py` - Contains most of game logic when involving entities interacting
-
-`entity.py` - Every object that appears on the screen has parent class of Entity. The class is just positional values and the picture for object.
-
-`player.py` - The object that the user will control. Contains functions to move the player.
-
-`enemy.py` - Object that will do damage to player. Has unique movement function.
-
-`bullet.py` - Object the player fires. In our current implementation the bullet can only be fired if the user answers a question correctly.
-
-`question.py` - Basic data structure for quesitons
+## ⛏️: Installation Steps
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-## ⛏️: TODO
+## ⛏️: How-to use your own Questions
 
-Current tasks and issues can be found [here](https://github.com/orgs/Fall2023-CS4090-Group-2/projects/1/views/1)
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<br/><center></center>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+## ⛏️: Stretch Goals
+
+1. Competitive Scoring with Database  
+    
+2. Question Refinement and Subject Selection
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br/><center></center>
