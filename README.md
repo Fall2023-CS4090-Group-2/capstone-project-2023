@@ -51,13 +51,21 @@ Use either the `arrow` keys or the `WASD` keys to move Joe Miner around.
 | Type              | Text-box?             | How-to    |
 | :---------------- | :-------------------- | :-------- |
 | Free Response     | Yes                   | Press `enter` and you will see the `Answer` box at the bottom of the screen turn green which indicates that you are now in Answer Mode and can begin typing your answer to the question. When you are finished with your answer, press `enter` again to submit your answer. | 
-| Multiple Choice   | No                    | Select the correct answer using keys `1 2 3 4` |
+| Multiple Choice   | No                    | Select the correct answer using number keys `1-9` |
 
 _\*Note: After answering you will be in Normal Mode and will need to press `enter` again to switch to Answer Mode._    
 
 | Normal Mode                  | Answer Mode                                  |
 | :--------------------------: | :------------------------------------------: |
 |![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/daa32fa9-b86b-4aaf-a16f-d689badf681b)|![image](https://github.com/Fall2023-CS4090-Group-2/capstone-project-2023/assets/103133688/8e0f9809-0909-402e-8718-ef557fe88de0)|
+
+### Scoring <a id="scoring"/>
+
+| Difficulty              | Initial Pickaxes    | Score Increase per Boulder Destroyed    |
+| :---------------------- | :------------------ | :-------------------------------------- |
+| Easy                    | 0                   | 5                                       |
+| Medium                  | 3                   | 8                                       |
+| Hard                    | 5                   | 10                                      |
 
 ### Throwing <a id="throwing"/>    
 
